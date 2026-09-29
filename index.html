@@ -98,7 +98,7 @@
   }
   #menuToggle { display: none; }
 
-  .layout { flex: 1; display: grid; grid-template-columns: 350px 1fr; min-height: 0; }
+  .layout { flex: 1; display: grid; grid-template-columns: 300px 245px minmax(0, 1fr); min-height: 0; }
 
   aside.sidebar {
     border-right: 1px solid var(--line);
@@ -174,8 +174,8 @@
   ul.article-list a:hover { background: var(--accent-soft); color: var(--ink); }
   ul.article-list a.active { color: var(--accent); border-left-color: var(--accent); background: var(--accent-soft); font-weight: 500; }
 
-  main.content { min-width: 0; padding: 44px clamp(20px, 5vw, 72px) 90px; overflow-x: hidden; }
-  .content-inner { max-width: 1100px; margin: 0 auto; }
+  main.content { min-width: 0; padding: 42px clamp(24px, 4vw, 64px) 90px; overflow-x: hidden; }
+  .content-inner { max-width: 1180px; margin: 0 auto; }
 
   .eyebrow { font-size: 15.5px; letter-spacing: 0.04em; color: var(--accent); margin: 0 0 14px; }
   h1.hero-title { font-family: var(--serif); font-weight: 500; font-size: clamp(31px, 4vw, 45.5px); line-height: 1.2; margin: 0 0 16px; max-width: 20ch; }
@@ -218,23 +218,23 @@
     background: var(--accent-soft); color: var(--accent); margin-right: 6px; margin-bottom: 4px;
   }
 
-  article h1.article-title { font-family: var(--serif); font-weight: 500; font-size: clamp(29px, 3.6vw, 38.5px); line-height: 1.25; margin: 0 0 8px; }
+  article h1.article-title { font-family: var(--serif); font-weight: 500; font-size: clamp(23px, 2.9vw, 30.8px); line-height: 1.25; margin: 0 0 8px; }
   .article-meta { font-size: 17.5px; color: var(--ink-faint); margin-bottom: 24px; }
-  .article-body { font-size: 21.6px; line-height: 1.85; color: var(--ink); text-align: justify; text-justify: inter-word; }
+  .article-body { font-size: 17.3px; line-height: 1.85; color: var(--ink); text-align: justify; text-justify: inter-word; }
   .article-body p { margin: 0 0 18px; text-align: justify; }
   .article-body h2 {
     font-family: var(--serif);
     font-weight: 600;
-    font-size: 24px;
-    line-height: 1.35;
+    font-size: 19.2px;
+    line-height: 1.4;
     margin: 34px 0 16px;
     scroll-margin-top: 84px;
   }
   .article-body h3 {
     font-family: var(--serif);
     font-weight: 600;
-    font-size: 22px;
-    line-height: 1.4;
+    font-size: 17.6px;
+    line-height: 1.45;
     margin: 28px 0 14px;
     scroll-margin-top: 84px;
   }
@@ -255,19 +255,27 @@
   .toc-chapter-title:first-child { margin-top: 0; }
   .toc-section-title { font-size: 16px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.03em; margin: 14px 0 2px 4px; }
 
+  .toc-sidebar {
+    border-right: 1px solid var(--line);
+    padding: 72px 14px 40px;
+    overflow-y: auto;
+    max-height: calc(100vh - 60px);
+    position: sticky;
+    top: 60px;
+    background: var(--bg);
+  }
   .sidebar-toc {
     display: none;
-    margin-top: 18px;
-    padding-top: 14px;
-    border-top: 1px solid var(--line);
   }
   .sidebar-toc.visible { display: block; }
   .sidebar-toc-title {
-    font-size: 13px;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
+    font-family: var(--serif);
+    font-size: 14px;
+    letter-spacing: 0.04em;
     color: var(--ink-faint);
-    padding: 0 6px 8px;
+    padding: 0 8px 12px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 8px;
   }
   .sidebar-toc-list { list-style: none; margin: 0; padding: 0; }
   .sidebar-toc-list li { margin: 0; }
@@ -278,8 +286,8 @@
     border-radius: 5px;
     color: var(--ink-soft);
     text-decoration: none;
-    font-size: 14px;
-    line-height: 1.45;
+    font-size: 11.2px;
+    line-height: 1.5;
   }
   .sidebar-toc-list a:hover { background: var(--accent-soft); color: var(--accent); }
   .sidebar-toc-list a.active {
@@ -332,6 +340,10 @@
 
   footer.site-foot { text-align: center; font-size: 15.5px; color: var(--ink-faint); padding: 22px 20px calc(22px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); }
 
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 270px 205px minmax(0, 1fr); }
+    .content-inner { max-width: none; }
+  }
   @media (max-width: 860px) {
     .layout { grid-template-columns: 1fr; }
     #menuToggle { display: flex; }
@@ -342,6 +354,7 @@
       box-shadow: 2px 0 18px rgba(0,0,0,0.12);
     }
     body.menu-open aside.sidebar { transform: translateX(0); }
+    aside.toc-sidebar { display: none; }
     body.menu-open::after { content: ""; position: fixed; inset: 60px 0 0 0; background: rgba(0,0,0,0.28); z-index: 20; }
     main.content { padding: 30px 18px 70px; }
     .brand .tagline { display: none; }
@@ -379,8 +392,11 @@
       </details>
     </details>
 
+  </aside>
+
+  <aside class="toc-sidebar" id="tocSidebar">
     <div class="sidebar-toc" id="sidebarToc">
-      <div class="sidebar-toc-title">Mục lục bài viết</div>
+      <div class="sidebar-toc-title">Mục lục</div>
       <ul class="sidebar-toc-list" id="sidebarTocList"></ul>
     </div>
   </aside>
@@ -402,11 +418,11 @@
       title: "VAS 14 — Doanh thu và thu nhập khác",
       meta: "Ban hành và công bố theo Quyết định số 149/2001/QĐ-BTC ngày 31 tháng 12 năm 2001 của Bộ trưởng Bộ Tài chính",
       bodyHtml: `
-        <h2>HỆ THỐNG CHUẨN MỰC KẾ TOÁN VIỆT NAM</h2>
-        <h3>CHUẨN MỰC SỐ 14 — DOANH THU VÀ THU NHẬP KHÁC</h3>
+        <h2>Hệ thống chuẩn mực kế toán Việt Nam</h2>
+        <h3>Chuẩn mực số 14 — Doanh thu và thu nhập khác</h3>
         <p><strong>(Ban hành và công bố theo Quyết định số 149/2001/QĐ-BTC ngày 31 tháng 12 năm 2001 của Bộ trưởng Bộ Tài chính)</strong></p>
 
-        <h2>QUY ĐỊNH CHUNG</h2>
+        <h2>Quy định chung</h2>
         <p>Mục đích của chuẩn mực này là quy định và hướng dẫn các nguyên tắc và phương pháp kế toán doanh thu và thu nhập khác, gồm: Các loại doanh thu, thời điểm ghi nhận doanh thu, phương pháp kế toán doanh thu và thu nhập khác làm cơ sở ghi sổ kế toán và lập báo cáo tài chính.</p>
         <p>Chuẩn mực này áp dụng trong kế toán các khoản doanh thu và thu nhập khác phát sinh từ các giao dịch và nghiệp vụ sau:</p>
         <p><strong>(a) Bán hàng:</strong> Bán sản phẩm do doanh nghiệp sản xuất ra và bán hàng hóa mua vào;</p>
@@ -426,20 +442,20 @@
         <p><strong>Thu nhập khác:</strong> Là khoản thu góp phần làm tăng vốn chủ sở hữu từ hoạt động ngoài các hoạt động tạo ra doanh thu.</p>
         <p><strong>Giá trị hợp lý:</strong> Là giá trị tài sản có thể trao đổi hoặc giá trị một khoản nợ được thanh toán một cách tự nguyện giữa các bên có đầy đủ hiểu biết trong sự trao đổi ngang giá.</p>
 
-        <h2>NỘI DUNG CHUẨN MỰC</h2>
+        <h2>Nội dung chuẩn mực</h2>
         <p>Doanh thu chỉ bao gồm tổng giá trị của các lợi ích kinh tế doanh nghiệp đã thu được hoặc sẽ thu được. Các khoản thu hộ bên thứ ba không phải là nguồn lợi ích kinh tế, không làm tăng vốn chủ sở hữu của doanh nghiệp sẽ không được coi là doanh thu (Ví dụ: Khi người nhận đại lý thu hộ tiền bán hàng cho đơn vị chủ hàng, thì doanh thu của người nhận đại lý chỉ là tiền hoa hồng được hưởng). Các khoản góp vốn của cổ đông hoặc chủ sở hữu làm tăng vốn chủ sở hữu nhưng không là doanh thu.</p>
 
-        <h2>XÁC ĐỊNH DOANH THU</h2>
+        <h2>Xác định doanh thu</h2>
         <p>Doanh thu được xác định theo giá trị hợp lý của các khoản đã thu hoặc sẽ thu được.</p>
         <p>Doanh thu phát sinh từ giao dịch được xác định bởi thỏa thuận giữa doanh nghiệp với bên mua hoặc bên sử dụng tài sản. Nó được xác định bằng giá trị hợp lý của các khoản đã thu được hoặc sẽ thu được sau khi trừ (-) các khoản chiết khấu thương mại, chiết khấu thanh toán, giảm giá hàng bán và giá trị hàng bán bị trả lại.</p>
         <p>Đối với các khoản tiền hoặc tương đương tiền không được nhận ngay thì doanh thu được xác định bằng cách quy đổi giá trị danh nghĩa của các khoản sẽ thu được trong tương lai về giá trị thực tế tại thời điểm ghi nhận doanh thu theo tỷ lệ lãi suất hiện hành. Giá trị thực tế tại thời điểm ghi nhận doanh thu có thể nhỏ hơn giá trị danh nghĩa sẽ thu được trong tương lai.</p>
         <p>Khi hàng hóa hoặc dịch vụ được trao đổi để lấy hàng hóa hoặc dịch vụ tương tự về bản chất và giá trị thì việc trao đổi đó không được coi là một giao dịch tạo ra doanh thu.</p>
         <p>Khi hàng hóa hoặc dịch vụ được trao đổi để lấy hàng hóa hoặc dịch vụ khác không tương tự thì việc trao đổi đó được coi là một giao dịch tạo ra doanh thu. Trường hợp này doanh thu được xác định bằng giá trị hợp lý của hàng hóa hoặc dịch vụ nhận về, sau khi điều chỉnh các khoản tiền hoặc tương đương tiền trả thêm hoặc thu thêm. Khi không xác định được giá trị hợp lý của hàng hóa hoặc dịch vụ nhận về thì doanh thu được xác định bằng giá trị hợp lý của hàng hóa hoặc dịch vụ đem trao đổi, sau khi điều chỉnh các khoản tiền hoặc tương đương tiền trả thêm hoặc thu thêm.</p>
 
-        <h2>NHẬN BIẾT GIAO DỊCH</h2>
+        <h2>Nhận biết giao dịch</h2>
         <p>Tiêu chuẩn nhận biết giao dịch trong chuẩn mực này được áp dụng riêng biệt cho từng giao dịch. Trong một số trường hợp, các tiêu chuẩn nhận biết giao dịch cần áp dụng tách biệt cho từng bộ phận của một giao dịch đơn lẻ để phản ánh bản chất của giao dịch đó. Ví dụ, khi trong giá bán một sản phẩm có một khoản đã định trước cho việc cung cấp dịch vụ sau bán hàng thì khoản doanh thu từ việc cung cấp dịch vụ sau bán hàng sẽ được dời lại cho đến khi doanh nghiệp thực hiện dịch vụ đó. Tiêu chuẩn nhận biết giao dịch còn được áp dụng cho hai hay nhiều giao dịch đồng thời có quan hệ với nhau về mặt thương mại. Trường hợp này phải xem xét chúng trong mối quan hệ tổng thể. Ví dụ, doanh nghiệp thực hiện việc bán hàng và đồng thời ký một hợp đồng khác để mua lại chính các hàng hóa đó sau một thời gian thì phải đồng thời xem xét cả hai hợp đồng và doanh thu không được ghi nhận.</p>
 
-        <h2>DOANH THU BÁN HÀNG</h2>
+        <h2>Doanh thu bán hàng</h2>
         <p>Doanh thu bán hàng được ghi nhận khi đồng thời thỏa mãn tất cả năm (5) điều kiện sau:</p>
         <p><strong>(a)</strong> Doanh nghiệp đã chuyển giao phần lớn rủi ro và lợi ích gắn liền với quyền sở hữu sản phẩm hoặc hàng hóa cho người mua;</p>
         <p><strong>(b)</strong> Doanh nghiệp không còn nắm giữ quyền quản lý hàng hóa như người sở hữu hàng hóa hoặc quyền kiểm soát hàng hóa;</p>
@@ -457,7 +473,7 @@
         <p>Doanh thu và chi phí liên quan tới cùng một giao dịch phải được ghi nhận đồng thời theo nguyên tắc phù hợp. Các chi phí, bao gồm cả chi phí phát sinh sau ngày giao hàng (như chi phí bảo hành và chi phí khác), thường được xác định chắc chắn khi các điều kiện ghi nhận doanh thu được thỏa mãn. Các khoản tiền nhận trước của khách hàng không được ghi nhận là doanh thu mà được ghi nhận là một khoản nợ phải trả tại thời điểm nhận tiền trước của khách hàng. Khoản nợ phải trả về số tiền nhận trước của khách hàng chỉ được ghi nhận là doanh thu khi đồng thời thỏa mãn năm (5) điều kiện quy định ở đoạn 10.</p>
         <div class="disclaimer"><b>Câu hỏi:</b> Nhận tạm ứng trước hợp đồng thi công xây dựng có được ghi nhận doanh thu không? Trong trường hợp xuất hoá đơn thì có ghi nhận doanh thu không? Yêu cầu xuất hoá đơn là đúng hay sai?</div>
 
-        <h2>DOANH THU CUNG CẤP DỊCH VỤ</h2>
+        <h2>Doanh thu cung cấp dịch vụ</h2>
         <p>Doanh thu của giao dịch về cung cấp dịch vụ được ghi nhận khi kết quả của giao dịch đó được xác định một cách đáng tin cậy. Trường hợp giao dịch về cung cấp dịch vụ liên quan đến nhiều kỳ thì doanh thu được ghi nhận trong kỳ theo kết quả phần công việc đã hoàn thành vào ngày lập Bảng Cân đối kế toán của kỳ đó. Kết quả của giao dịch cung cấp dịch vụ được xác định khi thỏa mãn tất cả bốn (4) điều kiện sau:</p>
         <p><strong>(a)</strong> Doanh thu được xác định tương đối chắc chắn;</p>
         <p><strong>(b)</strong> Có khả năng thu được lợi ích kinh tế từ giao dịch cung cấp dịch vụ đó;</p>
@@ -479,7 +495,7 @@
         <p>Khi kết quả của một giao dịch về cung cấp dịch vụ không thể xác định được chắc chắn thì doanh thu được ghi nhận tương ứng với chi phí đã ghi nhận và có thể thu hồi.</p>
         <p>Trong giai đoạn đầu của một giao dịch về cung cấp dịch vụ, khi chưa xác định được kết quả một cách chắc chắn thì doanh thu được ghi nhận bằng chi phí đã ghi nhận và có thể thu hồi được. Nếu chi phí liên quan đến dịch vụ đó chắc chắn không thu hồi được thì không ghi nhận doanh thu, và chi phí đã phát sinh được hạch toán vào chi phí để xác định kết quả kinh doanh trong kỳ. Khi có bằng chứng tin cậy về các chi phí đã phát sinh sẽ thu hồi được thì doanh thu được ghi nhận theo quy định tại đoạn 16.</p>
 
-        <h2>DOANH THU TỪ TIỀN LÃI, TIỀN BẢN QUYỀN, CỔ TỨC VÀ LỢI NHUẬN ĐƯỢC CHIA</h2>
+        <h2>Doanh thu từ tiền lãi, tiền bản quyền, cổ tức và lợi nhuận được chia</h2>
         <p>Doanh thu phát sinh từ tiền lãi, tiền bản quyền, cổ tức và lợi nhuận được chia của doanh nghiệp được ghi nhận khi thỏa mãn đồng thời hai (2) điều kiện sau:</p>
         <p><strong>(a)</strong> Có khả năng thu được lợi ích kinh tế từ giao dịch đó;</p>
         <p><strong>(b)</strong> Doanh thu được xác định tương đối chắc chắn.</p>
@@ -492,7 +508,7 @@
         <p>Tiền bản quyền được tính dồn tích căn cứ vào các điều khoản của hợp đồng (ví dụ như tiền bản quyền của một cuốn sách được tính dồn tích trên cơ sở số lượng sách xuất bản từng lần và theo từng lần xuất bản) hoặc tính trên cơ sở hợp đồng từng lần.</p>
         <p>Doanh thu được ghi nhận khi đảm bảo là doanh nghiệp nhận được lợi ích kinh tế từ giao dịch. Khi không thể thu hồi một khoản mà trước đó đã ghi vào doanh thu thì khoản có khả năng không thu hồi được hoặc không chắc chắn thu hồi được đó phải hạch toán vào chi phí phát sinh trong kỳ, không ghi giảm doanh thu.</p>
 
-        <h2>THU NHẬP KHÁC</h2>
+        <h2>Thu nhập khác</h2>
         <p>Thu nhập khác quy định trong chuẩn mực này bao gồm các khoản thu từ các hoạt động xảy ra không thường xuyên, ngoài các hoạt động tạo ra doanh thu, gồm:</p>
         <p>Thu về thanh lý TSCĐ, nhượng bán TSCĐ;</p>
         <p>Thu tiền phạt khách hàng do vi phạm hợp đồng;</p>
@@ -505,7 +521,7 @@
         <p>Thu được các khoản nợ phải thu đã xóa sổ tính vào chi phí của kỳ trước là khoản nợ phải thu khó đòi, xác định là không thu hồi được, đã được xử lý xóa sổ và tính vào chi phí để xác định kết quả kinh doanh trong các kỳ trước nay thu hồi được.</p>
         <p>Khoản nợ phải trả nay mất chủ là khoản nợ phải trả không xác định được chủ nợ hoặc chủ nợ không còn tồn tại.</p>
 
-        <h2>TRÌNH BÀY BÁO CÁO TÀI CHÍNH</h2>
+        <h2>Trình bày báo cáo tài chính</h2>
         <p>Trong báo cáo tài chính, doanh nghiệp phải trình bày:</p>
         <p><strong>(a)</strong> Chính sách kế toán được áp dụng trong việc ghi nhận doanh thu bao gồm phương pháp xác định phần công việc đã hoàn thành của các giao dịch về cung cấp dịch vụ;</p>
         <p><strong>(b)</strong> Doanh thu của từng loại giao dịch và sự kiện:</p>
