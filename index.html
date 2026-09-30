@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>TheLeanBasic — Thư viện pháp luật · Chuẩn mực kế toán Việt Nam · VAS 14</title>
+<title>TheLeanBasic — Learning Hub · CPA Vietnam · ACCA · CMA</title>
 <style>
   :root {
     --bg: #FFFFFF;
@@ -395,18 +395,18 @@
    ===================================================================== */
 :root, :root[data-theme="dark"] {
   /* Navy: structure (header, footer, headings, body text) */
-  --navy:#0F1F38;
-  --navy-deep:#0A1527;
-  /* Petrol: primary brand (hero, links, active states) */
-  --petrol:#1B4B5A;
-  --petrol-600:#2A6577;
-  --petrol-300:#9DBAC3;
-  --petrol-200:#C5D8DE;
-  --petrol-100:#E1ECEF;
-  --petrol-50:#F1F6F7;
+  --navy:#03396c;
+  --navy-deep:#022a50;
+  /* Petrol: primary brand (hero, links, active states) → deep blue #03396c */
+  --petrol:#03396c;
+  --petrol-600:#04518f;
+  --petrol-300:#7BA3C4;
+  --petrol-200:#B8D0E3;
+  --petrol-100:#E0ECF4;
+  --petrol-50:#F0F6FA;
   /* Taupe: warm neutral (sidebar ground, rules, metadata) */
   --taupe:#8E7970;
-  --taupe-ink:#6A5A54;      /* darkened taupe for readable small text */
+  --taupe-ink:#6A5A54;
   --taupe-light:#B8A8A1;
   --taupe-line:#E2DAD6;
   --taupe-hover:#EEE8E5;
@@ -420,7 +420,7 @@
   --bg:#FFFFFF; --bg-raised:#FFFFFF;
   --ink:#152238; --ink-soft:#3F4C60; --ink-faint:#6A5A54;
   --line:#E2DAD6;
-  --accent:#1B4B5A; --accent-soft:#E1ECEF;
+  --accent:#03396c; --accent-soft:#E0ECF4;
   --head-h:64px;
   --display: var(--sans);
 }
@@ -510,16 +510,16 @@ h2.section-title { font-weight: 600; font-size: 26px; letter-spacing: -0.02em; l
 .toc-list a:hover { color: var(--petrol); }
 
 /* ---------- Article: tight headings ---------- */
-.article-title { color: var(--navy); font-size: clamp(26px, 2.8vw, 34px); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 6px; }
+.article-title { color: #03396c; font-size: clamp(26px, 2.8vw, 34px); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 6px; }
 .article-meta { font-size: 16.5px; line-height: 1.5; color: var(--taupe-ink); margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
 .article-body p { margin-bottom: 11px; }
-.article-body h2 { color: var(--petrol); font-size: 26px; font-weight: 700; line-height: 1.2; letter-spacing: -0.025em; margin: 34px 0 10px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
-.article-body h3 { color: var(--navy); font-size: 21px; font-weight: 600; line-height: 1.28; letter-spacing: -0.02em; margin: 24px 0 8px; }
+.article-body h2 { color: #03396c; font-size: 26px; font-weight: 700; line-height: 1.2; letter-spacing: -0.025em; margin: 34px 0 10px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.article-body h3 { color: #03396c; font-size: 21px; font-weight: 600; line-height: 1.28; letter-spacing: -0.02em; margin: 24px 0 8px; }
 .article-body h2:first-child { margin-top: 8px; }
-.article-body strong { color: var(--navy-deep); }
-.article-body a.wiki { color: var(--petrol); text-decoration-color: var(--taupe-light); }
-.article-body a.wiki:hover { text-decoration-color: var(--petrol); }
-.tag-badge { background: var(--petrol-100); color: var(--petrol); border-radius: 3px; }
+.article-body strong { color: #03396c; font-weight: 600; }
+.article-body a.wiki { color: #03396c; text-decoration-color: var(--taupe-light); }
+.article-body a.wiki:hover { text-decoration-color: #03396c; }
+.tag-badge { background: var(--petrol-100); color: #03396c; border-radius: 3px; font-weight: 600; }
 
 .related-nav a { border-radius: 3px; }
 .related-nav a:hover { background: var(--petrol-50); border-color: var(--petrol); color: var(--petrol); }
@@ -541,7 +541,85 @@ footer.site-foot .foot-note { max-width: 72ch; font-size: 13px; line-height: 1.5
   .article-body h2 { font-size: 23px; margin-top: 28px; }
   .article-body h3 { font-size: 19px; margin-top: 20px; }
   footer.site-foot { padding-left: 20px; padding-right: 20px; }
+  .cornell-row { grid-template-columns: 1fr; }
+  .cornell-cues { border-right: none; border-bottom: 1px solid var(--line); padding-bottom: 10px; margin-bottom: 8px; }
 }
+
+/* ---------- Cornell notes + Obsidian-style callouts ---------- */
+.cornell-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 22%) 1fr;
+  gap: 16px 20px;
+  margin: 18px 0 22px;
+  align-items: start;
+}
+.cornell-cues {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: #03396c;
+  font-weight: 600;
+  padding-right: 12px;
+  border-right: 2px solid var(--petrol-200);
+}
+.cornell-cues .cue-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--taupe-ink);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.cornell-notes { min-width: 0; }
+.cornell-notes p:last-child { margin-bottom: 0; }
+
+.callout {
+  border-radius: 4px;
+  padding: 12px 14px 12px 16px;
+  margin: 16px 0;
+  border-left: 4px solid #03396c;
+  background: var(--petrol-50);
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+.callout .callout-title {
+  font-weight: 700;
+  color: #03396c;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.callout.callout-note { border-left-color: #03396c; background: var(--petrol-50); }
+.callout.callout-question { border-left-color: var(--coral); background: var(--coral-soft); }
+.callout.callout-question .callout-title { color: var(--coral-ink); }
+.callout.callout-warning { border-left-color: #C17A2B; background: #FDF6EC; }
+.callout.callout-warning .callout-title { color: #8A5A18; }
+.callout.callout-tip { border-left-color: #2A7A4B; background: #EDF7F0; }
+.callout.callout-tip .callout-title { color: #1B5C35; }
+.callout p { margin: 0 0 8px; }
+.callout p:last-child { margin-bottom: 0; }
+
+.source-line {
+  margin-top: 28px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--taupe-ink);
+  line-height: 1.5;
+}
+.source-line a { color: #03396c; font-weight: 600; word-break: break-all; }
+
+.section-label { color: #03396c; font-weight: 600; }
+h2.section-title { color: #03396c; font-weight: 700; }
+.group-label.top-label { color: #03396c; }
+.sidebar-toc-title { color: #03396c; border-bottom-color: #03396c; }
+ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
+.sidebar-toc-list a.active { color: #03396c; border-left-color: #03396c; }
+.breadcrumb button { color: #03396c; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -550,7 +628,7 @@ footer.site-foot .foot-note { max-width: 72ch; font-size: 13px; line-height: 1.5
   <div class="brand">
     <button id="menuToggle" class="icon-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
     <span class="mark">TheLeanBasic</span>
-    <span class="tagline">Thư viện pháp luật · Chuẩn mực kế toán Việt Nam</span>
+    <span class="tagline">Learning Hub · CPA Vietnam · ACCA · CMA</span>
   </div>
   <div class="head-controls">
   </div>
@@ -647,7 +725,7 @@ footer.site-foot .foot-note { max-width: 72ch; font-size: 13px; line-height: 1.5
 </div>
 
 <footer class="site-foot">
-  <p class="foot-line">TheLeanBasic là nguồn tự học dành cho người làm và người học kế toán, kiểm toán, thuế: hệ thống hóa chuẩn mực, văn bản pháp luật và lộ trình ACCA, CPA, CMA để bạn tự tra cứu, ôn tập theo nhịp của riêng mình.</p>
+  <p class="foot-line">@2026 TheLeanBasic</p>
   <p class="foot-note">Nội dung phục vụ tham khảo và tự học, không thay thế văn bản gốc hay tư vấn chuyên môn.</p>
 </footer>
 
@@ -659,7 +737,7 @@ footer.site-foot .foot-note { max-width: 72ch; font-size: 13px; line-height: 1.5
       doc: "vas",
       crumb: ["Chuẩn mực kế toán Việt Nam"],
       title: "VAS 14 — Doanh thu và thu nhập khác",
-      meta: "Ban hành và công bố theo Quyết định số 149/2001/QĐ-BTC ngày 31 tháng 12 năm 2001 của Bộ trưởng Bộ Tài chính https://vanban.chinhphu.vn/default.aspx?pageid=27160&docid=10302",
+      meta: "Chuẩn mực kế toán Việt Nam",
       bodyHtml: `
         <h2>Quy định chung</h2>
         <p>Mục đích của chuẩn mực này là quy định và hướng dẫn các nguyên tắc và phương pháp kế toán doanh thu và thu nhập khác, gồm: Các loại doanh thu, thời điểm ghi nhận doanh thu, phương pháp kế toán doanh thu và thu nhập khác làm cơ sở ghi sổ kế toán và lập báo cáo tài chính.</p>
@@ -710,7 +788,18 @@ footer.site-foot .foot-note { max-width: 72ch; font-size: 13px; line-height: 1.5
         <p>Nếu doanh nghiệp chỉ còn phải chịu một phần nhỏ rủi ro gắn liền với quyền sở hữu hàng hóa thì việc bán hàng được xác định và doanh thu được ghi nhận. Ví dụ doanh nghiệp còn nắm giữ giấy tờ về quyền sở hữu hàng hóa chỉ để đảm bảo sẽ nhận được đủ các khoản thanh toán.</p>
         <p>Doanh thu bán hàng được ghi nhận chỉ khi đảm bảo là doanh nghiệp nhận được lợi ích kinh tế từ giao dịch. Trường hợp lợi ích kinh tế từ giao dịch bán hàng còn phụ thuộc yếu tố không chắc chắn thì chỉ ghi nhận doanh thu khi yếu tố không chắc chắn này đã xử lý xong (ví dụ, khi doanh nghiệp không chắc chắn là Chính phủ nước sở tại có chấp nhận chuyển tiền bán hàng ở nước ngoài về hay không). Nếu doanh thu đã được ghi nhận trong trường hợp chưa thu được tiền thì khi xác định khoản tiền nợ phải thu này là không thu được thì phải hạch toán vào chi phí sản xuất, kinh doanh trong kỳ mà không được ghi giảm doanh thu. Khi xác định khoản phải thu là không chắc chắn thu được (Nợ phải thu khó đòi) thì phải lập dự phòng nợ phải thu khó đòi mà không ghi giảm doanh thu. Các khoản nợ phải thu khó đòi khi xác định thực sự là không đòi được thì được bù đắp bằng nguồn dự phòng nợ phải thu khó đòi.</p>
         <p>Doanh thu và chi phí liên quan tới cùng một giao dịch phải được ghi nhận đồng thời theo nguyên tắc phù hợp. Các chi phí, bao gồm cả chi phí phát sinh sau ngày giao hàng (như chi phí bảo hành và chi phí khác), thường được xác định chắc chắn khi các điều kiện ghi nhận doanh thu được thỏa mãn. Các khoản tiền nhận trước của khách hàng không được ghi nhận là doanh thu mà được ghi nhận là một khoản nợ phải trả tại thời điểm nhận tiền trước của khách hàng. Khoản nợ phải trả về số tiền nhận trước của khách hàng chỉ được ghi nhận là doanh thu khi đồng thời thỏa mãn năm (5) điều kiện quy định ở đoạn 10.</p>
-        <div class="disclaimer"><b>Câu hỏi:</b> Nhận tạm ứng trước hợp đồng thi công xây dựng có được ghi nhận doanh thu không? Trong trường hợp xuất hoá đơn thì có ghi nhận doanh thu không? Yêu cầu xuất hoá đơn là đúng hay sai?</div>
+        <div class="cornell-row">
+          <div class="cornell-cues">
+            <span class="cue-label">Câu hỏi</span>
+            Tạm ứng hợp đồng thi công
+          </div>
+          <div class="cornell-notes">
+            <div class="callout callout-question">
+              <div class="callout-title">❓ Câu hỏi</div>
+              <p>Nhận tạm ứng trước hợp đồng thi công xây dựng có được ghi nhận doanh thu không? Trong trường hợp xuất hoá đơn thì có ghi nhận doanh thu không? Yêu cầu xuất hoá đơn là đúng hay sai?</p>
+            </div>
+          </div>
+        </div>
 
         <h2>Doanh thu cung cấp dịch vụ</h2>
         <p>Doanh thu của giao dịch về cung cấp dịch vụ được ghi nhận khi kết quả của giao dịch đó được xác định một cách đáng tin cậy. Trường hợp giao dịch về cung cấp dịch vụ liên quan đến nhiều kỳ thì doanh thu được ghi nhận trong kỳ theo kết quả phần công việc đã hoàn thành vào ngày lập Bảng Cân đối kế toán của kỳ đó. Kết quả của giao dịch cung cấp dịch vụ được xác định khi thỏa mãn tất cả bốn (4) điều kiện sau:</p>
@@ -769,6 +858,7 @@ footer.site-foot .foot-note { max-width: 72ch; font-size: 13px; line-height: 1.5
         <p>Tiền lãi, tiền bản quyền, cổ tức và lợi nhuận được chia.</p>
         <p><strong>(c)</strong> Doanh thu từ việc trao đổi hàng hóa hoặc dịch vụ theo từng loại hoạt động trên.</p>
         <p><strong>(d)</strong> Thu nhập khác, trong đó trình bày cụ thể các khoản thu nhập bất thường.</p>
+        <p class="source-line"><strong>Nguồn:</strong> <a href="https://vanban.chinhphu.vn/default.aspx?pageid=27160&amp;docid=10302" target="_blank" rel="noopener">https://vanban.chinhphu.vn/default.aspx?pageid=27160&amp;docid=10302</a></p>
       `
     }
   };
@@ -777,7 +867,7 @@ footer.site-foot .foot-note { max-width: 72ch; font-size: 13px; line-height: 1.5
     "vas": {
       kind: "law",
       title: "Chuẩn mực kế toán Việt Nam — VAS 14",
-      meta: "Chuẩn mực số 14 — Doanh thu và thu nhập khác",
+      meta: "VAS 14 — Doanh thu và thu nhập khác",
       toc: [{ chapter: "VAS 14 — Doanh thu và thu nhập khác", articles: ["vas-14"] }],
       note: "Nội dung trang được đưa vào từ tài liệu người dùng cung cấp. Khi sử dụng cho mục đích pháp lý, kế toán hoặc kiểm toán chính thức, cần đối chiếu với văn bản gốc và các văn bản sửa đổi, bổ sung có liên quan."
     }
@@ -1130,9 +1220,9 @@ footer.site-foot .foot-note { max-width: 72ch; font-size: 13px; line-height: 1.5
     clearSidebarToc();
     inner.innerHTML = `
       <section class="hero-band">
-      <p class="eyebrow">THƯ VIỆN PHÁP LUẬT</p>
-      <h1 class="hero-title">Chuẩn mực kế toán Việt Nam</h1>
-      <p class="hero-sub">Tra cứu nội dung chuẩn mực theo cấu trúc thư mục. Hiện thư viện này chứa VAS 14 — Doanh thu và thu nhập khác.</p>
+      <p class="eyebrow">LEARNING HUB</p>
+      <h1 class="hero-title">CPA Vietnam · ACCA · CMA</h1>
+      <p class="hero-sub">Self-study library for accounting standards, professional certifications, and exam pathways. Currently includes VAS 14 and the full ACCA, CPA Vietnam, and CMA syllabi.</p>
       </section>
       <div class="disclaimer"><b>Lưu ý:</b> Nội dung trên trang được trình bày để tra cứu và tự học. Khi áp dụng cho công việc thực tế, cần đối chiếu với văn bản gốc và các quy định hiện hành có liên quan.</div>
       <hr class="rule">
