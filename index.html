@@ -6,7 +6,7 @@
 <title>TheLeanBasic — Thư viện pháp luật · Chuẩn mực kế toán Việt Nam · VAS 14</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #FFFFFF;
@@ -19,38 +19,13 @@
     --accent-soft: #E4EBE7;
     --warn: #9A5B2E;
     --warn-soft: #F3E7DB;
-    --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
-    --sans: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+    --serif: 'Montserrat', Arial, Helvetica, sans-serif;
+    --sans: 'Montserrat', Arial, Helvetica, sans-serif;
     box-sizing: border-box;
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
-  :root:not([data-theme="light"]) {
-    @media (prefers-color-scheme: dark) {
-      --bg: #17160F;
-      --bg-raised: #1D1C15;
-      --ink: #EDEAE0;
-      --ink-soft: #B4AE9B;
-      --ink-faint: #756F5D;
-      --line: #35331F;
-      --accent: #7FBBAC;
-      --accent-soft: #212B25;
-      --warn: #D99A67;
-      --warn-soft: #2B2117;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #17160F;
-    --bg-raised: #1D1C15;
-    --ink: #EDEAE0;
-    --ink-soft: #B4AE9B;
-    --ink-faint: #756F5D;
-    --line: #35331F;
-    --accent: #7FBBAC;
-    --accent-soft: #212B25;
-    --warn: #D99A67;
-    --warn-soft: #2B2117;
-  }
+  :root[data-theme="dark"] { --bg:#FFFFFF; --bg-raised:#FFFFFF; --ink:#211F1A; --ink-soft:#5B5648; --ink-faint:#8B8574; --line:#D9D3C3; --accent:#3B6E63; --accent-soft:#E4EBE7; --warn:#9A5B2E; --warn-soft:#F3E7DB; }
   * { box-sizing: border-box; }
   html, body { height: 100%; }
   html { scroll-padding-top: env(safe-area-inset-top, 0px); }
@@ -360,6 +335,46 @@
     .brand .tagline { display: none; }
   }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+  /* V5 layout, typography and search */
+  :root {
+    --bg: #FFFFFF;
+    --bg-raised: #FFFFFF;
+    --ink: #222222;
+    --ink-soft: #555555;
+    --ink-faint: #777777;
+    --line: #E3E3E3;
+    --accent: #222222;
+    --accent-soft: #F4F4F4;
+  }
+  body, header.site-head, aside.sidebar, aside.toc-sidebar, main.content, footer.site-foot { background:#FFFFFF; }
+  .layout { grid-template-columns: 190px 150px minmax(0, 1fr); }
+  aside.sidebar { padding: 12px 9px 32px; }
+  aside.toc-sidebar { padding: 62px 8px 32px; }
+  main.content { padding-left: clamp(24px, 4vw, 72px); padding-right: clamp(24px, 4vw, 72px); }
+  .content-inner { max-width: 1180px; }
+  .article-body { font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 20.5px; line-height: 1.56; letter-spacing: -0.01em; text-align: justify; text-justify: inter-word; }
+  .article-body p { margin: 0 0 13px; letter-spacing: -0.01em; }
+  .article-body h2 { font-family:'Montserrat',Arial,Helvetica,sans-serif; font-size: 31px; line-height:1.2; font-weight:700; letter-spacing:-0.02em; text-transform:none; margin: 46px 0 18px; }
+  .article-body h3 { font-family:'Montserrat',Arial,Helvetica,sans-serif; font-size: 26px; line-height:1.24; font-weight:600; letter-spacing:-0.015em; margin: 34px 0 16px; }
+  .article-title { font-family:'Montserrat',Arial,Helvetica,sans-serif; font-weight:700; letter-spacing:-0.025em; line-height:1.18; }
+  .hero-title, .section-title { font-family:'Montserrat',Arial,Helvetica,sans-serif; }
+  .group summary, .doc-cover-link { font-size: 14px; padding: 7px 3px; gap: 4px; }
+  .group-label.top-label { font-size: 13px; letter-spacing:0; }
+  .group .group { margin-left: 8px; }
+  ul.article-list a { font-size: 13px; }
+  .top-group-label { font-size: 11px; }
+  #siteSearch { font-family:'Montserrat',Arial,Helvetica,sans-serif; font-size:13px; padding:8px 8px 8px 28px; }
+  .sidebar-toc-title { font-family:'Montserrat',Arial,Helvetica,sans-serif; font-size:12px; }
+  .sidebar-toc-list a { font-family:'Montserrat',Arial,Helvetica,sans-serif; font-size:11.5px; line-height:1.3; letter-spacing:-0.005em; }
+  .search-results { margin-top:10px; }
+  .search-results-title { font-size:11px; color:var(--ink-faint); margin:8px 3px; text-transform:uppercase; letter-spacing:.06em; }
+  .search-result { display:block; width:100%; text-align:left; border:0; border-top:1px solid var(--line); background:transparent; padding:9px 3px; cursor:pointer; color:var(--ink); font:500 12px/1.4 'Montserrat',Arial,sans-serif; }
+  .search-result:hover { background:#F6F6F6; }
+  .search-result small { display:block; color:var(--ink-faint); font-size:10px; margin-top:2px; }
+  .search-hit { background:#FFF1A8; }
+  @media (max-width: 1100px) { .layout { grid-template-columns:180px 145px minmax(0,1fr); } .article-body { font-size:19px; line-height:1.55; } .article-body h2{font-size:29px;} .article-body h3{font-size:24px;} }
+  @media (max-width: 860px) { .layout { grid-template-columns:1fr; } .article-body{font-size:18px; line-height:1.55;} .article-body h2{font-size:27px;} .article-body h3{font-size:23px;} }
 </style>
 </head>
 <body>
@@ -371,7 +386,6 @@
     <span class="tagline">Thư viện pháp luật · Chuẩn mực kế toán Việt Nam</span>
   </div>
   <div class="head-controls">
-    <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Đổi giao diện sáng/tối">◐</button>
   </div>
 </header>
 
@@ -380,16 +394,30 @@
     <div class="search-wrap">
       <input id="siteSearch" type="text" placeholder="Tìm chuẩn mực, nội dung...">
     </div>
+    <div id="searchResults" class="search-results" hidden></div>
 
     <details class="group top-level" open>
-      <summary><span class="chev">▸</span><span class="group-label top-label">THƯ VIỆN PHÁP LUẬT</span></summary>
-
+      <summary><span class="chev">▸</span><span class="group-label top-label">VĂN BẢN PHÁP LUẬT</span></summary>
       <details class="group" open>
         <summary><span class="chev">▸</span><span class="group-label">Chuẩn mực kế toán Việt Nam</span></summary>
-        <ul class="article-list">
-          <li><a href="#" data-id="vas-14">VAS 14 — Doanh thu và thu nhập khác</a></li>
-        </ul>
+        <ul class="article-list"><li><a href="#" data-id="vas-14">VAS 14 — Doanh thu và thu nhập khác</a></li></ul>
       </details>
+    </details>
+    <details class="group top-level">
+      <summary><span class="chev">▸</span><span class="group-label top-label">ACCA</span></summary>
+      <ul class="article-list"><li><a href="#" class="placeholder-link" data-section="acca">Các môn thi ACCA</a></li></ul>
+    </details>
+    <details class="group top-level">
+      <summary><span class="chev">▸</span><span class="group-label top-label">CPA Việt Nam</span></summary>
+      <ul class="article-list"><li><a href="#" class="placeholder-link" data-section="cpa-vn">Các môn thi CPA Việt Nam</a></li></ul>
+    </details>
+    <details class="group top-level">
+      <summary><span class="chev">▸</span><span class="group-label top-label">CMA</span></summary>
+      <ul class="article-list"><li><a href="#" class="placeholder-link" data-section="cma">Các môn thi CMA</a></li></ul>
+    </details>
+    <details class="group top-level">
+      <summary><span class="chev">▸</span><span class="group-label top-label">NOTEs</span></summary>
+      <ul class="article-list"><li><a href="#" class="placeholder-link" data-section="notes">Ghi chú học tập</a></li></ul>
     </details>
 
   </aside>
@@ -549,7 +577,9 @@
   const inner = document.getElementById('contentInner');
   const sidebarToc = document.getElementById('sidebarToc');
   const sidebarTocList = document.getElementById('sidebarTocList');
-  const GROUP_LABEL = { law: "Thư viện pháp luật", topic: "Chứng chỉ nghề nghiệp", notes: "Notes" };
+  const GROUP_LABEL = { law: "Văn bản pháp luật", topic: "Chứng chỉ nghề nghiệp", notes: "NOTEs" };
+
+  document.querySelectorAll('.placeholder-link').forEach(a => a.addEventListener('click', e => e.preventDefault()));
 
   function slugify(text, index) {
     const base = (text || '').toLowerCase()
@@ -783,31 +813,24 @@
         !document.getElementById('sidebar').contains(e.target) && e.target !== menuToggle) closeMenu();
   });
 
-  document.getElementById('themeToggle').addEventListener('click', () => {
-    const root = document.documentElement;
-    const current = root.getAttribute('data-theme');
-    const isDark = current === 'dark' || (!current && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  });
-
   const searchInput = document.getElementById('siteSearch');
-  searchInput.addEventListener('input', () => {
-    const q = searchInput.value.trim().toLowerCase();
-    const allLinks = document.querySelectorAll('#sidebar .article-list a, #sidebar .doc-cover-link');
-    if (!q) {
-      allLinks.forEach(a => a.classList.remove('no-match'));
-      document.querySelectorAll('#sidebar details').forEach(d => d.open = false);
-      document.querySelector('#sidebar details').open = true;
-      return;
-    }
-    allLinks.forEach(a => {
-      const match = a.textContent.toLowerCase().includes(q);
-      a.classList.toggle('no-match', !match);
-      if (match) {
-        let p = a.closest('details');
-        while (p) { p.open = true; p = p.parentElement.closest('details'); }
-      }
+  const searchResults = document.getElementById('searchResults');
+  function stripHtml(html) { const d=document.createElement('div'); d.innerHTML=html||''; return d.textContent||''; }
+  function searchAllPages(q) {
+    const needle = q.toLocaleLowerCase('vi');
+    return Object.entries(ENTRIES).filter(([id,e]) => {
+      const hay = [e.title,e.meta, ...(e.crumb||[]), stripHtml(e.bodyHtml)].join(' ').toLocaleLowerCase('vi');
+      return hay.includes(needle);
     });
+  }
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim();
+    document.querySelectorAll('#sidebar details').forEach(d => d.open = !q ? d.open : false);
+    if (!q) { searchResults.hidden=true; searchResults.innerHTML=''; return; }
+    const hits = searchAllPages(q);
+    searchResults.hidden=false;
+    searchResults.innerHTML = '<div class="search-results-title">Kết quả tìm kiếm</div>' + (hits.length ? hits.map(([id,e]) => `<button class="search-result" data-search-id="${id}">${e.title}<small>${e.crumb?.join(' · ')||''}</small></button>`).join('') : '<div style="font-size:12px;color:var(--ink-faint);padding:8px 3px">Không tìm thấy nội dung phù hợp.</div>');
+    searchResults.querySelectorAll('[data-search-id]').forEach(btn => btn.addEventListener('click', () => { go(btn.dataset.searchId); searchInput.value=''; searchResults.hidden=true; searchResults.innerHTML=''; }));
   });
 })();
 </script>
