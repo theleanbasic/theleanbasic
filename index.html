@@ -638,7 +638,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 .sidebar-toc-list a.active { color: #03396c; border-left-color: #03396c; }
 .breadcrumb button { color: #03396c; font-weight: 600; }
 </style>
-<style id="responsive-subscribe">
+<style id="responsive-layout">
 /* =====================================================================
    Responsive columns — each column has a min and a max width
    ≥1600  nav 320–420 · toc 250–320 · content ≥480 (text capped at 1180)
@@ -678,64 +678,20 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 .toc-inline li a { display: block; padding: 8px 10px; border-radius: 3px; font: 500 14.5px/1.4 var(--sans); color: var(--ink-soft); text-decoration: none; }
 .toc-inline li a:hover { background: #fff; color: var(--petrol); }
 
-/* ---------- Subscribe (Substack-style) ---------- */
-.btn-subscribe {
-  font: 600 14px/1 var(--sans); letter-spacing: .01em; color: #fff; background: #D13B30;
-  border: 0; border-radius: 6px; padding: 11px 18px; cursor: pointer; white-space: nowrap;
-  transition: background .15s ease, transform .1s ease;
-}
-.btn-subscribe:hover { background: var(--coral-ink); }
-.btn-subscribe:active { transform: translateY(1px); }
-.btn-subscribe:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-header.site-head .btn-subscribe { padding: 9px 16px; font-size: 13.5px; }
-
-.sub-form { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
-.sub-form input[type="email"] {
-  flex: 1 1 200px; min-width: 0; font: 400 15px/1.2 var(--sans); color: var(--ink);
-  background: #fff; border: 1px solid #C9C2BD; border-radius: 6px; padding: 11px 13px;
-}
-.sub-form input[type="email"]::placeholder { color: #8B8079; }
-.sub-form input[type="email"]:focus { outline: none; border-color: var(--petrol); box-shadow: 0 0 0 3px rgba(3,57,108,.18); }
-.sub-form .sub-msg:empty { display: none; }
-.sub-form .sub-msg { flex-basis: 100%; margin: 2px 0 0; font: 500 13px/1.4 var(--sans); }
-.sub-form .sub-msg.ok { color: #2C6543; }
-.sub-form .sub-msg.err { color: var(--coral-ink); }
-
-.sub-title { font: 600 22px/1.25 var(--sans); letter-spacing: -0.02em; color: var(--petrol); margin: 0 0 6px; }
-.sub-desc { margin: 0 0 14px; font: 400 15px/1.55 var(--sans); color: var(--taupe-ink); }
-
-.sub-dialog { border: 0; padding: 0; border-radius: 10px; width: min(460px, calc(100vw - 32px)); color: var(--ink); box-shadow: 0 24px 64px rgba(10,21,39,.4); }
-.sub-dialog::backdrop { background: rgba(10,21,39,.55); }
-.sub-dialog-inner { position: relative; padding: 30px 28px 24px; }
-.sub-dialog .sub-title { padding-right: 28px; }
-.sub-close { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border: 0; border-radius: 50%; background: transparent; color: var(--taupe-ink); font-size: 24px; line-height: 1; cursor: pointer; }
-.sub-close:hover { background: var(--taupe-50); color: var(--navy); }
-
-.subscribe-card {
-  max-width: 1180px; margin: 44px auto 0; padding: 26px 28px;
-  border: 1px solid var(--taupe-line); border-top: 3px solid var(--coral); border-radius: 3px; background: var(--petrol-50);
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 380px); gap: 16px 32px; align-items: center;
-}
-.subscribe-card .sub-desc { margin-bottom: 0; }
-
 /* ---------- Phones & small tablets: natural page scroll, compact spacing ---------- */
 @media (max-width: 860px) {
   html, body { height: auto; }
   body { min-height: 100vh; min-height: 100dvh; }
   aside.sidebar { top: var(--head-h); box-shadow: none; }
   body.menu-open aside.sidebar { box-shadow: 2px 0 18px rgba(0,0,0,.18); }
-  .subscribe-card { grid-template-columns: 1fr; padding: 22px 20px; }
 }
 @media (max-width: 520px) {
   header.site-head { gap: 8px; }
   .brand { gap: 8px; }
   .brand .mark { font-size: 19px; }
-  header.site-head .btn-subscribe { padding: 8px 13px; font-size: 13px; }
   main.content { padding: 22px 14px 48px; }
   .hero-band { padding: 22px 18px 26px; }
   .article-body { font-size: 17px; }
-  .sub-dialog-inner { padding: 26px 20px 20px; }
-  .sub-title { font-size: 20px; }
 }
 </style>
 </head>
@@ -748,9 +704,6 @@ header.site-head .btn-subscribe { padding: 9px 16px; font-size: 13.5px; }
       <span class="mark">TheLeanBasic</span>
       <span class="tagline">Learning Hub · CPA Vietnam · ACCA · CMA</span>
     </a>
-  </div>
-  <div class="head-controls">
-    <button type="button" id="subscribeBtn" class="btn-subscribe">Subscribe</button>
   </div>
 </header>
 
@@ -841,13 +794,6 @@ header.site-head .btn-subscribe { padding: 9px 16px; font-size: 13.5px; }
 
   <main class="content">
     <div class="content-inner" id="contentInner"></div>
-    <section class="subscribe-card" id="subscribeCard" aria-labelledby="subCardTitle">
-      <div class="sub-copy">
-        <div class="sub-title" id="subCardTitle">Nhận tài liệu mới qua email</div>
-        <p class="sub-desc">Đăng ký để nhận ghi chú, chuẩn mực và lộ trình ôn thi CPA Việt Nam, ACCA, CMA mỗi khi có bài mới.</p>
-      </div>
-      <div data-sub-slot></div>
-    </section>
   </main>
 </div>
 
@@ -860,34 +806,13 @@ header.site-head .btn-subscribe { padding: 9px 16px; font-size: 13.5px; }
   <div class="foot-right" aria-hidden="true"></div>
 </footer>
 
-<dialog id="subDialog" class="sub-dialog" aria-labelledby="subDialogTitle">
-  <div class="sub-dialog-inner">
-    <button type="button" class="sub-close" aria-label="Đóng">×</button>
-    <h2 class="sub-title" id="subDialogTitle">Subscribe to TheLeanBasic</h2>
-    <p class="sub-desc">Nhận ghi chú, chuẩn mực và lộ trình ôn thi CPA Việt Nam, ACCA, CMA qua email mỗi khi có bài mới.</p>
-    <div data-sub-slot></div>
-  </div>
-</dialog>
-
-<template id="subFormTpl">
-  <form class="sub-form" novalidate>
-    <input type="email" name="email" placeholder="Email của bạn" autocomplete="email" aria-label="Email" required>
-    <input type="hidden" name="source" value="subscribe_page">
-    <button type="submit" class="btn-subscribe">Subscribe</button>
-    <p class="sub-msg" role="status" aria-live="polite"></p>
-  </form>
-</template>
-
 <script>
 (function () {
-  /* ===== Cấu hình site — điền 2 giá trị này để bật tính năng =====
-     substackName    : tên publication Substack, ví dụ 'theleanbasic' (→ theleanbasic.substack.com)
+  /* ===== Cấu hình site =====
      goatcounterCode : mã GoatCounter, ví dụ 'theleanbasic' (→ theleanbasic.goatcounter.com)
      Để trống = tắt. Lượt xem được theo dõi trong dashboard riêng, không hiển thị công khai. */
   const SITE_CONFIG = {
-    substackName: '',
     goatcounterCode: '',
-    contactEmail: 'theleanbasic@gmail.com'
   };
 
   const ENTRIES = {
@@ -1551,75 +1476,6 @@ header.site-head .btn-subscribe { padding: 9px 16px; font-size: 13.5px; }
     renderRoute(id);
     setActive(id || null);
   });
-
-  /* ---------- Subscribe (Substack-style) ---------- */
-  const subTpl = document.getElementById('subFormTpl');
-  const subDialog = document.getElementById('subDialog');
-  function makeSubForm() {
-    const form = subTpl.content.firstElementChild.cloneNode(true);
-    const msg = form.querySelector('.sub-msg');
-    const name = (SITE_CONFIG.substackName || '').trim();
-    if (name) {
-      form.action = 'https://' + name + '.substack.com/api/v1/free?nojs=true';
-      form.method = 'post';
-      form.target = '_blank';
-    }
-    form.addEventListener('submit', (e) => {
-      const email = form.elements.email.value.trim();
-      msg.className = 'sub-msg';
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        e.preventDefault();
-        msg.textContent = 'Vui lòng nhập email hợp lệ.';
-        msg.classList.add('err');
-        return;
-      }
-      if (name) {
-        msg.textContent = 'Đang mở Substack để xác nhận email của bạn…';
-        msg.classList.add('ok');
-        setTimeout(() => form.reset(), 400);
-        return;
-      }
-      // Static HTML cannot send mail directly by itself. FormSubmit forwards the
-      // submission to the configured inbox without requiring a mail app on the visitor's device.
-      e.preventDefault();
-      const payload = new URLSearchParams({
-        email: email,
-        source: 'subscribe_page',
-        _subject: 'Đăng ký nhận bài — TheLeanBasic',
-        _captcha: 'false',
-        _template: 'table'
-      });
-      fetch('https://formsubmit.co/ajax/' + encodeURIComponent(SITE_CONFIG.contactEmail), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
-        body: payload.toString()
-      })
-      .then(r => r.ok ? r.json() : Promise.reject())
-      .then(() => {
-        msg.textContent = 'Đăng ký thành công. Cảm ơn bạn!';
-        msg.classList.add('ok');
-        form.reset();
-      })
-      .catch(() => {
-        msg.textContent = 'Không gửi được lúc này. Vui lòng thử lại sau.';
-        msg.classList.add('err');
-      });
-    });
-    return form;
-  }
-  document.querySelectorAll('[data-sub-slot]').forEach(slot => slot.appendChild(makeSubForm()));
-  const subBtn = document.getElementById('subscribeBtn');
-  if (subBtn && subDialog && typeof subDialog.showModal === 'function') {
-    subBtn.addEventListener('click', () => {
-      subDialog.showModal();
-      const i = subDialog.querySelector('input[name="email"]');
-      if (i) i.focus();
-    });
-    subDialog.querySelector('.sub-close').addEventListener('click', () => subDialog.close());
-    subDialog.addEventListener('click', (e) => { if (e.target === subDialog) subDialog.close(); });
-  } else if (subBtn) {
-    subBtn.addEventListener('click', () => document.getElementById('subscribeCard').scrollIntoView({ behavior: 'smooth' }));
-  }
 
   /* ---------- Visit counter (GoatCounter) ---------- */
   let gcReady = false;
