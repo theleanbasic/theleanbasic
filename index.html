@@ -1,1479 +1,402 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>TheLeanBasic — Learning Hub · CPA Vietnam · ACCA · CMA</title>
-<style>
-  :root {
-    --bg: #FFFFFF;
-    --bg-raised: #FFFFFF;
-    --ink: #211F1A;
-    --ink-soft: #5B5648;
-    --ink-faint: #8B8574;
-    --line: #D9D3C3;
-    --accent: #3B6E63;
-    --accent-soft: #E4EBE7;
-    --warn: #9A5B2E;
-    --warn-soft: #F3E7DB;
-    --serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    box-sizing: border-box;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-  :root[data-theme="dark"] { --bg:#FFFFFF; --bg-raised:#FFFFFF; --ink:#211F1A; --ink-soft:#5B5648; --ink-faint:#8B8574; --line:#D9D3C3; --accent:#3B6E63; --accent-soft:#E4EBE7; --warn:#9A5B2E; --warn-soft:#F3E7DB; }
-  * { box-sizing: border-box; }
-  html, body { height: 100%; }
-  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--serif);
-    -webkit-font-smoothing: antialiased;
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-  }
-
-  header.site-head {
-    position: sticky;
-    top: env(safe-area-inset-top, 0px);
-    z-index: 30;
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
-    padding: 14px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-  .brand { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; min-width: 0; }
-  .brand .mark { font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--ink); white-space: nowrap; }
-  .brand .tagline { font-size: 15.5px; color: var(--ink-faint); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 46vw; }
-  .head-controls { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
-  .icon-btn {
-    border: 1px solid var(--line);
-    background: var(--bg-raised);
-    color: var(--ink-soft);
-    width: 32px; height: 32px;
-    border-radius: 7px;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    font-size: 21px;
-  }
-  .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .icon-btn:focus-visible, a:focus-visible, summary:focus-visible, button:focus-visible, input:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-  #menuToggle { display: none; }
-
-  .layout { flex: 1; display: grid; grid-template-columns: 300px 245px minmax(0, 1fr); min-height: 0; }
-
-  aside.sidebar {
-    border-right: 1px solid var(--line);
-    padding: 14px 14px 40px;
-    overflow-y: auto;
-    max-height: calc(100vh - 60px);
-    position: sticky;
-    top: 60px;
-  }
-  .search-wrap { position: relative; margin-bottom: 16px; }
-  #siteSearch {
-    width: 100%;
-    padding: 9px 12px 9px 30px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--bg-raised);
-    color: var(--ink);
-    font-family: var(--serif);
-    font-size: 17px;
-  }
-  .search-wrap::before {
-    content: "⌕";
-    position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
-    color: var(--ink-faint); font-size: 18px;
-  }
-  .no-match { display: none !important; }
-
-  .top-group-label {
-    font-size: 14.5px; letter-spacing: 0.06em; color: var(--ink-faint);
-    padding: 14px 6px 6px; text-transform: uppercase;
-  }
-  .top-group-label:first-child { padding-top: 4px; }
-
-  .group { margin-bottom: 2px; }
-  .group.top-level { margin-bottom: 4px; }
-  .group.top-level > summary { padding: 10px 6px; }
-  .group-label.top-label { font-size: 15.5px; letter-spacing: 0.02em; }
-  .group .group { margin-left: 14px; margin-top: 2px; }
-  .doc-cover-link.nested-link { margin-left: 14px; font-size: 15.5px; }
-  .group summary, .doc-cover-link {
-    list-style: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 8px 6px;
-    border-radius: 6px;
-    font-size: 17.5px;
-    color: var(--ink-soft);
-    text-decoration: none;
-  }
-  .group summary::-webkit-details-marker { display: none; }
-  .group summary:hover, .doc-cover-link:hover { background: var(--accent-soft); color: var(--accent); }
-  .group summary .chev { font-size: 13px; transition: transform 0.15s ease; color: var(--ink-faint); flex-shrink: 0; }
-  .group[open] > summary .chev { transform: rotate(90deg); }
-  .group-label { font-weight: 600; }
-
-  .nested { padding-left: 16px; }
-  ul.article-list { list-style: none; margin: 2px 0 6px; padding: 0 0 0 21px; }
-  ul.article-list.flat { padding-left: 8px; }
-  ul.article-list li { margin: 0; }
-  ul.article-list a {
-    display: block;
-    padding: 6px 8px;
-    margin: 1px 0;
-    border-radius: 6px;
-    font-size: 17.5px;
-    line-height: 1.4;
-    color: var(--ink-soft);
-    text-decoration: none;
-    border-left: 2px solid transparent;
-  }
-  ul.article-list a:hover { background: var(--accent-soft); color: var(--ink); }
-  ul.article-list a.active { color: var(--accent); border-left-color: var(--accent); background: var(--accent-soft); font-weight: 500; }
-
-  main.content { min-width: 0; padding: 42px clamp(24px, 4vw, 64px) 90px; overflow-x: hidden; }
-  .content-inner { max-width: 1180px; margin: 0 auto; }
-
-  .eyebrow { font-size: 15.5px; letter-spacing: 0.04em; color: var(--accent); margin: 0 0 14px; }
-  h1.hero-title { font-family: var(--serif); font-weight: 500; font-size: clamp(31px, 4vw, 45.5px); line-height: 1.2; margin: 0 0 16px; max-width: 20ch; }
-  p.hero-sub { font-size: 23.5px; line-height: 1.75; color: var(--ink-soft); max-width: 58ch; margin: 0 0 30px; }
-  hr.rule { border: none; border-top: 1px solid var(--line); margin: 30px 0; }
-
-  .disclaimer {
-    border: 1px solid var(--warn);
-    background: var(--warn-soft);
-    color: var(--ink);
-    border-radius: 10px;
-    padding: 14px 16px;
-    font-size: 17px;
-    line-height: 1.6;
-    margin-bottom: 34px;
-  }
-  .disclaimer b { color: var(--warn); }
-
-  .program-grid { display: grid; gap: 12px; margin-bottom: 40px; grid-template-columns: 1fr; }
-  @media (min-width: 640px) { .program-grid { grid-template-columns: 1fr 1fr; } }
-  .program-card {
-    display: block; text-decoration: none; color: inherit;
-    border: 1px solid var(--line); border-radius: 10px;
-    padding: 16px 18px; background: var(--bg-raised);
-  }
-  .program-card:hover { border-color: var(--accent); }
-  .program-card .pc-kicker { font-size: 14.5px; color: var(--ink-faint); letter-spacing: 0.03em; margin-bottom: 6px; }
-  .program-card .pc-title { font-family: var(--serif); font-size: 23px; margin: 0 0 6px; }
-  .program-card .pc-desc { font-size: 17px; color: var(--ink-soft); line-height: 1.5; margin: 0; }
-
-  .section-label { font-size: 15.5px; letter-spacing: 0.03em; color: var(--ink-faint); margin: 0 0 10px; text-transform: uppercase; }
-  h2.section-title { font-family: var(--serif); font-weight: 500; font-size: 26.5px; margin: 0 0 22px; max-width: 28ch; }
-
-  .breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 17.5px; color: var(--ink-faint); margin-bottom: 20px; }
-  .breadcrumb button { background: none; border: none; color: var(--accent); font-family: var(--serif); font-size: 16px; cursor: pointer; padding: 0; }
-  .breadcrumb span.sep { opacity: 0.6; }
-
-  .tag-badge {
-    display: inline-block; font-size: 14.5px; padding: 3px 9px; border-radius: 20px;
-    background: var(--accent-soft); color: var(--accent); margin-right: 6px; margin-bottom: 4px;
-  }
-
-  article h1.article-title { font-family: var(--serif); font-weight: 500; font-size: clamp(23px, 2.9vw, 30.8px); line-height: 1.25; margin: 0 0 8px; }
-  .article-meta { font-size: 17.5px; color: var(--ink-faint); margin-bottom: 24px; }
-  .article-body { font-size: 17.3px; line-height: 1.85; color: var(--ink); text-align: justify; text-justify: inter-word; }
-  .article-body p { margin: 0 0 18px; text-align: justify; }
-  .article-body h2 {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 19.2px;
-    line-height: 1.4;
-    margin: 34px 0 16px;
-    scroll-margin-top: 84px;
-  }
-  .article-body h3 {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 17.6px;
-    line-height: 1.45;
-    margin: 28px 0 14px;
-    scroll-margin-top: 84px;
-  }
-  .article-body a.wiki { color: var(--accent); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 2px; }
-  .article-body a.wiki:hover { text-decoration-color: var(--accent); }
-
-  .toc-list { list-style: none; margin: 0; padding: 0; }
-  .toc-list.nested-toc { padding-left: 18px; margin-top: 4px; }
-  .toc-list li { border-top: 1px solid var(--line); }
-  .toc-list.nested-toc li { border-top: none; }
-  .toc-list li:last-child { border-bottom: 1px solid var(--line); }
-  .toc-list.nested-toc li:last-child { border-bottom: none; }
-  .toc-list a { display: flex; gap: 12px; align-items: baseline; padding: 12px 4px; text-decoration: none; color: var(--ink); font-size: 19px; }
-  .toc-list.nested-toc a { padding: 8px 4px; font-size: 20px; }
-  .toc-list a:hover { color: var(--accent); }
-  .toc-num { font-family: var(--serif); font-size: 16px; color: var(--ink-faint); flex-shrink: 0; }
-  .toc-chapter-title { font-family: var(--serif); font-size: 20px; font-weight: 500; margin: 22px 0 4px; }
-  .toc-chapter-title:first-child { margin-top: 0; }
-  .toc-section-title { font-size: 16px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.03em; margin: 14px 0 2px 4px; }
-
-  .toc-sidebar {
-    border-right: 1px solid var(--line);
-    padding: 72px 14px 40px;
-    overflow-y: auto;
-    max-height: calc(100vh - 60px);
-    position: sticky;
-    top: 60px;
-    background: var(--bg);
-  }
-  .sidebar-toc {
-    display: none;
-  }
-  .sidebar-toc.visible { display: block; }
-  .sidebar-toc-title {
-    font-family: var(--serif);
-    font-size: 14px;
-    letter-spacing: 0.04em;
-    color: var(--ink-faint);
-    padding: 0 8px 12px;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 8px;
-  }
-  .sidebar-toc-list { list-style: none; margin: 0; padding: 0; }
-  .sidebar-toc-list li { margin: 0; }
-  .sidebar-toc-list a {
-    display: block;
-    padding: 6px 8px 6px 10px;
-    border-left: 2px solid transparent;
-    border-radius: 5px;
-    color: var(--ink-soft);
-    text-decoration: none;
-    font-size: 11.2px;
-    line-height: 1.5;
-  }
-  .sidebar-toc-list a:hover { background: var(--accent-soft); color: var(--accent); }
-  .sidebar-toc-list a.active {
-    color: var(--accent);
-    border-left-color: var(--accent);
-    background: var(--accent-soft);
-  }
-
-  .backlinks-box { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); }
-  .backlinks-box h3 { font-size: 17px; letter-spacing: 0.02em; color: var(--ink-faint); text-transform: uppercase; margin: 0 0 10px; font-weight: 500; }
-  .backlinks-box ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
-  .backlinks-box a { color: var(--ink-soft); text-decoration: none; font-size: 17.5px; padding: 5px 0; display: block; }
-  .backlinks-box a:hover { color: var(--accent); }
-  .backlinks-empty { font-size: 17px; color: var(--ink-faint); font-style: italic; }
-
-  .link-preview {
-    position: fixed;
-    z-index: 60;
-    width: 300px;
-    max-width: calc(100vw - 24px);
-    background: var(--bg-raised);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 13px 15px;
-    box-shadow: 0 10px 28px rgba(0,0,0,0.14);
-    font-family: var(--serif);
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--ink);
-    pointer-events: none;
-    opacity: 0;
-    transform: translateY(4px);
-    transition: opacity 0.12s ease, transform 0.12s ease;
-  }
-  .link-preview.visible { opacity: 1; transform: translateY(0); }
-  .link-preview .lp-title { font-weight: 600; color: var(--accent); margin-bottom: 5px; }
-  .link-preview .lp-excerpt { color: var(--ink-soft); font-size: 14px; }
-  .link-preview .lp-meta { font-size: 11.5px; color: var(--ink-faint); margin-top: 8px; font-family: var(--serif); }
-
-  .related-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 34px; }
-  .related-nav a { flex: 1; text-decoration: none; color: var(--ink-soft); font-size: 16px; border: 1px solid var(--line); border-radius: 8px; padding: 11px 13px; }
-  .related-nav a:hover { border-color: var(--accent); color: var(--accent); }
-  .related-nav a.next { text-align: right; }
-  .related-nav .rn-label { display: block; font-size: 14px; color: var(--ink-faint); margin-bottom: 3px; }
-  .related-nav .placeholder { flex: 1; }
-
-  #about { padding-top: 26px; border-top: 1px solid var(--line); margin-top: 50px; }
-  #about h2 { font-family: var(--serif); font-weight: 500; font-size: 24px; margin: 0 0 14px; }
-  #about p { font-size: 17.5px; line-height: 1.7; color: var(--ink-soft); margin: 0 0 12px; max-width: 60ch; }
-
-  footer.site-foot { text-align: center; font-size: 15.5px; color: var(--ink-faint); padding: 22px 20px calc(22px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); }
-
-  @media (max-width: 1100px) {
-    .layout { grid-template-columns: 270px 205px minmax(0, 1fr); }
-    .content-inner { max-width: none; }
-  }
-  @media (max-width: 860px) {
-    .layout { grid-template-columns: 1fr; }
-    #menuToggle { display: flex; }
-    aside.sidebar {
-      position: fixed; top: 60px; left: 0; bottom: 0; width: min(86vw, 340px);
-      max-height: none; background: var(--bg);
-      transform: translateX(-100%); transition: transform 0.2s ease; z-index: 25;
-      box-shadow: 2px 0 18px rgba(0,0,0,0.12);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chế độ Kế toán - Thông tư 99/2025/TT-BTC</title>
+  <style>
+    :root {
+      --primary-color: #0d6efd;
+      --bg-color: #f8f9fa;
+      --sidebar-bg: #ffffff;
+      --text-color: #212529;
+      --border-color: #dee2e6;
+      --hover-bg: #e9ecef;
     }
-    body.menu-open aside.sidebar { transform: translateX(0); }
-    aside.toc-sidebar { display: none; }
-    body.menu-open::after { content: ""; position: fixed; inset: 60px 0 0 0; background: rgba(0,0,0,0.28); z-index: 20; }
-    main.content { padding: 30px 18px 70px; }
-    .brand .tagline { display: none; }
-  }
-  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 
-  /* V5 layout, typography and search */
-  :root {
-    --bg: #FFFFFF;
-    --bg-raised: #FFFFFF;
-    --ink: #222222;
-    --ink-soft: #555555;
-    --ink-faint: #777777;
-    --line: #E3E3E3;
-    --accent: #222222;
-    --accent-soft: #F4F4F4;
-  }
-  body, header.site-head, aside.sidebar, aside.toc-sidebar, main.content, footer.site-foot { background:#FFFFFF; }
-  .layout { grid-template-columns: 190px 220px minmax(0, 1fr); }
-  aside.sidebar { padding: 12px 9px 32px; }
-  aside.toc-sidebar { padding: 62px 8px 32px; }
-  main.content { padding-left: clamp(24px, 4vw, 72px); padding-right: clamp(24px, 4vw, 72px); }
-  .content-inner { max-width: 1180px; }
-  .article-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 20.5px; line-height: 1.56; letter-spacing: -0.012em; text-align: justify; text-justify: inter-word; }
-  .article-body p { margin: 0 0 13px; letter-spacing: -0.01em; }
-  .article-body h2 { font-family:var(--sans); font-size: 31px; line-height:1.2; font-weight:700; letter-spacing:-0.02em; text-transform:none; margin: 46px 0 18px; }
-  .article-body h3 { font-family:var(--sans); font-size: 26px; line-height:1.24; font-weight:600; letter-spacing:-0.015em; margin: 34px 0 16px; }
-  .article-title { font-family:var(--sans); font-weight:700; letter-spacing:-0.025em; line-height:1.18; }
-  .hero-title, .section-title { font-family:var(--sans); }
-  .group summary, .doc-cover-link { font-size: 14px; padding: 7px 3px; gap: 4px; }
-  .group-label.top-label { font-size: 13px; letter-spacing:0; }
-  .group .group { margin-left: 8px; }
-  ul.article-list a { font-size: 13px; }
-  .top-group-label { font-size: 11px; }
-  #siteSearch { font-family:var(--sans); font-size:13px; padding:8px 8px 8px 28px; }
-  .sidebar-toc-title { font-family:var(--sans); font-size:12px; }
-  .sidebar-toc-list a { font-family:var(--sans); font-size:11.5px; line-height:1.3; letter-spacing:-0.005em; }
-  .search-results { margin-top:10px; }
-  .search-results-title { font-size:11px; color:var(--ink-faint); margin:8px 3px; text-transform:uppercase; letter-spacing:.06em; }
-  .search-result { display:block; width:100%; text-align:left; border:0; border-top:1px solid var(--line); background:transparent; padding:9px 3px; cursor:pointer; color:var(--ink); font:500 12px/1.4 var(--sans); }
-  .search-result:hover { background:#F6F6F6; }
-  .search-result small { display:block; color:var(--ink-faint); font-size:10px; margin-top:2px; }
-  .search-hit { background:#FFF1A8; }
-  @media (max-width: 1100px) { .layout { grid-template-columns:180px 200px minmax(0,1fr); } .article-body { font-size:19px; line-height:1.55; } .article-body h2{font-size:29px;} .article-body h3{font-size:24px;} }
-  @media (max-width: 860px) { .layout { grid-template-columns:1fr; } .article-body{font-size:18px; line-height:1.55;} .article-body h2{font-size:27px;} .article-body h3{font-size:23px;} }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  /* Search v2 — Obsidian-style results */
-  .search-hit-group { border-top: 1px solid var(--line); padding: 5px 0 7px; }
-  .search-hit-group .search-result { border-top: none; }
-  .search-snippet {
-    display: block; width: 100%; text-align: left;
-    border: 0; background: transparent; cursor: pointer;
-    padding: 4px 3px 4px 12px;
-    color: var(--ink-soft);
-    font: 400 11.5px/1.5 var(--sans);
-    border-radius: 5px;
-  }
-  .search-snippet:hover { background: #F6F6F6; color: var(--ink); }
-  mark.search-hit { background: #FFF1A8; color: inherit; padding: 0 1px; border-radius: 2px; }
-  .article-body h2 mark.search-hit, .article-body h3 mark.search-hit { background: #FFF1A8; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      line-height: 1.6;
+    }
 
-</style>
-<style id="big4-theme">
-/* =====================================================================
-   Big4 theme v3 — navy #0F1F38 · petrol #1B4B5A · taupe #8E7970 · coral #F55449
-   ===================================================================== */
-:root, :root[data-theme="dark"] {
-  /* Navy: structure (header, footer, headings, body text) */
-  --navy:#03396c;
-  --navy-deep:#022a50;
-  /* Petrol: primary brand (hero, links, active states) → deep blue #03396c */
-  --petrol:#03396c;
-  --petrol-600:#04518f;
-  --petrol-300:#7BA3C4;
-  --petrol-200:#B8D0E3;
-  --petrol-100:#E0ECF4;
-  --petrol-50:#F0F6FA;
-  /* Taupe: warm neutral (sidebar ground, rules, metadata) */
-  --taupe:#8E7970;
-  --taupe-ink:#6A5A54;
-  --taupe-light:#B8A8A1;
-  --taupe-line:#E2DAD6;
-  --taupe-hover:#EEE8E5;
-  --taupe-50:#F7F4F2;
-  /* Coral: single alert/accent colour, used sparingly */
-  --coral:#F55449;
-  --coral-soft:#FEF0EE;
-  --coral-line:#F9C9C4;
-  --coral-ink:#B2281E;
+    /* Layout chính 3 cột */
+    .app-container {
+      display: flex;
+      min-height: 100vh;
+    }
 
-  --bg:#FFFFFF; --bg-raised:#FFFFFF;
-  --ink:#152238; --ink-soft:#3F4C60; --ink-faint:#6A5A54;
-  --line:#E2DAD6;
-  --accent:#03396c; --accent-soft:#E0ECF4;
-  --head-h:64px;
-  --display: var(--sans);
-}
-::selection { background: var(--petrol-200); color: var(--navy); }
+    /* Sidebar 1: Điều hướng chính */
+    .sidebar-nav {
+      width: 260px;
+      background-color: var(--sidebar-bg);
+      border-right: 1px solid var(--border-color);
+      padding: 20px 10px;
+      flex-shrink: 0;
+    }
 
-/* ---------- Header ---------- */
-header.site-head { background: var(--navy); border-bottom: 1px solid var(--navy-deep); height: var(--head-h); padding: 0 28px; }
-.brand { align-items: center; gap: 14px; flex-wrap: nowrap; }
-.brand .mark { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: #fff; }
-.brand .tagline { color: var(--petrol-300); font-size: 14px; line-height: 1.2; padding-left: 14px; border-left: 1px solid rgba(255,255,255,.25); }
-.brand-home { cursor: pointer; }
-.brand-home:hover .mark { opacity: 0.9; }
-.brand-home:hover .tagline { color: #fff; }
-header.site-head .icon-btn { background: transparent; border-color: rgba(255,255,255,.4); color: #fff; }
-header.site-head .icon-btn:hover { background: rgba(255,255,255,.1); border-color: #fff; color: #fff; }
-header.site-head .icon-btn:focus-visible { outline-color: #fff; }
+    /* Cột nội dung chính */
+    .main-content {
+      flex: 1;
+      padding: 30px 40px;
+      max-width: 900px;
+      background-color: #ffffff;
+    }
 
-/* ---------- Layout: wide sidebar 1 & 2 ---------- */
-@media (min-width: 861px) {
-  .layout { grid-template-columns: clamp(300px, 26vw, 400px) clamp(250px, 20vw, 320px) minmax(0, 1fr); }
-  aside.sidebar, aside.toc-sidebar { top: var(--head-h); max-height: calc(100vh - var(--head-h)); }
-}
-aside.sidebar, aside.toc-sidebar { scrollbar-width: thin; scrollbar-color: var(--taupe-light) transparent; }
+    /* Sidebar 2: Mục lục bài viết (Table of Contents) */
+    .sidebar-toc {
+      width: 280px;
+      background-color: var(--sidebar-bg);
+      border-left: 1px solid var(--border-color);
+      padding: 20px 15px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      flex-shrink: 0;
+    }
 
-/* ---------- Sidebar 1 ---------- */
-aside.sidebar { background: var(--taupe-50); border-right: 1px solid var(--line); padding: 18px 14px 40px 12px; }
-#siteSearch { background: #fff; border: 1px solid var(--taupe-line); border-radius: 4px; font-size: 13.5px; padding: 10px 10px 10px 32px; }
-#siteSearch:focus { outline: none; border-color: var(--petrol); box-shadow: 0 0 0 3px rgba(27,75,90,.18); }
-.search-wrap::before { color: var(--petrol); left: 11px; }
+    .brand-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      padding: 0 10px;
+    }
 
-.group.top-level { border-bottom: 1px solid var(--line); margin-bottom: 0; padding-bottom: 4px; }
-.group.top-level:last-of-type { border-bottom: none; }
-.group.top-level > summary { padding: 11px 6px; }
-.group-label.top-label { font-size: 12.5px; font-weight: 700; letter-spacing: .05em; color: var(--petrol); }
-.group summary .chev { color: var(--taupe); }
-.group .group { margin-left: 6px; }
-.group summary, .doc-cover-link { font-size: 14.5px; padding: 7px 6px; gap: 6px; border-radius: 4px; color: var(--ink); }
-.group summary:hover, .doc-cover-link:hover { background: var(--taupe-hover); color: var(--navy); }
-.group-label { font-weight: 600; }
+    .nav-list, .toc-list {
+      list-style: none;
+    }
 
-ul.article-list { padding-left: 16px; }
-ul.article-list.flat { padding-left: 6px; }
-ul.article-list a { font-size: 13.5px; line-height: 1.42; padding: 7px 9px; border-radius: 3px; border-left: 3px solid transparent; color: var(--ink-soft); text-wrap: pretty; }
-ul.article-list a:hover { background: var(--taupe-hover); color: var(--navy); }
-ul.article-list a.active { background: var(--petrol-100); color: var(--petrol); border-left-color: var(--petrol); font-weight: 600; }
+    .nav-list li a, .toc-list li a {
+      display: block;
+      padding: 8px 12px;
+      color: var(--text-color);
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      transition: background-color 0.2s;
+    }
 
-.search-results-title { color: var(--petrol); font-weight: 600; text-transform: none; letter-spacing: 0; font-size: 12px; }
-.search-hit-group { border-top-color: var(--line); }
-.search-result:hover, .search-snippet:hover { background: var(--taupe-hover); }
-mark.search-hit, .search-hit { background: #FBD5D0; color: var(--navy); }
+    .nav-list li a:hover, .toc-list li a:hover {
+      background-color: var(--hover-bg);
+      color: var(--primary-color);
+    }
 
-/* ---------- Sidebar 2 (table of contents) ---------- */
-aside.toc-sidebar { background: #fff; border-right: 1px solid var(--line); padding: 68px 16px 40px 14px; }
-.sidebar-toc-title { font-size: 13px; font-weight: 700; letter-spacing: 0; color: var(--petrol); padding: 0 8px 12px; border-bottom: 2px solid var(--petrol); margin-bottom: 10px; }
-.sidebar-toc-list a { font-size: 12.5px; line-height: 1.42; padding: 7px 10px; border-left: 3px solid transparent; border-radius: 3px; white-space: normal; overflow-wrap: break-word; text-wrap: pretty; color: var(--ink-soft); letter-spacing: 0; }
-.sidebar-toc-list a:hover { background: var(--taupe-50); color: var(--navy); }
-.sidebar-toc-list a.active { background: var(--petrol-100); color: var(--petrol); border-left-color: var(--petrol); font-weight: 600; }
+    .toc-title {
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #6c757d;
+      margin-bottom: 12px;
+      padding-left: 12px;
+    }
 
-/* ---------- Content shell ---------- */
-main.content { padding-top: 36px; }
-.breadcrumb { font-size: 15px; color: var(--taupe-ink); }
-.breadcrumb button { font-size: 15px; color: var(--petrol); font-weight: 500; }
-.breadcrumb button:hover { text-decoration: underline; text-underline-offset: 3px; }
-.breadcrumb span.sep { color: var(--taupe-light); opacity: 1; }
+    /* Định dạng văn bản bài viết */
+    .article-header {
+      margin-bottom: 25px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 15px;
+    }
 
-.hero-band { position: relative; background: var(--petrol); color: #fff; padding: 38px 44px 42px; margin: 0 0 32px; border-radius: 2px; }
-.hero-band::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: var(--coral); }
-.hero-band .eyebrow { color: var(--petrol-200); font-size: 12.5px; font-weight: 600; line-height: 1; letter-spacing: .08em; margin: 0 0 18px; }
-.hero-band h1.hero-title { color: #fff; font-size: clamp(28px, 3.2vw, 40px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; max-width: 24ch; margin: 0 0 14px; }
-.hero-band p.hero-sub { color: rgba(255,255,255,.9); font-size: 18px; line-height: 1.6; max-width: 62ch; margin: 0; }
+    .crumb {
+      font-size: 0.85rem;
+      color: #6c757d;
+      margin-bottom: 5px;
+    }
 
-.disclaimer { background: var(--coral-soft); border: 1px solid var(--coral-line); border-left: 4px solid var(--coral); border-radius: 2px; color: var(--ink); font-size: 16px; padding: 16px 20px; }
-.disclaimer b { color: var(--coral-ink); }
-hr.rule { border-top-color: var(--line); }
+    .article-title {
+      font-size: 1.8rem;
+      color: #000;
+      margin-bottom: 8px;
+    }
 
-.section-label { font-size: 14px; font-weight: 600; line-height: 1.2; text-transform: none; letter-spacing: 0; color: var(--petrol); margin-bottom: 8px; }
-h2.section-title { font-weight: 600; font-size: 26px; letter-spacing: -0.02em; line-height: 1.2; color: var(--navy); }
+    .article-meta {
+      font-size: 0.9rem;
+      color: #495057;
+    }
 
-.program-grid { gap: 16px; }
-.program-card { border: 1px solid var(--line); border-top: 3px solid var(--petrol); border-radius: 2px; padding: 20px 22px 22px; }
-.program-card:hover { background: var(--petrol-50); border-color: var(--petrol); border-top-color: var(--coral); }
-.program-card .pc-kicker { color: var(--taupe-ink); font-size: 12px; font-weight: 600; line-height: 1.2; letter-spacing: .05em; margin-bottom: 10px; }
-.program-card .pc-title { font-weight: 600; font-size: 19px; line-height: 1.3; letter-spacing: -0.015em; color: var(--navy); margin-bottom: 8px; }
-.program-card .pc-desc { font-size: 15.5px; line-height: 1.55; }
+    .article-body h2 {
+      font-size: 1.4rem;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      color: #0d6efd;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 5px;
+    }
 
-.toc-chapter-title { color: var(--navy); font-weight: 600; letter-spacing: -0.01em; }
-.toc-num { color: var(--taupe); }
-.toc-section-title { text-transform: none; letter-spacing: 0; color: var(--petrol); font-weight: 600; }
-.toc-list li, .toc-list li:last-child { border-color: var(--line); }
-.toc-list a:hover { color: var(--petrol); }
+    .article-body h3 {
+      font-size: 1.1rem;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #212529;
+    }
 
-/* ---------- Article: tight headings ---------- */
-.article-title { color: #03396c; font-size: clamp(26px, 2.8vw, 34px); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 6px; }
-.article-meta { font-size: 16.5px; line-height: 1.5; color: var(--taupe-ink); margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
-.article-body p { margin-bottom: 11px; }
-.article-body h2 { color: #03396c; font-size: 26px; font-weight: 700; line-height: 1.2; letter-spacing: -0.025em; margin: 34px 0 10px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
-.article-body h3 { color: #03396c; font-size: 21px; font-weight: 600; line-height: 1.28; letter-spacing: -0.02em; margin: 24px 0 8px; }
-.article-body h2:first-child { margin-top: 8px; }
-.article-body strong { color: #03396c; font-weight: 600; }
-.article-body a.wiki { color: #03396c; text-decoration-color: var(--taupe-light); }
-.article-body a.wiki:hover { text-decoration-color: #03396c; }
-.tag-badge { background: var(--petrol-100); color: #03396c; border-radius: 3px; font-weight: 600; }
+    .article-body p {
+      margin-bottom: 12px;
+      text-align: justify;
+    }
 
-.related-nav a { border-radius: 3px; }
-.related-nav a:hover { background: var(--petrol-50); border-color: var(--petrol); color: var(--petrol); }
-.link-preview { border-radius: 6px; border-top: 3px solid var(--petrol); }
-.link-preview .lp-title { color: var(--petrol); }
+    /* Responsiveness đơn giản */
+    @media (max-width: 1024px) {
+      .sidebar-toc {
+        display: none;
+      }
+    }
 
-/* ---------- Footer ---------- */
-footer.site-foot { background: var(--navy-deep); color: var(--petrol-200); text-align: center; border-top: 2px solid var(--coral); padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px)); }
-footer.site-foot p { margin: 0 auto; }
-footer.site-foot .foot-line { max-width: 72ch; font-size: 13px; line-height: 1.4; color: #fff; text-wrap: balance; }
-footer.site-foot .foot-note { max-width: 72ch; font-size: 12px; line-height: 1.4; color: var(--taupe-light); margin-top: 4px; }
-
-/* ---------- Mobile ---------- */
-@media (max-width: 860px) {
-  header.site-head { padding: 0 16px; }
-  aside.sidebar { top: var(--head-h); width: min(88vw, 360px); background: var(--taupe-50); }
-  body.menu-open::after { inset: var(--head-h) 0 0 0; }
-  .hero-band { padding: 28px 22px 32px; }
-  .article-body h2 { font-size: 23px; margin-top: 28px; }
-  .article-body h3 { font-size: 19px; margin-top: 20px; }
-  footer.site-foot { padding-left: 20px; padding-right: 20px; }
-  .cornell-row { grid-template-columns: 1fr; }
-  .cornell-cues { border-right: none; border-bottom: 1px solid var(--line); padding-bottom: 10px; margin-bottom: 8px; }
-}
-
-/* ---------- Cornell notes + Obsidian-style callouts ---------- */
-.cornell-row {
-  display: grid;
-  grid-template-columns: minmax(140px, 22%) 1fr;
-  gap: 16px 20px;
-  margin: 18px 0 22px;
-  align-items: start;
-}
-.cornell-cues {
-  font-size: 13.5px;
-  line-height: 1.45;
-  color: #03396c;
-  font-weight: 600;
-  padding-right: 12px;
-  border-right: 2px solid var(--petrol-200);
-}
-.cornell-cues .cue-label {
-  display: block;
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--taupe-ink);
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-.cornell-notes { min-width: 0; }
-.cornell-notes p:last-child { margin-bottom: 0; }
-
-.callout {
-  border-radius: 4px;
-  padding: 12px 14px 12px 16px;
-  margin: 16px 0;
-  border-left: 4px solid #03396c;
-  background: var(--petrol-50);
-  font-size: 15.5px;
-  line-height: 1.55;
-}
-.callout .callout-title {
-  font-weight: 700;
-  color: #03396c;
-  font-size: 13px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  margin: 0 0 6px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.callout.callout-note { border-left-color: #03396c; background: var(--petrol-50); }
-.callout.callout-question { border-left-color: var(--coral); background: var(--coral-soft); }
-.callout.callout-question .callout-title { color: var(--coral-ink); }
-.callout.callout-warning { border-left-color: #C17A2B; background: #FDF6EC; }
-.callout.callout-warning .callout-title { color: #8A5A18; }
-.callout.callout-tip { border-left-color: #2A7A4B; background: #EDF7F0; }
-.callout.callout-tip .callout-title { color: #1B5C35; }
-.callout p { margin: 0 0 8px; }
-.callout p:last-child { margin-bottom: 0; }
-
-.source-line {
-  margin-top: 28px;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
-  font-size: 14px;
-  color: var(--taupe-ink);
-  line-height: 1.5;
-}
-.source-line a { color: #03396c; font-weight: 600; word-break: break-all; }
-
-.section-label { color: #03396c; font-weight: 600; }
-h2.section-title { color: #03396c; font-weight: 700; }
-.group-label.top-label { color: #03396c; }
-.sidebar-toc-title { color: #03396c; border-bottom-color: #03396c; }
-ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
-.sidebar-toc-list a.active { color: #03396c; border-left-color: #03396c; }
-.breadcrumb button { color: #03396c; font-weight: 600; }
-</style>
+    @media (max-width: 768px) {
+      .app-container {
+        flex-direction: column;
+      }
+      .sidebar-nav {
+        width: 100%;
+      }
+      .main-content {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header class="site-head">
-  <div class="brand">
-    <button id="menuToggle" class="icon-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
-    <a href="#" class="brand-home" data-id="__home" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;min-width:0;">
-      <span class="mark">TheLeanBasic</span>
-      <span class="tagline">Learning Hub · CPA Vietnam · ACCA · CMA</span>
-    </a>
-  </div>
-  <div class="head-controls">
-  </div>
-</header>
-
-<div class="layout">
-  <aside class="sidebar" id="sidebar">
-    <div class="search-wrap">
-      <input id="siteSearch" type="text" placeholder="Tìm chuẩn mực, nội dung...">
-    </div>
-    <div id="searchResults" class="search-results" hidden></div>
-
-    <details class="group top-level" open>
-      <summary><span class="chev">▸</span><span class="group-label top-label">VĂN BẢN PHÁP LUẬT</span></summary>
-      <details class="group" open>
-        <summary><span class="chev">▸</span><span class="group-label">Chuẩn mực kế toán Việt Nam</span></summary>
-        <ul class="article-list"><li><a href="#" data-id="vas-14">VAS 14 — Doanh thu và thu nhập khác</a></li></ul>
-      </details>
-    </details>
-    <details class="group top-level">
-      <summary><span class="chev">▸</span><span class="group-label top-label">ACCA</span></summary>
-      <details class="group">
-        <summary><span class="chev">▸</span><span class="group-label">Applied Knowledge</span></summary>
-        <ul class="article-list">
-          <li><a href="#" data-id="acca-bt">BT — Business and Technology</a></li>
-          <li><a href="#" data-id="acca-ma">MA — Management Accounting</a></li>
-          <li><a href="#" data-id="acca-fa">FA — Financial Accounting</a></li>
-        </ul>
-      </details>
-      <details class="group">
-        <summary><span class="chev">▸</span><span class="group-label">Applied Skills</span></summary>
-        <ul class="article-list">
-          <li><a href="#" data-id="acca-lw">LW — Corporate and Business Law</a></li>
-          <li><a href="#" data-id="acca-pm">PM — Performance Management</a></li>
-          <li><a href="#" data-id="acca-tx">TX — Taxation</a></li>
-          <li><a href="#" data-id="acca-fr">FR — Financial Reporting</a></li>
-          <li><a href="#" data-id="acca-aa">AA — Audit and Assurance</a></li>
-          <li><a href="#" data-id="acca-fm">FM — Financial Management</a></li>
-        </ul>
-      </details>
-      <details class="group">
-        <summary><span class="chev">▸</span><span class="group-label">Strategic Professional</span></summary>
-        <ul class="article-list">
-          <li><a href="#" data-id="acca-sbl">SBL — Strategic Business Leader (bắt buộc)</a></li>
-          <li><a href="#" data-id="acca-sbr">SBR — Strategic Business Reporting (bắt buộc)</a></li>
-          <li><a href="#" data-id="acca-afm">AFM — Advanced Financial Management</a></li>
-          <li><a href="#" data-id="acca-apm">APM — Advanced Performance Management</a></li>
-          <li><a href="#" data-id="acca-atx">ATX — Advanced Taxation</a></li>
-          <li><a href="#" data-id="acca-aaa">AAA — Advanced Audit and Assurance</a></li>
-        </ul>
-      </details>
-      <ul class="article-list flat">
-        <li><a href="#" data-id="acca-epsm">EPSM — Ethics &amp; Professional Skills</a></li>
-        <li><a href="#" data-id="acca-overview">Tổng quan cấu trúc ACCA</a></li>
+  <div class="app-container">
+    <!-- Cột 1: Điều hướng chung -->
+    <nav class="sidebar-nav">
+      <div class="brand-title">Thông tư 99/2025/TT-BTC</div>
+      <ul class="nav-list">
+        <li><a href="#tt99-phuluc">Phụ lục I, III, IV</a></li>
       </ul>
-    </details>
-    <details class="group top-level">
-      <summary><span class="chev">▸</span><span class="group-label top-label">CPA VIỆT NAM</span></summary>
-      <ul class="article-list flat">
-        <li><a href="#" data-id="cpa-mon1">Môn 1 — Pháp luật kinh tế &amp; Luật doanh nghiệp</a></li>
-        <li><a href="#" data-id="cpa-mon2">Môn 2 — Thuế &amp; quản lý thuế nâng cao</a></li>
-        <li><a href="#" data-id="cpa-mon3">Môn 3 — Kế toán tài chính &amp; quản trị nâng cao</a></li>
-        <li><a href="#" data-id="cpa-mon4">Môn 4 — Kiểm toán &amp; dịch vụ bảo đảm nâng cao</a></li>
-        <li><a href="#" data-id="cpa-mon5">Môn 5 — Tài chính &amp; quản lý tài chính nâng cao</a></li>
-        <li><a href="#" data-id="cpa-mon6">Môn 6 — Phân tích hoạt động tài chính nâng cao</a></li>
-        <li><a href="#" data-id="cpa-mon7">Môn 7 — Ngoại ngữ trình độ C</a></li>
-        <li><a href="#" data-id="cpa-overview">Tổng quan chứng chỉ CPA Việt Nam</a></li>
-      </ul>
-    </details>
-    <details class="group top-level">
-      <summary><span class="chev">▸</span><span class="group-label top-label">CMA</span></summary>
-      <ul class="article-list flat">
-        <li><a href="#" data-id="cma-p1">Part 1 — Financial Planning, Performance &amp; Analytics</a></li>
-        <li><a href="#" data-id="cma-p2">Part 2 — Strategic Financial Management</a></li>
-        <li><a href="#" data-id="cma-overview">Tổng quan chứng chỉ CMA</a></li>
-      </ul>
-    </details>
-    <details class="group top-level">
-      <summary><span class="chev">▸</span><span class="group-label top-label">NOTEs</span></summary>
-      <ul class="article-list"><li><a href="#" class="placeholder-link" data-section="notes">Ghi chú học tập</a></li></ul>
-    </details>
-  </aside>
+    </nav>
 
-  <aside class="toc-sidebar" id="tocSidebar">
-    <div class="sidebar-toc" id="sidebarToc">
-      <div class="sidebar-toc-title">Mục lục</div>
-      <ul class="sidebar-toc-list" id="sidebarTocList"></ul>
-    </div>
-  </aside>
+    <!-- Cột 2: Nội dung bài viết -->
+    <main class="main-content">
+      <header class="article-header">
+        <div class="crumb" id="docCrumb">Chế độ kế toán Thông tư 99 > Phụ lục I · III · IV</div>
+        <h1 class="article-title" id="docTitle">TT 99/2025/TT-BTC — Phụ lục I, III, IV</h1>
+        <div class="article-meta" id="docMeta">Chứng từ kế toán · Sổ kế toán · Biểu mẫu Báo cáo tài chính</div>
+      </header>
 
-  <main class="content">
-    <div class="content-inner" id="contentInner"></div>
-  </main>
-</div>
-
-<footer class="site-foot">
-  <p class="foot-line">@2026 TheLeanBasic</p>
-  <p class="foot-note">Nội dung phục vụ tham khảo và tự học, không thay thế văn bản gốc hay tư vấn chuyên môn.</p>
-</footer>
-
-<script>
-(function () {
-  const ENTRIES = {
-    "vas-14": {
-      kind: "law",
-      doc: "vas",
-      crumb: ["Chuẩn mực kế toán Việt Nam"],
-      title: "VAS 14 — Doanh thu và thu nhập khác",
-      meta: "Chuẩn mực kế toán Việt Nam",
-      bodyHtml: `
-        <h2>Quy định chung</h2>
-        <p>Mục đích của chuẩn mực này là quy định và hướng dẫn các nguyên tắc và phương pháp kế toán doanh thu và thu nhập khác, gồm: Các loại doanh thu, thời điểm ghi nhận doanh thu, phương pháp kế toán doanh thu và thu nhập khác làm cơ sở ghi sổ kế toán và lập báo cáo tài chính.</p>
-        <p>Chuẩn mực này áp dụng trong kế toán các khoản doanh thu và thu nhập khác phát sinh từ các giao dịch và nghiệp vụ sau:</p>
-        <p><strong>(a) Bán hàng:</strong> Bán sản phẩm do doanh nghiệp sản xuất ra và bán hàng hóa mua vào;</p>
-        <p><strong>(b) Cung cấp dịch vụ:</strong> Thực hiện công việc đã thỏa thuận theo hợp đồng trong một hoặc nhiều kỳ kế toán;</p>
-        <p><strong>(c) Tiền lãi, tiền bản quyền, cổ tức và lợi nhuận được chia.</strong></p>
-        <p><strong>Tiền lãi:</strong> Là số tiền thu được phát sinh từ việc cho người khác sử dụng tiền, các khoản tương đương tiền hoặc các khoản còn nợ doanh nghiệp, như: Lãi cho vay, lãi tiền gửi, lãi đầu tư trái phiếu, tín phiếu, chiết khấu thanh toán...;</p>
-        <p><strong>Tiền bản quyền:</strong> Là số tiền thu được phát sinh từ việc cho người khác sử dụng tài sản, như: Bằng sáng chế, nhãn hiệu thương mại, bản quyền tác giả, phần mềm máy vi tính...;</p>
-        <p><strong>Cổ tức và lợi nhuận được chia:</strong> Là số tiền lợi nhuận được chia từ việc nắm giữ cổ phiếu hoặc góp vốn.</p>
-        <p><strong>(d) Các khoản thu nhập khác</strong> ngoài các giao dịch và nghiệp vụ tạo ra doanh thu kể trên (Nội dung các khoản thu nhập khác quy định tại đoạn 30).</p>
-        <p>Chuẩn mực này không áp dụng cho kế toán các khoản doanh thu và thu nhập khác được quy định ở các chuẩn mực kế toán khác.</p>
-        <p>Các thuật ngữ trong chuẩn mực này được hiểu như sau:</p>
-        <p><strong>Doanh thu:</strong> Là tổng giá trị các lợi ích kinh tế doanh nghiệp thu được trong kỳ kế toán, phát sinh từ các hoạt động sản xuất, kinh doanh thông thường của doanh nghiệp, góp phần làm tăng vốn chủ sở hữu.</p>
-        <p><strong>Chiết khấu thương mại:</strong> Là khoản doanh nghiệp bán giảm giá niêm yết cho khách hàng mua hàng với khối lượng lớn.</p>
-        <p><strong>Giảm giá hàng bán:</strong> Là khoản giảm trừ cho người mua do hàng hóa kém phẩm chất, sai quy cách hoặc lạc hậu thị hiếu.</p>
-        <p><strong>Giá trị hàng bán bị trả lại:</strong> Là giá trị khối lượng hàng bán đã xác định là tiêu thụ bị khách hàng trả lại và từ chối thanh toán.</p>
-        <p><strong>Chiết khấu thanh toán:</strong> Là khoản tiền người bán giảm trừ cho người mua, do người mua thanh toán tiền mua hàng trước thời hạn theo hợp đồng.</p>
-        <p><strong>Thu nhập khác:</strong> Là khoản thu góp phần làm tăng vốn chủ sở hữu từ hoạt động ngoài các hoạt động tạo ra doanh thu.</p>
-        <p><strong>Giá trị hợp lý:</strong> Là giá trị tài sản có thể trao đổi hoặc giá trị một khoản nợ được thanh toán một cách tự nguyện giữa các bên có đầy đủ hiểu biết trong sự trao đổi ngang giá.</p>
-
-        <h2>Nội dung chuẩn mực</h2>
-        <p>Doanh thu chỉ bao gồm tổng giá trị của các lợi ích kinh tế doanh nghiệp đã thu được hoặc sẽ thu được. Các khoản thu hộ bên thứ ba không phải là nguồn lợi ích kinh tế, không làm tăng vốn chủ sở hữu của doanh nghiệp sẽ không được coi là doanh thu (Ví dụ: Khi người nhận đại lý thu hộ tiền bán hàng cho đơn vị chủ hàng, thì doanh thu của người nhận đại lý chỉ là tiền hoa hồng được hưởng). Các khoản góp vốn của cổ đông hoặc chủ sở hữu làm tăng vốn chủ sở hữu nhưng không là doanh thu.</p>
-
-        <h2>Xác định doanh thu</h2>
-        <p>Doanh thu được xác định theo giá trị hợp lý của các khoản đã thu hoặc sẽ thu được.</p>
-        <p>Doanh thu phát sinh từ giao dịch được xác định bởi thỏa thuận giữa doanh nghiệp với bên mua hoặc bên sử dụng tài sản. Nó được xác định bằng giá trị hợp lý của các khoản đã thu được hoặc sẽ thu được sau khi trừ (-) các khoản chiết khấu thương mại, chiết khấu thanh toán, giảm giá hàng bán và giá trị hàng bán bị trả lại.</p>
-        <p>Đối với các khoản tiền hoặc tương đương tiền không được nhận ngay thì doanh thu được xác định bằng cách quy đổi giá trị danh nghĩa của các khoản sẽ thu được trong tương lai về giá trị thực tế tại thời điểm ghi nhận doanh thu theo tỷ lệ lãi suất hiện hành. Giá trị thực tế tại thời điểm ghi nhận doanh thu có thể nhỏ hơn giá trị danh nghĩa sẽ thu được trong tương lai.</p>
-        <p>Khi hàng hóa hoặc dịch vụ được trao đổi để lấy hàng hóa hoặc dịch vụ tương tự về bản chất và giá trị thì việc trao đổi đó không được coi là một giao dịch tạo ra doanh thu.</p>
-        <p>Khi hàng hóa hoặc dịch vụ được trao đổi để lấy hàng hóa hoặc dịch vụ khác không tương tự thì việc trao đổi đó được coi là một giao dịch tạo ra doanh thu. Trường hợp này doanh thu được xác định bằng giá trị hợp lý của hàng hóa hoặc dịch vụ nhận về, sau khi điều chỉnh các khoản tiền hoặc tương đương tiền trả thêm hoặc thu thêm. Khi không xác định được giá trị hợp lý của hàng hóa hoặc dịch vụ nhận về thì doanh thu được xác định bằng giá trị hợp lý của hàng hóa hoặc dịch vụ đem trao đổi, sau khi điều chỉnh các khoản tiền hoặc tương đương tiền trả thêm hoặc thu thêm.</p>
-
-        <h2>Nhận biết giao dịch</h2>
-        <p>Tiêu chuẩn nhận biết giao dịch trong chuẩn mực này được áp dụng riêng biệt cho từng giao dịch. Trong một số trường hợp, các tiêu chuẩn nhận biết giao dịch cần áp dụng tách biệt cho từng bộ phận của một giao dịch đơn lẻ để phản ánh bản chất của giao dịch đó. Ví dụ, khi trong giá bán một sản phẩm có một khoản đã định trước cho việc cung cấp dịch vụ sau bán hàng thì khoản doanh thu từ việc cung cấp dịch vụ sau bán hàng sẽ được dời lại cho đến khi doanh nghiệp thực hiện dịch vụ đó. Tiêu chuẩn nhận biết giao dịch còn được áp dụng cho hai hay nhiều giao dịch đồng thời có quan hệ với nhau về mặt thương mại. Trường hợp này phải xem xét chúng trong mối quan hệ tổng thể. Ví dụ, doanh nghiệp thực hiện việc bán hàng và đồng thời ký một hợp đồng khác để mua lại chính các hàng hóa đó sau một thời gian thì phải đồng thời xem xét cả hai hợp đồng và doanh thu không được ghi nhận.</p>
-
-        <h2>Doanh thu bán hàng</h2>
-        <p>Doanh thu bán hàng được ghi nhận khi đồng thời thỏa mãn tất cả năm (5) điều kiện sau:</p>
-        <p><strong>(a)</strong> Doanh nghiệp đã chuyển giao phần lớn rủi ro và lợi ích gắn liền với quyền sở hữu sản phẩm hoặc hàng hóa cho người mua;</p>
-        <p><strong>(b)</strong> Doanh nghiệp không còn nắm giữ quyền quản lý hàng hóa như người sở hữu hàng hóa hoặc quyền kiểm soát hàng hóa;</p>
-        <p><strong>(c)</strong> Doanh thu được xác định tương đối chắc chắn;</p>
-        <p><strong>(d)</strong> Doanh nghiệp đã thu được hoặc sẽ thu được lợi ích kinh tế từ giao dịch bán hàng;</p>
-        <p><strong>(e)</strong> Xác định được chi phí liên quan đến giao dịch bán hàng.</p>
-        <p>Doanh nghiệp phải xác định thời điểm chuyển giao phần lớn rủi ro và lợi ích gắn liền với quyền sở hữu hàng hóa cho người mua trong từng trường hợp cụ thể. Trong hầu hết các trường hợp, thời điểm chuyển giao phần lớn rủi ro trùng với thời điểm chuyển giao lợi ích gắn liền với quyền sở hữu hợp pháp hoặc quyền kiểm soát hàng hóa cho người mua.</p>
-        <p>Trường hợp doanh nghiệp vẫn còn chịu phần lớn rủi ro gắn liền với quyền sở hữu hàng hóa thì giao dịch không được coi là hoạt động bán hàng và doanh thu không được ghi nhận. Doanh nghiệp còn phải chịu rủi ro gắn liền với quyền sở hữu hàng hóa dưới nhiều hình thức khác nhau, như:</p>
-        <p><strong>(a)</strong> Doanh nghiệp còn phải chịu trách nhiệm để đảm bảo cho tài sản được hoạt động bình thường mà việc này không nằm trong các điều khoản bảo hành thông thường;</p>
-        <p><strong>(b)</strong> Khi việc thanh toán tiền bán hàng còn chưa chắc chắn vì phụ thuộc vào người mua hàng hóa đó;</p>
-        <p><strong>(c)</strong> Khi hàng hóa được giao còn chờ lắp đặt và việc lắp đặt đó là một phần quan trọng của hợp đồng mà doanh nghiệp chưa hoàn thành;</p>
-        <p><strong>(d)</strong> Khi người mua có quyền huỷ bỏ việc mua hàng vì một lý do nào đó được nêu trong hợp đồng mua bán và doanh nghiệp chưa chắc chắn về khả năng hàng bán có bị trả lại hay không.</p>
-        <p>Nếu doanh nghiệp chỉ còn phải chịu một phần nhỏ rủi ro gắn liền với quyền sở hữu hàng hóa thì việc bán hàng được xác định và doanh thu được ghi nhận. Ví dụ doanh nghiệp còn nắm giữ giấy tờ về quyền sở hữu hàng hóa chỉ để đảm bảo sẽ nhận được đủ các khoản thanh toán.</p>
-        <p>Doanh thu bán hàng được ghi nhận chỉ khi đảm bảo là doanh nghiệp nhận được lợi ích kinh tế từ giao dịch. Trường hợp lợi ích kinh tế từ giao dịch bán hàng còn phụ thuộc yếu tố không chắc chắn thì chỉ ghi nhận doanh thu khi yếu tố không chắc chắn này đã xử lý xong (ví dụ, khi doanh nghiệp không chắc chắn là Chính phủ nước sở tại có chấp nhận chuyển tiền bán hàng ở nước ngoài về hay không). Nếu doanh thu đã được ghi nhận trong trường hợp chưa thu được tiền thì khi xác định khoản tiền nợ phải thu này là không thu được thì phải hạch toán vào chi phí sản xuất, kinh doanh trong kỳ mà không được ghi giảm doanh thu. Khi xác định khoản phải thu là không chắc chắn thu được (Nợ phải thu khó đòi) thì phải lập dự phòng nợ phải thu khó đòi mà không ghi giảm doanh thu. Các khoản nợ phải thu khó đòi khi xác định thực sự là không đòi được thì được bù đắp bằng nguồn dự phòng nợ phải thu khó đòi.</p>
-        <p>Doanh thu và chi phí liên quan tới cùng một giao dịch phải được ghi nhận đồng thời theo nguyên tắc phù hợp. Các chi phí, bao gồm cả chi phí phát sinh sau ngày giao hàng (như chi phí bảo hành và chi phí khác), thường được xác định chắc chắn khi các điều kiện ghi nhận doanh thu được thỏa mãn. Các khoản tiền nhận trước của khách hàng không được ghi nhận là doanh thu mà được ghi nhận là một khoản nợ phải trả tại thời điểm nhận tiền trước của khách hàng. Khoản nợ phải trả về số tiền nhận trước của khách hàng chỉ được ghi nhận là doanh thu khi đồng thời thỏa mãn năm (5) điều kiện quy định ở đoạn 10.</p>
-        <div class="cornell-row">
-          <div class="cornell-cues">
-            <span class="cue-label">Câu hỏi</span>
-            Tạm ứng hợp đồng thi công
-          </div>
-          <div class="cornell-notes">
-            <div class="callout callout-question">
-              <div class="callout-title">❓ Câu hỏi</div>
-              <p>Nhận tạm ứng trước hợp đồng thi công xây dựng có được ghi nhận doanh thu không? Trong trường hợp xuất hoá đơn thì có ghi nhận doanh thu không? Yêu cầu xuất hoá đơn là đúng hay sai?</p>
-            </div>
-          </div>
-        </div>
-
-        <h2>Doanh thu cung cấp dịch vụ</h2>
-        <p>Doanh thu của giao dịch về cung cấp dịch vụ được ghi nhận khi kết quả của giao dịch đó được xác định một cách đáng tin cậy. Trường hợp giao dịch về cung cấp dịch vụ liên quan đến nhiều kỳ thì doanh thu được ghi nhận trong kỳ theo kết quả phần công việc đã hoàn thành vào ngày lập Bảng Cân đối kế toán của kỳ đó. Kết quả của giao dịch cung cấp dịch vụ được xác định khi thỏa mãn tất cả bốn (4) điều kiện sau:</p>
-        <p><strong>(a)</strong> Doanh thu được xác định tương đối chắc chắn;</p>
-        <p><strong>(b)</strong> Có khả năng thu được lợi ích kinh tế từ giao dịch cung cấp dịch vụ đó;</p>
-        <p><strong>(c)</strong> Xác định được phần công việc đã hoàn thành vào ngày lập Bảng Cân đối kế toán;</p>
-        <p><strong>(d)</strong> Xác định được chi phí phát sinh cho giao dịch và chi phí để hoàn thành giao dịch cung cấp dịch vụ đó.</p>
-        <p>Trường hợp giao dịch về cung cấp dịch vụ thực hiện trong nhiều kỳ kế toán thì việc xác định doanh thu của dịch vụ trong từng kỳ thường được thực hiện theo phương pháp tỷ lệ hoàn thành. Theo phương pháp này, doanh thu được ghi nhận trong kỳ kế toán được xác định theo tỷ lệ phần công việc đã hoàn thành.</p>
-        <p>Doanh thu cung cấp dịch vụ chỉ được ghi nhận khi đảm bảo là doanh nghiệp nhận được lợi ích kinh tế từ giao dịch. Khi không thể thu hồi được khoản doanh thu đã ghi nhận thì phải hạch toán vào chi phí mà không được ghi giảm doanh thu. Khi không chắc chắn thu hồi được một khoản mà trước đó đã ghi vào doanh thu (Nợ phải thu khó đòi) thì phải lập dự phòng nợ phải thu khó đòi mà không ghi giảm doanh thu. Khoản nợ phải thu khó đòi khi xác định thực sự là không đòi được thì được bù đắp bằng nguồn dự phòng nợ phải thu khó đòi.</p>
-        <p>Doanh nghiệp có thể ước tính doanh thu cung cấp dịch vụ khi thỏa thuận được với bên đối tác giao dịch những điều kiện sau:</p>
-        <p><strong>(a)</strong> Trách nhiệm và quyền của mỗi bên trong việc cung cấp hoặc nhận dịch vụ;</p>
-        <p><strong>(b)</strong> Giá thanh toán;</p>
-        <p><strong>(c)</strong> Thời hạn và phương thức thanh toán.</p>
-        <p>Để ước tính doanh thu cung cấp dịch vụ, doanh nghiệp phải có hệ thống kế hoạch tài chính và kế toán phù hợp. Khi cần thiết, doanh nghiệp có quyền xem xét và sửa đổi cách ước tính doanh thu trong quá trình cung cấp dịch vụ.</p>
-        <p>Phần công việc đã hoàn thành được xác định theo một trong ba phương pháp sau, tuỳ thuộc vào bản chất của dịch vụ:</p>
-        <p><strong>(a)</strong> Đánh giá phần công việc đã hoàn thành;</p>
-        <p><strong>(b)</strong> So sánh tỷ lệ (%) giữa khối lượng công việc đã hoàn thành với tổng khối lượng công việc phải hoàn thành;</p>
-        <p><strong>(c)</strong> Tỷ lệ (%) chi phí đã phát sinh so với tổng chi phí ước tính để hoàn thành toàn bộ giao dịch cung cấp dịch vụ.</p>
-        <p>Phần công việc đã hoàn thành không phụ thuộc vào các khoản thanh toán định kỳ hay các khoản ứng trước của khách hàng.</p>
-        <p>Trường hợp dịch vụ được thực hiện bằng nhiều hoạt động khác nhau mà không tách biệt được, và được thực hiện trong nhiều kỳ kế toán nhất định thì doanh thu từng kỳ được ghi nhận theo phương pháp bình quân. Khi có một hoạt động cơ bản so với các hoạt động khác thì việc ghi nhận doanh thu được thực hiện theo hoạt động cơ bản đó.</p>
-        <p>Khi kết quả của một giao dịch về cung cấp dịch vụ không thể xác định được chắc chắn thì doanh thu được ghi nhận tương ứng với chi phí đã ghi nhận và có thể thu hồi.</p>
-        <p>Trong giai đoạn đầu của một giao dịch về cung cấp dịch vụ, khi chưa xác định được kết quả một cách chắc chắn thì doanh thu được ghi nhận bằng chi phí đã ghi nhận và có thể thu hồi được. Nếu chi phí liên quan đến dịch vụ đó chắc chắn không thu hồi được thì không ghi nhận doanh thu, và chi phí đã phát sinh được hạch toán vào chi phí để xác định kết quả kinh doanh trong kỳ. Khi có bằng chứng tin cậy về các chi phí đã phát sinh sẽ thu hồi được thì doanh thu được ghi nhận theo quy định tại đoạn 16.</p>
-
-        <h2>Doanh thu từ tiền lãi, tiền bản quyền, cổ tức và lợi nhuận được chia</h2>
-        <p>Doanh thu phát sinh từ tiền lãi, tiền bản quyền, cổ tức và lợi nhuận được chia của doanh nghiệp được ghi nhận khi thỏa mãn đồng thời hai (2) điều kiện sau:</p>
-        <p><strong>(a)</strong> Có khả năng thu được lợi ích kinh tế từ giao dịch đó;</p>
-        <p><strong>(b)</strong> Doanh thu được xác định tương đối chắc chắn.</p>
-        <p>Doanh thu từ tiền lãi, tiền bản quyền, cổ tức và lợi nhuận được chia được ghi nhận trên cơ sở:</p>
-        <p><strong>(a)</strong> Tiền lãi được ghi nhận trên cơ sở thời gian và lãi suất thực tế từng kỳ;</p>
-        <p><strong>(b)</strong> Tiền bản quyền được ghi nhận trên cơ sở dồn tích phù hợp với hợp đồng;</p>
-        <p><strong>(c)</strong> Cổ tức và lợi nhuận được chia được ghi nhận khi cổ đông được quyền nhận cổ tức hoặc các bên tham gia góp vốn được quyền nhận lợi nhuận từ việc góp vốn.</p>
-        <p>Lãi suất thực tế là tỷ lệ lãi dùng để quy đổi các khoản tiền nhận được trong tương lai trong suốt thời gian cho bên khác sử dụng tài sản về giá trị ghi nhận ban đầu tại thời điểm chuyển giao tài sản cho bên sử dụng. Doanh thu tiền lãi bao gồm số phân bổ các khoản chiết khấu, phụ trội, các khoản lãi nhận trước hoặc các khoản chênh lệch giữa giá trị ghi sổ ban đầu của công cụ nợ và giá trị của nó khi đáo hạn.</p>
-        <p>Khi tiền lãi chưa thu của một khoản đầu tư đã được dồn tích trước khi doanh nghiệp mua lại khoản đầu tư đó, thì khi thu được tiền lãi từ khoản đầu tư, doanh nghiệp phải phân bổ vào cả các kỳ trước khi nó được mua. Chỉ có phần tiền lãi của các kỳ sau khi khoản đầu tư được mua mới được ghi nhận là doanh thu của doanh nghiệp. Phần tiền lãi của các kỳ trước khi khoản đầu tư được mua được hạch toán giảm giá trị của chính khoản đầu tư đó.</p>
-        <p>Tiền bản quyền được tính dồn tích căn cứ vào các điều khoản của hợp đồng (ví dụ như tiền bản quyền của một cuốn sách được tính dồn tích trên cơ sở số lượng sách xuất bản từng lần và theo từng lần xuất bản) hoặc tính trên cơ sở hợp đồng từng lần.</p>
-        <p>Doanh thu được ghi nhận khi đảm bảo là doanh nghiệp nhận được lợi ích kinh tế từ giao dịch. Khi không thể thu hồi một khoản mà trước đó đã ghi vào doanh thu thì khoản có khả năng không thu hồi được hoặc không chắc chắn thu hồi được đó phải hạch toán vào chi phí phát sinh trong kỳ, không ghi giảm doanh thu.</p>
-
-        <h2>Thu nhập khác</h2>
-        <p>Thu nhập khác quy định trong chuẩn mực này bao gồm các khoản thu từ các hoạt động xảy ra không thường xuyên, ngoài các hoạt động tạo ra doanh thu, gồm:</p>
-        <p>Thu về thanh lý TSCĐ, nhượng bán TSCĐ;</p>
-        <p>Thu tiền phạt khách hàng do vi phạm hợp đồng;</p>
-        <p>Thu tiền bảo hiểm được bồi thường;</p>
-        <p>Thu được các khoản nợ phải thu đã xóa sổ tính vào chi phí kỳ trước;</p>
-        <p>Khoản nợ phải trả nay mất chủ được ghi tăng thu nhập;</p>
-        <p>Thu các khoản thuế được giảm, được hoàn lại;</p>
-        <p>Các khoản thu khác.</p>
-        <p>Khoản thu về thanh lý TSCĐ, nhượng bán TSCĐ là tổng số tiền đã thu và sẽ thu được của người mua từ hoạt động thanh lý, nhượng bán TSCĐ. Các chi phí về thanh lý, nhượng bán TSCĐ được ghi nhận là chi phí để xác định kết quả kinh doanh trong kỳ.</p>
-        <p>Thu được các khoản nợ phải thu đã xóa sổ tính vào chi phí của kỳ trước là khoản nợ phải thu khó đòi, xác định là không thu hồi được, đã được xử lý xóa sổ và tính vào chi phí để xác định kết quả kinh doanh trong các kỳ trước nay thu hồi được.</p>
-        <p>Khoản nợ phải trả nay mất chủ là khoản nợ phải trả không xác định được chủ nợ hoặc chủ nợ không còn tồn tại.</p>
-
-        <h2>Trình bày báo cáo tài chính</h2>
-        <p>Trong báo cáo tài chính, doanh nghiệp phải trình bày:</p>
-        <p><strong>(a)</strong> Chính sách kế toán được áp dụng trong việc ghi nhận doanh thu bao gồm phương pháp xác định phần công việc đã hoàn thành của các giao dịch về cung cấp dịch vụ;</p>
-        <p><strong>(b)</strong> Doanh thu của từng loại giao dịch và sự kiện:</p>
-        <p>Doanh thu bán hàng;</p>
-        <p>Doanh thu cung cấp dịch vụ;</p>
-        <p>Tiền lãi, tiền bản quyền, cổ tức và lợi nhuận được chia.</p>
-        <p><strong>(c)</strong> Doanh thu từ việc trao đổi hàng hóa hoặc dịch vụ theo từng loại hoạt động trên.</p>
-        <p><strong>(d)</strong> Thu nhập khác, trong đó trình bày cụ thể các khoản thu nhập bất thường.</p>
-        <p class="source-line"><strong>Source:</strong> <a href="https://vanban.chinhphu.vn/default.aspx?pageid=27160&amp;docid=10302" target="_blank" rel="noopener">vanban.chinhphu.vn</a></p>
-      `
-    }
-  };
-
-  const DOCS = {
-    "vas": {
-      kind: "law",
-      title: "Chuẩn mực kế toán Việt Nam — VAS 14",
-      meta: "VAS 14 — Doanh thu và thu nhập khác",
-      toc: [{ chapter: "VAS 14 — Doanh thu và thu nhập khác", articles: ["vas-14"] }],
-      note: "Nội dung trang được đưa vào từ tài liệu người dùng cung cấp. Khi sử dụng cho mục đích pháp lý, kế toán hoặc kiểm toán chính thức, cần đối chiếu với văn bản gốc và các văn bản sửa đổi, bổ sung có liên quan."
-    }
-  };
-
-  const BACKLINKS = {};
-
-  /* ===== Mở rộng thư viện: danh mục môn thi ACCA / CPA Việt Nam / CMA ===== */
-  let pendingSearch = null;
-
-  const ACCA_EXAMS = [
-    ['bt','BT','Business and Technology','Applied Knowledge','CBE on-demand quanh năm · 2 giờ',
-      'Môn mở đầu của ACCA: môi trường kinh doanh, quản trị doanh nghiệp (corporate governance), tổ chức–con ngườà và hệ thống, vai trò của kế toán và công nghệ (dữ liệu lớn, tự động hóa, AI) trong doanh nghiệp.',
-      'Là nền tảng quan trọng cho SBL — các nội dung governance, đạo đức và công nghệ sẽ quay lại ở dạng tình huống chiến lược.'],
-    ['ma','MA','Management Accounting','Applied Knowledge','CBE on-demand quanh năm · 2 giờ',
-      'Kỹ thuật tính giá thành (phân bổ, biên, ABC), lập ngân sách, phân tích chênh lệch (variance analysis), ra quyết định ngắn hạn và thông tin phục vụ quản trị.',
-      'Nền tảng trực tiếp cho PM (Applied Skills) và APM (Strategic Professional).'],
-    ['fa','FA','Financial Accounting','Applied Knowledge','CBE on-demand quanh năm · 2 giờ',
-      'Kế toán kép, bảng cân đối thử, lập báo cáo tài chính cho doanh nghiệp độc lập theo nền tảng IFRS; đọc hiểu và phân tích báo cáo cơ bản.',
-      'Nền tảng cho FR (Applied Skills) và SBR (Strategic Professional).'],
-    ['lw','LW','Corporate and Business Law','Applied Skills','CBE on-demand quanh năm · 2 giờ · có biến thể (ENG/GLO/VNM...)',
-      'Hệ thống pháp luật, luật hợp đồng, luật công ty, luật lao động, quản trị và đạo đức doanh nghiệp. Thi trắc nghiệm tình huống.',
-      'Môn tương đối "dễ thở" của Applied Skills, thường được khuyên thi sớm để lấy động lực.'],
-    ['pm','PM','Performance Management','Applied Skills','CBE theo phiên (tháng 3/6/9/12) · 3 giờ',
-      'Phân tích chi phí–lợi nhuận nâng cao, lập kế hoạch và kiểm soát, đánh giá hiệu suất (balanced scorecard), định giá chuyển giao nội bộ, phân tích định lượng phục vụ ra quyết định.',
-      'Một trong những môn khó nhất Applied Skills (tỷ lệ đỗ thường chỉ ~40–45%). Nên học sau MA và trước APM.'],
-    ['tx','TX','Taxation','Applied Skills','CBE theo phiên (tháng 3/6/9/12) · 3 giờ · có biến thể theo quốc gia',
-      'Hệ thống thuế theo biến thể đăng ký (UK, VN...): thuế thu nhập cá nhân, thuế thu nhập doanh nghiệp, thuế giá trị gia tăng, thuế tài sản; tính toán và quy hoạch thuế cơ bản.',
-      'Nền tảng cho ATX ở Strategic Professional nếu định hướng nghề thuế.'],
-    ['fr','FR','Financial Reporting','Applied Skills','CBE theo phiên (tháng 3/6/9/12) · 3 giờ',
-      'Trình bày báo cáo tài chính theo IFRS: tài sản, nợ phải trả, vốn chủ sở hữu, doanh thu, thuế hoãn lại; kế toán hợp nhất cơ bản và phân tích báo cáo.',
-      'Cổng bắt buộc để học AA (kiểm toán cần đọc BCTC) và SBR. Nên học sau FA.'],
-    ['aa','AA','Audit and Assurance','Applied Skills','CBE theo phiên (tháng 3/6/9/12) · 3 giờ',
-      'Quy trình kiểm toán: đánh giá rủi ro, kiểm soát nội bộ, thu thập bằng chứng kiểm toán, chu trình kiểm toán, vấn đề đạo đức và chất lượng.',
-      'Nên học sau FR. Nền tảng cho AAA ở Strategic Professional.'],
-    ['fm','FM','Financial Management','Applied Skills','CBE theo phiên (tháng 3/6/9/12) · 3 giờ',
-      'Quản trị vốn lưu động, thẩm định đầu tư (NPV, IRR), nguồn tài trợ, cấu trúc vốn và chi phí vốn (WACC), định giá doanh nghiệp, quản trị rủi ro tài chính.',
-      'Nền tảng trực tiếp cho AFM ở Strategic Professional.'],
-    ['sbl','SBL','Strategic Business Leader','Strategic Professional — Essentials (bắt buộc)','CBE theo phiên · khoảng 3 giờ 15 phút · thi case study tích hợp',
-      'Môn bắt buộc dạng tình huống tích hợp: lãnh đạo, chiến lược, quản trị rủi ro, công nghệ, đạo đức nghề nghiệp — đòi hỏi vận dụng toàn bộ kiến thức các môn trước để phân tích và tư vấn cho ban lãnh đạo.',
-      'Nên hoàn thành EPSM trước khi thi SBL. Các môn nền quan trọng nhất: BT, FM, PM.'],
-    ['sbr','SBR','Strategic Business Reporting','Strategic Professional — Essentials (bắt buộc)','CBE theo phiên · khoảng 3 giờ 15 phút',
-      'Báo cáo tài chính chiến lược: IFRS nâng cao, kế toán hợp nhất phức tạp, công cụ tài chính (IFRS 9), báo cáo tích hợp, các vấn đề hiện hành và phán đoán nghề nghiệp trong báo cáo tài chính.',
-      'Mở rộng trực tiếp từ FR. Cần thiết cho định hướng kế toán–báo cáo ở cấp cao.'],
-    ['afm','AFM','Advanced Financial Management','Strategic Professional — Options (tự chọn 2/4)','CBE theo phiên · khoảng 3 giờ 15 phút',
-      'Tài chính doanh nghiệp nâng cao: định giá M&A, tài chính quốc tế, phái sinh và phòng ngừa rủi ro, thẩm định đầu tư nâng cao, tái cấu trúc vốn.',
-      'Phù hợp định hướng ngân hàng đầu tư, tài chính doanh nghiệp, quản lý nguồn vốn. Mở rộng từ FM.'],
-    ['apm','APM','Advanced Performance Management','Strategic Professional — Options (tự chọn 2/4)','CBE theo phiên · khoảng 3 giờ 15 phút',
-      'Quản lý hiệu suất nâng cao: đo lường hiệu suất chiến lược, thiết kế hệ thống kiểm soát, quản trị thay đổi, đánh giá hiệu quả hoạt động trong bối cảnh chiến lược.',
-      'Phù hợp tư vấn chiến lược, quản lý hiệu suất. Mở rộng từ PM — tỷ lệ đỗ thấp (~38–41%).'],
-    ['atx','ATX','Advanced Taxation','Strategic Professional — Options (tự chọn 2/4)','CBE theo phiên · khoảng 3 giờ 15 phút · có biến thể theo quốc gia',
-      'Thuế nâng cao: quy hoạch thuế doanh nghiệp phức tạp, thuế quốc tế, tái cơ cấu doanh nghiệp, tuân thủ và đạo đức thuế.',
-      'Phù hợp nghề thuế, tư vấn thuế tại Big 4. Mở rộng từ TX.'],
-    ['aaa','AAA','Advanced Audit and Assurance','Strategic Professional — Options (tự chọn 2/4)','CBE theo phiên · khoảng 3 giờ 15 phút · có biến thể theo quốc gia',
-      'Kiểm toán và bảo đảm nâng cao: kiểm toán nhóm, kiểm toán pháp y, các dịch vụ bảo đảm khác, vấn đề nghề nghiệp và chất lượng ở cấp cao.',
-      'Gần như bắt buộc nếu định hướng kiểm toán viên phát triển sâu. Mở rộng từ AA — tỷ lệ đỗ thấp (~38–42%).']
-  ];
-
-  ACCA_EXAMS.forEach(function (row) {
-    const sfx = row[0], code = row[1], name = row[2], group = row[3], format = row[4], desc = row[5], related = row[6];
-    ENTRIES['acca-' + sfx] = {
-      kind: 'topic', doc: 'acca', crumb: ['ACCA — Các môn thi'],
-      title: 'ACCA ' + code + ' — ' + name,
-      meta: group + ' · ' + format,
-      bodyHtml:
-        '<h2>Thông tin môn thi</h2>'
-        + '<p><strong>Mã môn:</strong> ' + code + '</p>'
-        + '<p><strong>Tên đầy đủ:</strong> ' + name + '</p>'
-        + '<p><strong>Nhóm:</strong> ' + group + '</p>'
-        + '<p><strong>Hình thức thi:</strong> ' + format + '</p>'
-        + '<h2>Nội dung chính</h2><p>' + desc + '</p>'
-        + '<h2>Liên hệ với các môn khác</h2><p>' + related + '</p>'
-        + '<p class="source-line"><strong>Source:</strong> ACCA ' + code + ' syllabus — <a href="https://www.accaglobal.com" target="_blank" rel="noopener">accaglobal.com</a></p>'
-    };
-  });
-
-  ENTRIES['acca-overview'] = {
-    kind: 'topic', doc: 'acca', crumb: ['ACCA — Các môn thi'],
-    title: 'ACCA — Tổng quan cấu trúc chương trình',
-    meta: 'ACCA Qualification · 13 môn thi · EPSM · PER 36 tháng',
-    bodyHtml: ''
-      + '<h2>Cấu trúc tổng thể</h2>'
-      + '<p>Chứng chỉ ACCA gồm ba thành phần bắt buộc: (1) 13 môn thi chia ba cấp Applied Knowledge (BT, MA, FA), Applied Skills (LW, PM, TX, FR, AA, FM) và Strategic Professional (SBL, SBR bắt buộc + chọn 2 trong 4 môn AFM/APM/ATX/AAA); (2) mô-đun Ethics and Professional Skills (EPSM); (3) yêu cầu kinh nghiệm thực tế PER — 36 tháng làm việc có liên quan, có ngưởi hướng dẫn giám sát và hoàn thành các mục tiêu năng lực.</p>'
-      + '<h2>Điểm số và miễn thi</h2>'
-      + '<p>Thang điểm mỗi môn là 100, đỗ từ 50; không có điểm trừ. ACCA có thể miễn tối đa 9 môn thuộc Applied Knowledge và Applied Skills dựa trên bằng cấp/chứng chỉ đã có; các môn Strategic Professional không được miễn.</p>'
-      + '<h2>Lộ trình gợi ý</h2>'
-      + '<p>Hoàn thành từng cấp trước khi lên cấp sau (BT/MA/FA → LW/TX/FR/PM/AA/FM → SBL/SBR + 2 môn tự chọn). Nên học theo chuỗi liên kết: FA → FR → SBR; MA → PM → APM; FM → AFM; TX → ATX; AA → AAA. EPSM nên hoàn thành trước khi thi SBL.</p>'
-      + '<p>Lịch thi, biến thể môn thi theo quốc gia và quy định miễn thi cập nhật thường xuyên — vui lòng đối chiếu accaglobal.com trước khi đăng ký.</p>'
-      + '<p class="source-line"><strong>Source:</strong> ACCA Qualification structure — <a href="https://www.accaglobal.com" target="_blank" rel="noopener">accaglobal.com</a></p>'
-  };
-
-  ENTRIES['acca-epsm'] = {
-    kind: 'topic', doc: 'acca', crumb: ['ACCA — Các môn thi'],
-    title: 'ACCA EPSM — Ethics and Professional Skills Module',
-    meta: 'Mô-đun trực tuyến bắt buộc · khoảng 15 giờ',
-    bodyHtml: ''
-      + '<h2>Thông tin mô-đun</h2>'
-      + '<p>EPSM là mô-đun học trực tuyến bắt buộc của ACCA, kéo dài khoảng 15 giờ, tập trung vào đạo đức nghề nghiệp và các kỹ năng chuyên môn mà nhà tuyển dụng cần: giao tiếp, làm việc dữ liệu, phân tích tài chính thương mại, tư duy phản biện.</p>'
-      + '<h2>Vai trò trong chương trình</h2>'
-      + '<p>Hoàn thành EPSM là điều kiện để trở thành hội viên ACCA (member). ACCA khuyến nghị hoàn thành EPSM trước khi dự thi SBL vì nội dung đạo đức và kỹ năng phân tích case study của EPSM trực tiếp hỗ trợ môn này.</p>'
-      + '<p class="source-line"><strong>Source:</strong> ACCA Ethics and Professional Skills Module — <a href="https://www.accaglobal.com" target="_blank" rel="noopener">accaglobal.com</a></p>'
-  };
-
-  const CPA_EXAMS = [
-    [1, 'Pháp luật về kinh tế và Luật doanh nghiệp',
-      'Các văn bản pháp luật về tổ chức và hoạt động kinh doanh: pháp luật dân sự–thương mại, pháp luật doanh nghiệp, đầu tư, cạnh tranh, giải quyết tranh chấp; ứng dụng vào tình huống nghiệp vụ kế toán, kiểm toán.'],
-    [2, 'Thuế và quản lý thuế nâng cao',
-      'Chính sách và kỹ thuật các loại thuế (GTGT, TNDN, TNCN, tài nguyên, đất, hải quan...); quản lý thuế, thanh tra–kiểm tra thuế, quy hoạch thuế và xử lý vi phạm; nội dung nâng cao vượt trên chương trình học thông thường.'],
-    [3, 'Kế toán tài chính và kế toán quản trị nâng cao',
-      'Chuẩn mực kế toán Việt Nam và công bố thông tin; lập, trình bày và phân tích báo cáo tài chính doanh nghiệp (kể cả nhóm); chi phí, giá thành, kế toán quản trị và phân tích hoạt động doanh nghiệp.'],
-    [4, 'Kiểm toán và dịch vụ bảo đảm nâng cao',
-      'Chuẩn mực kiểm toán Việt Nam, chuẩn mực đạo đức nghề nghiệp; quy trình kiểm toán báo cáo tài chính, kiểm toán nội bộ; các dịch vụ bảo đảm và dịch vụ liên quan; ứng dụng vào các tình huống kiểm toán phức tạp.'],
-    [5, 'Tài chính và quản lý tài chính nâng cao',
-      'Tài chính doanh nghiệp (cơ cấu vốn, chi phí vốn, quyết định đầu tư–tài trợ), tài chính công, thị trường tài chính và các công cụ tài chính, quản trị rủi ro tài chính.'],
-    [6, 'Phân tích hoạt động tài chính nâng cao',
-      'Phân tích báo cáo tài chính và các chỉ số tài chính, dự báo tài chính, đánh giá hiệu quả hoạt động, phục vụ quyết định kinh doanh và thẩm định giá trị doanh nghiệp.'],
-    [7, 'Ngoại ngữ trình độ C',
-      'Kiểm tra một trong năm ngoại ngữ: Anh, Nga, Pháp, Trung, Đức. Đây là môn điều kiện — chỉ xét đạt/không đạt, không tính vào tổng điểm xét cấp chứng chỉ.']
-  ];
-
-  CPA_EXAMS.forEach(function (row) {
-    const num = row[0], name = row[1], desc = row[2];
-    ENTRIES['cpa-mon' + num] = {
-      kind: 'topic', doc: 'cpa-vn', crumb: ['CPA Việt Nam — Các môn thi'],
-      title: 'CPA Việt Nam — Môn ' + num + ': ' + name,
-      meta: 'Kỳ thi cấp chứng chỉ kiểm toán viên Việt Nam · Thông tư 51/2019/TT-BTC',
-      bodyHtml: ''
-        + '<h2>Thông tin môn thi</h2>'
-        + '<p><strong>Môn ' + num + ':</strong> ' + name + '</p>'
-        + '<p><strong>Căn cứ:</strong> Quy định về kỳ thi cấp chứng chỉ kiểm toán viên và chứng chỉ hành nghề kế toán ban hành kèm Thông tư 51/2019/TT-BTC của Bộ Tài chính.</p>'
-        + '<h2>Nội dung chính</h2><p>' + desc + '</p>'
-        + '<h2>Ghi chú</h2><p>Nội dung thi gồm cả phần lý thuyết và phần vận dụng vào bài tập, tình huống. Bộ Tài chính công bố chương trình, tài liệu ôn thi chính thức cho từng kỳ.</p>'
-        + '<p class="source-line"><strong>Source:</strong> Tham khảo chương trình thi CPA Việt Nam — Thông tư 51/2019/TT-BTC (Bộ Tài chính)</p>'
-    };
-  });
-
-  ENTRIES['cpa-overview'] = {
-    kind: 'topic', doc: 'cpa-vn', crumb: ['CPA Việt Nam — Các môn thi'],
-    title: 'CPA Việt Nam — Tổng quan chứng chỉ và kỳ thi',
-    meta: 'Chứng chỉ kiểm toán viên Việt Nam · 7 môn thi · Thông tư 51/2019/TT-BTC',
-    bodyHtml: ''
-      + '<h2>Cấu trúc kỳ thi</h2>'
-      + '<p>Ngườà dự thi lần đầu lấy chứng chỉ kiểm toán viên phải thi 7 môn: (1) Pháp luật về kinh tế và Luật doanh nghiệp; (2) Thuế và quản lý thuế nâng cao; (3) Kế toán tài chính và kế toán quản trị nâng cao; (4) Kiểm toán và dịch vụ bảo đảm nâng cao; (5) Tài chính và quản lý tài chính nâng cao; (6) Phân tích hoạt động tài chính nâng cao; (7) Ngoại ngữ trình độ C (1 trong 5 thứ tiếng: Anh, Nga, Pháp, Trung, Đức).</p>'
-      + '<h2>Điều kiện đạt chứng chỉ</h2>'
-      + '<p>Đối với ngưởi thi đủ 7 môn: mỗi môn (trừ ngoại ngữ) đạt tối thiểu 5 điểm và tổng điểm 6 môn đạt tối thiểu 38 điểm; môn ngoại ngữ chỉ xét đạt. Ngườà đã có chứng chỉ hành nghề kế toán chỉ phải thi 3 môn: Kiểm toán và dịch vụ bảo đảm nâng cao; Phân tích hoạt động tài chính nâng cao; Ngoại ngữ trình độ C — với điều kiện mỗi môn từ 5 điểm trở lên và tổng điểm tối thiểu 12,5 điểm.</p>'
-      + '<h2>Ghi chú</h2>'
-      + '<p>Đăng ký hành nghề kiểm toán thực hiện theo quy định tại Thông tư 202/2012/TT-BTC; đăng ký hành nghề kế toán theo Thông tư 296/2016/TT-BTC. Khi dự thi cần đối chiếu thông báo mới nhất của Bộ Tài chính về kỳ thi (đề cương, lịch thi, hồ sơ).</p>'
-      + '<p class="source-line"><strong>Source:</strong> Tham khảo chương trình thi CPA Việt Nam — Thông tư 51/2019/TT-BTC (Bộ Tài chính)</p>'
-  };
-
-  ENTRIES['cma-p1'] = {
-    kind: 'topic', doc: 'cma', crumb: ['CMA — Các môn thi'],
-    title: 'CMA Part 1 — Financial Planning, Performance, and Analytics',
-    meta: 'Chứng chỉ CMA (IMA) · Phần 1/2 · 4 giờ · 100 câu trắc nghiệm + 2 câu tình huống (essay)',
-    bodyHtml: ''
-      + '<h2>Cấu trúc phần thi</h2>'
-      + '<p><strong>Phần 1:</strong> Financial Planning, Performance, and Analytics — thi 4 giờ, gồm 100 câu hỏi trắc nghiệm và 2 câu hỏi tình huống (essay), đỗ từ 360/500 điểm.</p>'
-      + '<h2>Sáu nội dung chính</h2>'
-      + '<p><strong>1. External Financial Reporting Decisions:</strong> trình bày báo cáo tài chính theo GAAP/IFRS, các vấn đề đo lường và ghi nhận.</p>'
-      + '<p><strong>2. Planning, Budgeting, and Forecasting:</strong> lập kế hoạch chiến lược, ngân sách, dự báo tài chính.</p>'
-      + '<p><strong>3. Performance Management:</strong> đánh giá hiệu suất, chênh lệch, trách nhiệm giải trình.</p>'
-      + '<p><strong>4. Cost Management:</strong> tính giá thành, chi phí theo hoạt động, quy trình, quyết định giá.</p>'
-      + '<p><strong>5. Internal Controls:</strong> kiểm soát nội bộ, quản trị rủi ro, tuân thủ (COSO).</p>'
-      + '<p><strong>6. Technology and Analytics:</strong> hệ thống thông tin, dữ liệu lớn, phân tích dữ liệu, an ninh mạng trong kế toán quản trị.</p>'
-      + '<p class="source-line"><strong>Source:</strong> Tham khảo syllabus CMA Part 1 từ IMA — <a href="https://www.imanet.org" target="_blank" rel="noopener">imanet.org</a></p>'
-  };
-
-  ENTRIES['cma-p2'] = {
-    kind: 'topic', doc: 'cma', crumb: ['CMA — Các môn thi'],
-    title: 'CMA Part 2 — Strategic Financial Management',
-    meta: 'Chứng chỉ CMA (IMA) · Phần 2/2 · 4 giờ · 100 câu trắc nghiệm + 2 câu tình huống (essay)',
-    bodyHtml: ''
-      + '<h2>Cấu trúc phần thi</h2>'
-      + '<p><strong>Phần 2:</strong> Strategic Financial Management — thi 4 giờ, gồm 100 câu hỏi trắc nghiệm và 2 câu hỏi tình huống (essay), đỗ từ 360/500 điểm.</p>'
-      + '<h2>Sáu nội dung chính</h2>'
-      + '<p><strong>1. Financial Statement Analysis:</strong> phân tích báo cáo tài chính, chỉ số, tỷ suất, chất lượng lợi nhuận.</p>'
-      + '<p><strong>2. Corporate Finance:</strong> cấu trúc vốn, chi phí vốn, vốn lưu động, nguồn tài trợ.</p>'
-      + '<p><strong>3. Decision Analysis:</strong> phân tích chi phí–lợi nhuận, định giá, đầu tư có ràng buộc.</p>'
-      + '<p><strong>4. Risk Management:</strong> nhận diện và xử lý rủi ro tài chính, rủi ro doanh nghiệp.</p>'
-      + '<p><strong>5. Investment Decisions:</strong> thẩm định đầu tư vốn (NPV, IRR), phân tích dòng tiền.</p>'
-      + '<p><strong>6. Professional Ethics:</strong> đạo đức nghề nghiệp kế toán quản trị, trách nhiệm xã hội.</p>'
-      + '<p class="source-line"><strong>Source:</strong> Tham khảo syllabus CMA Part 2 từ IMA — <a href="https://www.imanet.org" target="_blank" rel="noopener">imanet.org</a></p>'
-  };
-
-  ENTRIES['cma-overview'] = {
-    kind: 'topic', doc: 'cma', crumb: ['CMA — Các môn thi'],
-    title: 'CMA — Tổng quan chứng chỉ Kế toán quản trị Hoa Kỳ',
-    meta: 'Certified Management Accountant · IMA · 2 phần thi',
-    bodyHtml: ''
-      + '<h2>Giới thiệu</h2>'
-      + '<p>CMA (Certified Management Accountant) do Viện Kế toán Quản trị Hoa Kỳ (IMA) cấp, tập trung vào kế toán quản trị, tài chính doanh nghiệp và ra quyết định — khác với CPA (kiểm toán/kế toán tài chính) và ACCA (chuỗi kỳ thi nhiều môn).</p>'
-      + '<h2>Yêu cầu cấp chứng chỉ</h2>'
-      + '<p>Gồm: (1) vượt qua 2 phần thi (Part 1: Financial Planning, Performance, and Analytics; Part 2: Strategic Financial Management); (2) bằng cử nhân; (3) hai năm kinh nghiệm làm việc liên quan đến kế toán quản trị hoặc tài chính; (4) tuân thủ quy định đạo đức IMA và tính chỉ CPE hằng năm.</p>'
-      + '<p>Hai phần thi có thể thi theo thứ tự tùy chọn và có thể thi bằng tiếng Anh hoặc tiếng Trung (phiên bản giấy phép tại một số quốc gia). Thi trên máy tính tại các trung tâm Pearson VUE.</p>'
-      + '<p class="source-line"><strong>Source:</strong> Tham khảo chứng chỉ CMA từ IMA — <a href="https://www.imanet.org" target="_blank" rel="noopener">imanet.org</a></p>'
-  };
-
-  Object.assign(DOCS, {
-    'acca': {
-      kind: 'topic',
-      title: 'ACCA — Cấu trúc và các môn thi',
-      meta: '13 môn thi · Applied Knowledge (3) · Applied Skills (6) · Strategic Professional (2 bắt buộc + 2 tự chọn) · EPSM · PER 36 tháng',
-      toc: [
-        { chapter: 'Applied Knowledge — 3 môn', articles: ['acca-bt', 'acca-ma', 'acca-fa'] },
-        { chapter: 'Applied Skills — 6 môn', articles: ['acca-lw', 'acca-pm', 'acca-tx', 'acca-fr', 'acca-aa', 'acca-fm'] },
-        { chapter: 'Strategic Professional — Essentials (bắt buộc)', articles: ['acca-sbl', 'acca-sbr'] },
-        { chapter: 'Strategic Professional — Options (chọn 2 trong 4)', articles: ['acca-afm', 'acca-apm', 'acca-atx', 'acca-aaa'] },
-        { chapter: 'Yêu cầu khác', articles: ['acca-epsm', 'acca-overview'] }
-      ],
-      note: 'Thông tin tham khảo theo cấu trúc ACCA Qualification hiện hành. Lịch thi, biến thể môn theo quốc gia và quy chế miễn thi thay đổi theo thờài gian — vui lòng đối chiếu accaglobal.com trước khi đăng ký dự thi.'
-    },
-    'cpa-vn': {
-      kind: 'topic',
-      title: 'CPA Việt Nam — Các môn thi',
-      meta: 'Chứng chỉ kiểm toán viên Việt Nam · 7 môn thi · Thông tư 51/2019/TT-BTC',
-      toc: [
-        { chapter: 'Các môn thi (7 môn)', articles: ['cpa-mon1', 'cpa-mon2', 'cpa-mon3', 'cpa-mon4', 'cpa-mon5', 'cpa-mon6', 'cpa-mon7'] },
-        { chapter: 'Tổng quan', articles: ['cpa-overview'] }
-      ],
-      note: 'Đề cương, tài liệu ôn thi và thông báo kỳ thi chính thức do Bộ Tài chính công bố từng kỳ — cần đối chiếu trước khi đăng ký dự thi.'
-    },
-    'cma': {
-      kind: 'topic',
-      title: 'CMA — Các môn thi',
-      meta: 'Certified Management Accountant (IMA) · 2 phần thi · 100 MCQ + 2 essay mỗi phần',
-      toc: [
-        { chapter: 'Phần thi', articles: ['cma-p1', 'cma-p2'] },
-        { chapter: 'Tổng quan', articles: ['cma-overview'] }
-      ],
-      note: 'Thông tin theo cấu trúc đề thi CMA hiện hành của IMA. Chi tiết đăng ký, phí và lịch thi vui lòng đối chiếu imanet.org.'
-    }
-  });
-
-
-  const inner = document.getElementById('contentInner');
-  const sidebarToc = document.getElementById('sidebarToc');
-  const sidebarTocList = document.getElementById('sidebarTocList');
-  const GROUP_LABEL = { law: "Văn bản pháp luật", topic: "Chứng chỉ nghề nghiệp", notes: "NOTEs" };
-
-  document.querySelectorAll('.placeholder-link').forEach(a => a.addEventListener('click', e => e.preventDefault()));
-
-  function slugify(text, index) {
-    const base = (text || '').toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-      .replace(/đ/g, 'd')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-    return 'toc-' + (base || 'section') + '-' + index;
-  }
-
-  function clearSidebarToc() {
-    sidebarToc.classList.remove('visible');
-    sidebarTocList.innerHTML = '';
-  }
-
-  function buildSidebarToc() {
-    const headings = Array.from(inner.querySelectorAll('.article-body h2, .article-body h3')).filter(h => h.textContent.trim() !== 'HỆ THỐNG CHUẨN MỰC KẾ TOÁN VIỆT NAM');
-    sidebarTocList.innerHTML = '';
-    if (!headings.length) { clearSidebarToc(); return; }
-
-    headings.forEach((h, i) => {
-      h.id = slugify(h.textContent, i);
-      const li = document.createElement('li');
-      const a = document.createElement('a');
-      a.href = '#' + h.id;
-      a.textContent = h.textContent.trim();
-      a.dataset.target = h.id;
-      a.addEventListener('click', (ev) => {
-        ev.preventDefault();
-        h.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        history.replaceState(null, '', '#' + encodeURIComponent('vas-14') + '-' + h.id);
-        setTimeout(() => setActiveToc(h.id), 50);
-      });
-      li.appendChild(a);
-      sidebarTocList.appendChild(li);
-    });
-    sidebarToc.classList.add('visible');
-
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter(x => x.isIntersecting).sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top);
-      if (visible[0]) setActiveToc(visible[0].target.id);
-    }, { root: null, rootMargin: '-90px 0px -65% 0px', threshold: 0 });
-    headings.forEach(h => observer.observe(h));
-  }
-
-  function setActiveToc(id) {
-    sidebarTocList.querySelectorAll('a').forEach(a => a.classList.toggle('active', a.dataset.target === id));
-  }
-
-  const previewEl = document.createElement('div');
-  previewEl.className = 'link-preview';
-  previewEl.id = 'linkPreview';
-  document.body.appendChild(previewEl);
-  let previewTimer = null;
-
-  function stripWikiSyntax(text) {
-    return (text || '').replace(/\[\[([a-z0-9\-]+)(?:\|([^\]]+))?\]\]/g, (m, id, label) => {
-      return label || (ENTRIES[id] ? ENTRIES[id].title : id);
-    });
-  }
-
-  function positionPreview(targetEl) {
-    const rect = targetEl.getBoundingClientRect();
-    const pw = 300, gap = 8;
-    let left = rect.left;
-    let top = rect.bottom + gap;
-    if (left + pw > window.innerWidth - 12) left = window.innerWidth - pw - 12;
-    if (left < 12) left = 12;
-    if (top + 140 > window.innerHeight) top = rect.top - gap - 140;
-    if (top < 12) top = 12;
-    previewEl.style.left = left + 'px';
-    previewEl.style.top = top + 'px';
-  }
-
-  function showPreview(id, targetEl) {
-    const e = ENTRIES[id];
-    if (!e) return;
-    const doc = DOCS[e.doc];
-    const temp = document.createElement('div');
-    temp.innerHTML = e.bodyHtml || '';
-    let excerpt = (temp.textContent || '').trim();
-    if (excerpt.length > 170) excerpt = excerpt.slice(0, 170).trim() + '…';
-    previewEl.innerHTML = `
-      <div class="lp-title">${e.title}</div>
-      <div class="lp-excerpt">${excerpt}</div>
-      <div class="lp-meta">${doc ? doc.title : ''}${(e.crumb && e.crumb.length) ? ' · ' + e.crumb.join(' · ') : ''}</div>
-    `;
-    positionPreview(targetEl);
-    previewEl.classList.add('visible');
-  }
-
-  function hidePreview() { previewEl.classList.remove('visible'); }
-
-  function attachPreviews(root) {
-    root.querySelectorAll('a.wiki[data-id], .backlinks-box a[data-id]').forEach(a => {
-      a.addEventListener('mouseenter', () => {
-        clearTimeout(previewTimer);
-        previewTimer = setTimeout(() => showPreview(a.dataset.id, a), 200);
-      });
-      a.addEventListener('mousemove', () => positionPreview(a));
-      a.addEventListener('mouseleave', () => { clearTimeout(previewTimer); hidePreview(); });
-      a.addEventListener('focus', () => showPreview(a.dataset.id, a));
-      a.addEventListener('blur', hidePreview);
-    });
-  }
-
-  document.addEventListener('scroll', hidePreview, true);
-
-  const sidebarLinks = () => Array.from(document.querySelectorAll('.article-list a[data-id], .doc-cover-link[data-id]'));
-
-  function attachClicks(root) {
-    root.querySelectorAll('a[data-id], button[data-id]').forEach(el => {
-      el.addEventListener('click', (e) => { e.preventDefault(); go(el.dataset.id); });
-    });
-  }
-
-  function renderHome() {
-    clearSidebarToc();
-    inner.innerHTML = `
-      <section class="hero-band">
-      <p class="eyebrow">LEARNING HUB</p>
-      <h1 class="hero-title">CPA Vietnam · ACCA · CMA</h1>
-      <p class="hero-sub">Self-study library for accounting standards, professional certifications, and exam pathways.</p>
-      </section>
-      <div class="program-grid">
-        <a class="program-card" href="#" data-id="vas-14">
-          <div class="pc-kicker">CHUẨN MỰC KẾ TOÁN VIỆT NAM</div>
-          <div class="pc-title">VAS 14 — Doanh thu và thu nhập khác</div>
-          <p class="pc-desc">Quy định và hướng dẫn nguyên tắc, phương pháp kế toán doanh thu và thu nhập khác.</p>
-        </a>
-        <a class="program-card" href="#" data-id="cover:acca">
-          <div class="pc-kicker">CHỨNG CHỈ QUỐC TẾ</div>
-          <div class="pc-title">ACCA — Cấu trúc và 13 môn thi</div>
-          <p class="pc-desc">Applied Knowledge, Applied Skills, Strategic Professional, mô-đun EPSM và yêu cầu kinh nghiệm PER.</p>
-        </a>
-        <a class="program-card" href="#" data-id="cover:cpa-vn">
-          <div class="pc-kicker">CHỨNG CHỈ VIỆT NAM</div>
-          <div class="pc-title">CPA Việt Nam — 7 môn thi</div>
-          <p class="pc-desc">Chương trình thi cấp chứng chỉ kiểm toán viên theo Thông tư 51/2019/TT-BTC của Bộ Tài chính.</p>
-        </a>
-        <a class="program-card" href="#" data-id="cover:cma">
-          <div class="pc-kicker">CHỨNG CHỈ QUỐC TẾ</div>
-          <div class="pc-title">CMA — 2 phần thi</div>
-          <p class="pc-desc">Financial Planning, Performance &amp; Analytics và Strategic Financial Management (IMA).</p>
-        </a>
-      </div>
-    `;
-    attachClicks(inner);
-  }
-
-  function renderDocCover(docId) {
-    clearSidebarToc();
-    const doc = DOCS[docId];
-    if (!doc) return renderHome();
-    const groupLabel = GROUP_LABEL[doc.kind] || '';
-    inner.innerHTML = `
-      <div class="breadcrumb"><button data-id="__home">TheLeanBasic</button><span class="sep">／</span><span>${groupLabel}</span></div>
-      <section class="hero-band">
-      <p class="eyebrow">${groupLabel.toUpperCase()}</p>
-      <h1 class="hero-title">${doc.title}</h1>
-      <p class="hero-sub">${doc.meta}</p>
-      </section>
-      ${doc.note ? `<div class="disclaimer">${doc.note}</div>` : ''}
-      <p class="section-label">Mục lục</p>
-      <ul class="toc-list">
-        ${doc.toc.map(ch => `
-          <li style="border:none;">
-            <div class="toc-chapter-title">${ch.chapter}</div>
-            ${ch.articles && ch.articles.length ? `
-              <ul class="toc-list nested-toc">
-                ${ch.articles.map(aid => `<li><a href="#" data-id="${aid}"><span class="toc-num">§</span><span>${ENTRIES[aid].title}</span></a></li>`).join('')}
-              </ul>` : ''}
-          </li>
-        `).join('')}
-      </ul>
-    `;
-    attachClicks(inner);
-    window.scrollTo({ top: 0 });
-  }
-
-  function renderEntry(id) {
-    const e = ENTRIES[id];
-    if (!e) return renderHome();
-    const doc = DOCS[e.doc];
-    const crumbParts = [
-      `<button data-id="__home">TheLeanBasic</button>`,
-      `<button data-id="cover:${e.doc}">${doc.title}</button>`
-    ].concat(e.crumb.map(c => `<span>${c}</span>`));
-
-    inner.innerHTML = `
-      <div class="breadcrumb">${crumbParts.join('<span class="sep">／</span>')}</div>
-      <article>
-        <h1 class="article-title">${e.title}</h1>
-        <p class="article-meta">${e.meta}</p>
-        <div class="article-body">${e.bodyHtml}</div>
+      <article class="article-body" id="articleBody">
+        <!-- Nội dung sẽ được render từ JavaScript -->
       </article>
-      <div class="related-nav">
-        <a href="#" data-id="cover:${e.doc}"><span class="rn-label">Quay lại</span><span>${doc.title} — mục lục</span></a>
-      </div>
-    `;
-    attachClicks(inner);
-    attachPreviews(inner);
-    buildSidebarToc();
-    window.scrollTo({ top: 0 });
+    </main>
 
-    if (pendingSearch) {
-      const q = pendingSearch.q;
-      pendingSearch = null;
-      const ql = q.toLocaleLowerCase('vi');
-      const blocks = Array.from(inner.querySelectorAll('.article-title, .article-meta, .article-body h2, .article-body h3, .article-body p, .article-body li'));
-      const target = blocks.find(b => (b.textContent || '').toLocaleLowerCase('vi').includes(ql));
-      if (target) {
-        target.innerHTML = highlightMatches(target.textContent, q);
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        target.style.transition = 'none';
-        target.style.background = '#FFF1A8';
-        setTimeout(() => { target.style.transition = 'background 1.4s ease'; target.style.background = 'transparent'; }, 1500);
+    <!-- Cột 3: Sidebar Mục lục (Tự động lọc theo yêu cầu) -->
+    <aside class="sidebar-toc">
+      <div class="toc-title">Mục lục chứng từ</div>
+      <ul class="toc-list" id="sidebarTocList">
+        <!-- Các mục sẽ tự động sinh ra ở đây -->
+      </ul>
+    </aside>
+  </div>
+
+  <script>
+    // Cơ sở dữ liệu bài viết
+    const ENTRIES = {
+      "tt99-phuluc": {
+        kind: "law",
+        doc: "tt99",
+        crumb: ["Chế độ kế toán Thông tư 99", "Phụ lục I · III · IV"],
+        title: "TT 99/2025/TT-BTC — Phụ lục I, III, IV",
+        meta: "Chứng từ kế toán · Sổ kế toán · Biểu mẫu Báo cáo tài chính",
+        bodyHtml: `
+<p><em>Phụ lục I, III, IV kèm theo Thông tư số 99/2025/TT-BTC ngày 27/10/2025 của Bộ Tài chính. Khi sử dụng chính thức cần đối chiếu văn bản công bố.</em></p>
+<h2>Phụ lục I — Danh mục và biểu mẫu chứng từ kế toán</h2>
+
+<h2 id="i-lao-dong-tien-luong">I. Lao động tiền lương</h2>
+
+<h3 id="ldtl-1">1. Bảng thanh toán tiền lương (01 - LĐTL)</h3>
+<p>Bảng thanh toán tiền lương là chứng từ làm căn cứ để thanh toán tiền lương, phụ cấp, các khoản thu nhập tăng thêm ngoài tiền lương cho người lao động, kiểm tra việc thanh toán tiền lương cho người lao động làm việc trong doanh nghiệp đồng thời là căn cứ để thống kê về lao động tiền lương.</p>
+
+<h3 id="ldtl-2">2. Bảng thanh toán tiền thưởng (02 - LĐTL)</h3>
+<p>Là chứng từ xác nhận số tiền thưởng cho từng người lao động, làm cơ sở để tính thu nhập của mỗi người lao động và ghi sổ kế toán.</p>
+
+<h3 id="ldtl-3">3. Bảng thanh toán tiền làm thêm giờ (03 - LĐTL)</h3>
+<p>Bảng thanh toán tiền làm thêm giờ nhằm xác định khoản tiền lương, tiền công làm thêm giờ mà người lao động được hưởng sau khi làm việc ngoài giờ theo yêu cầu công việc.</p>
+
+<h3 id="ldtl-4">4. Bảng thanh toán tiền thuê ngoài (04 - LĐTL)</h3>
+<p>Bảng thanh toán tiền thuê ngoài là chứng từ kế toán nhằm xác nhận số tiền đã thanh toán cho người được thuê để thực hiện những công việc không lập được hợp đồng, như: Thuê lao động bốc vác, thuê vận chuyển thiết bị, thuê làm khoán 1 công việc nào đó.... Chứng từ được dùng để thanh toán cho người lao động thuê ngoài.</p>
+
+<h3 id="ldtl-5">5. Hợp đồng giao khoán (05 - LĐTL)</h3>
+<p>Hợp đồng giao khoán là bản ký kết giữa người giao khoán và người nhận khoán nhằm xác nhận về khối lượng công việc khoán hoặc nội dung công việc khoán, thời gian làm việc, trách nhiệm, quyền lợi của mỗi bên khi thực hiện công việc đó. Đồng thời là cơ sở thanh toán chi phí cho người nhận khoán.</p>
+
+<h3 id="ldtl-6">6. Biên bản thanh lý (nghiệm thu) hợp đồng giao khoán (06 - LĐTL)</h3>
+<p>Biên bản thanh lý hợp đồng giao khoán là chứng từ nhằm xác nhận số lượng, chất lượng công việc và giá trị của hợp đồng đã thực hiện, làm căn cứ để hai bên thanh toán và chấm dứt hợp đồng.</p>
+
+<h3 id="ldtl-7">7. Bảng kê trích nộp các khoản theo lương (07 - LĐTL)</h3>
+<p>Bảng kê trích nộp các khoản theo lương dùng để xác định số tiền bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp, kinh phí công đoàn mà đơn vị và người lao động phải nộp trong tháng (hoặc quý) cho cơ quan bảo hiểm xã hội và công đoàn. Chứng từ này là cơ sở để ghi sổ kế toán về các khoản trích nộp theo lương.</p>
+
+<h3 id="ldtl-8">8. Bảng phân bổ tiền lương và các khoản trích theo lương (08 - LĐTL)</h3>
+<p>Dùng để tập hợp và phân bổ tiền lương tiền công thực tế phải trả (gồm tiền lương, tiền công và các khoản phụ cấp), bảo hiểm xã hội, bảo hiểm y tế và kinh phí công đoàn phải trích nộp trong tháng cho các đối tượng sử dụng lao động.</p>
+
+<h2 id="ii-hang-ton-kho">II. Hàng tồn kho</h2>
+
+<h3 id="vt-1">1. Phiếu nhập kho (01 - VT)</h3>
+<p>Nhằm xác nhận số lượng vật tư, công cụ, dụng cụ, sản phẩm, hàng hoá nhập kho làm căn cứ ghi Thẻ kho, thanh toán tiền hàng, xác định trách nhiệm với người có liên quan và ghi sổ kế toán.</p>
+
+<h3 id="vt-2">2. Phiếu xuất kho (02 - VT)</h3>
+<p>Theo dõi chặt chẽ số lượng vật tư, công cụ, dụng cụ, sản phẩm, hàng hoá xuất kho cho các bộ phận sử dụng trong doanh nghiệp, làm căn cứ để hạch toán chi phí sản xuất, tính giá thành sản phẩm, dịch vụ và kiểm tra việc sử dụng, thực hiện định mức tiêu hao vật tư.</p>
+
+<h3 id="vt-3">3. Biên bản kiểm nghiệm vật tư, công cụ, sản phẩm, hàng hoá (03 - VT)</h3>
+<p>Xác định số lượng, qui cách, chất lượng vật tư, công cụ, sản phẩm, hàng hoá trước khi nhập kho, làm căn cứ để qui trách nhiệm trong thanh toán và bảo quản.</p>
+
+<h3 id="vt-4">4. Bảng kê chi tiết vật tư còn lại cuối kỳ (04 - VT)</h3>
+<p>Theo dõi số lượng vật tư còn lại cuối kỳ hạch toán ở đơn vị sử dụng, làm căn cứ tính giá thành sản phẩm và kiểm tra tình hình thực hiện định mức sử dụng vật tư.</p>
+
+<h3 id="vt-5">5. Biên bản tổng hợp kiểm kê vật tư, công cụ, sản phẩm, hàng hoá (05 - VT)</h3>
+<p>Biên bản tổng hợp kiểm kê vật tư, công cụ, sản phẩm, hàng hoá nhằm xác định số lượng, chất lượng và giá trị vật tư, công cụ, sản phẩm, hàng hoá có ở kho tại thời điểm kiểm kê làm căn cứ xác định trách nhiệm trong việc bảo quản, xử lý vật tư, công cụ, sản phẩm, hàng hoá thừa, thiếu và ghi sổ kế toán.</p>
+
+<h3 id="vt-6">6. Bảng kê mua hàng (06 - VT)</h3>
+<p>Là chứng từ kê khai mua vật tư, công cụ, dụng cụ, hàng hoá, dịch vụ trong trường hợp người bán thuộc diện không phải lập hoá đơn khi bán hàng hoá, cung cấp dịch vụ theo quy định làm căn cứ lập phiếu nhập kho, thanh toán và hạch toán chi phí vật tư, hàng hoá,...</p>
+
+<h3 id="vt-7">7. Bảng phân bổ nguyên liệu, vật liệu, công cụ, dụng cụ (07 - VT)</h3>
+<p>Dùng để phản ánh tổng giá trị nguyên liệu, vật liệu, công cụ, dụng cụ xuất kho trong tháng theo giá thực tế và giá hạch toán và phân bổ giá trị nguyên liệu, vật liệu, công cụ, dụng cụ xuất dùng cho các đối tượng sử dụng hàng tháng.</p>
+
+<h2 id="iii-ban-hang">III. Bán hàng</h2>
+
+<h3 id="bh-1">1. Bảng thanh toán hàng đại lý, ký gửi (01 - BH)</h3>
+<p>Phản ánh tình hình thanh toán hàng đại lý, ký gửi giữa đơn vị có hàng và đơn vị nhận bán hàng, là chứng từ để đơn vị có hàng và đơn vị nhận bán hàng đại lý, ký gửi thanh toán tiền và ghi sổ kế toán.</p>
+
+<h3 id="bh-2">2. Thẻ quầy hàng (02 - BH)</h3>
+<p>Theo dõi số lượng và giá trị hàng hóa trong quá trình nhận và bán tại quầy hàng, giúp cho người bán hàng thường xuyên nắm được tình hình nhập, xuất, tồn tại quầy, làm căn cứ để kiểm tra, quản lý hàng hóa và lập bảng kê bán hàng từng ngày (kỳ).</p>
+
+<h2 id="iv-tien-te">IV. Tiền tệ</h2>
+
+<h3 id="tt-1">1. Phiếu thu (01 - TT)</h3>
+<p>Nhằm xác định số tiền mặt, ngoại tệ,... thực tế nhập quỹ và làm căn cứ để thủ quỹ thu tiền, ghi sổ quỹ, kế toán ghi sổ các khoản thu có liên quan. Mọi khoản tiền Việt Nam, ngoại tệ nhập quỹ đều phải có Phiếu thu.</p>
+
+<h3 id="tt-2">2. Phiếu chi (02 - TT)</h3>
+<p>Nhằm xác định các khoản tiền mặt, ngoại tệ thực tế xuất quỹ và làm căn cứ để thủ quỹ xuất quỹ, ghi sổ quỹ và kế toán ghi sổ kế toán.</p>
+
+<h3 id="tt-3">3. Giấy đề nghị tạm ứng (03 - TT)</h3>
+<p>Giấy đề nghị tạm ứng là căn cứ để xét duyệt tạm ứng, làm thủ tục lập phiếu chi và xuất quỹ cho tạm ứng.</p>
+
+<h3 id="tt-4">4. Giấy thanh toán tiền tạm ứng (04 - TT)</h3>
+<p>Giấy thanh toán tiền tạm ứng là bảng liệt kê các khoản tiền đã nhận tạm ứng và các khoản đã chi của người nhận tạm ứng, làm căn cứ thanh toán số tiền tạm ứng và ghi sổ kế toán.</p>
+
+<h3 id="tt-5">5. Giấy đề nghị thanh toán (05 - TT)</h3>
+<p>Giấy đề nghị thanh toán dùng trong trường hợp đã chi nhưng chưa được thanh toán hoặc chưa nhận tạm ứng để tổng hợp các khoản đã chi kèm theo chứng từ (nếu có) để làm thủ tục thanh toán, làm căn cứ thanh toán và ghi sổ kế toán.</p>
+
+<h3 id="tt-6">6. Biên lai thu tiền (06 - TT)</h3>
+<p>Biên lai thu tiền là giấy biên nhận của doanh nghiệp hoặc cá nhân đã thu tiền hoặc thu séc của người nộp làm căn cứ để lập phiếu thu, nộp tiền vào quỹ, đồng thời để người nộp thanh toán với cơ quan hoặc lưu quỹ.</p>
+
+<h3 id="tt-7">7. Bảng kê vàng tiền tệ (07 - TT)</h3>
+<p>Bảng kê vàng tiền tệ dùng để liệt kê số vàng tiền tệ của đơn vị, nhằm quản lý chặt chẽ, chính xác các loại vàng tiền tệ có tại đơn vị và làm căn cứ cùng với chứng từ gốc để lập phiếu thu, chi quỹ.</p>
+
+<h3 id="tt-8">8. Bảng kiểm kê quỹ (dùng cho VND) (08a - TT)</h3>
+<p>Bảng kiểm kê quỹ nhằm xác nhận tiền bằng VNĐ tồn quỹ thực tế và số thừa, thiếu so với sổ quỹ trên cơ sở đó tăng cường quản lý quỹ và làm cơ sở qui trách nhiệm vật chất, ghi sổ kế toán số chênh lệch.</p>
+
+<h3 id="tt-9">9. Bảng kiểm kê quỹ (dùng cho ngoại tệ, vàng tiền tệ) (08b - TT)</h3>
+<p>Biên bản nhằm xác nhận tiền ngoại tệ, vàng tiền tệ,... tồn quỹ thực tế và số thừa, thiếu so với sổ quỹ trên cơ sở đó tăng cường quản lý quỹ và làm cơ sở qui trách nhiệm vật chất, ghi sổ kế toán số chênh lệch.</p>
+
+<h3 id="tt-10">10. Bảng kê chi tiền (09 - TT)</h3>
+<p>Bảng kê chi tiền là bảng liệt kê các khoản tiền đã chi, làm căn cứ quyết toán các khoản tiền đã chi và ghi sổ kế toán.</p>
+
+<h2 id="v-tai-san-co-dinh">V. Tài sản cố định</h2>
+
+<h3 id="tscd-1">1. Biên bản giao nhận TSCĐ (01 - TSCĐ)</h3>
+<p>Nhằm xác nhận việc giao nhận TSCĐ sau khi hoàn thành xây dựng, mua sắm, được cấp trên cấp, được tặng, biếu, viện trợ, nhận góp vốn, TSCĐ thuê ngoài...đưa vào sử dụng tại đơn vị hoặc tài sản của đơn vị bàn giao cho đơn vị khác theo lệnh của cấp trên, theo hợp đồng góp vốn,...</p>
+
+<h3 id="tscd-2">2. Biên bản thanh lý TSCĐ (02 - TSCĐ)</h3>
+<p>Xác nhận việc thanh lý TSCĐ và làm căn cứ để ghi giảm TSCĐ trên sổ kế toán.</p>
+
+<h3 id="tscd-3">3. Biên bản bàn giao TSCĐ sửa chữa, bảo dưỡng hoặc nâng cấp, cải tạo hoàn thành (03 - TSCĐ)</h3>
+<p>Xác nhận việc bàn giao TSCĐ sau khi hoàn thành việc sửa chữa, bảo dưỡng hoặc nâng cấp, cải tạo giữa bên có TSCĐ sửa chữa, bảo dưỡng hoặc nâng cấp, cải tạo và bên thực hiện việc sửa chữa, bảo dưỡng hoặc nâng cấp, cải tạo.</p>
+
+<h3 id="tscd-4">4. Biên bản đánh giá lại TSCĐ (04 - TSCĐ)</h3>
+<p>Xác nhận việc đánh giá lại TSCĐ và làm căn cứ để ghi sổ kế toán và các tài liệu liên quan đến số chênh lệch (tăng, giảm) do đánh giá lại TSCĐ.</p>
+
+<h3 id="tscd-5">5. Biên bản tổng hợp kiểm kê TSCĐ (05 - TSCĐ)</h3>
+<p>Biên bản tổng hợp kiểm kê tài sản cố định nhằm xác nhận số lượng, giá trị tài sản cố định hiện có, thừa thiếu so với sổ kế toán trên cơ sở đó tăng cường quản lý tài sản cố định và làm cơ sở quy trách nhiệm vật chất, ghi sổ kế toán số chênh lệch.</p>
+
+<h3 id="tscd-6">6. Bảng tính và phân bổ khấu hao TSCĐ (06 - TSCĐ)</h3>
+<p>Dùng để phản ánh số khấu hao TSCĐ phải trích và phân bổ số khấu hao đó cho các đối tượng sử dụng TSCĐ hàng tháng.</p>
+`
       }
+    };
+
+    // Hàm render nội dung bài viết
+    function renderArticle(key) {
+      const entry = ENTRIES[key];
+      if (!entry) return;
+
+      document.getElementById('docCrumb').textContent = entry.crumb.join(' > ');
+      document.getElementById('docTitle').textContent = entry.title;
+      document.getElementById('docMeta').textContent = entry.meta;
+      document.getElementById('articleBody').innerHTML = entry.bodyHtml;
+
+      // Sinh lại mục lục cho Sidebar 2
+      generateSidebarToc();
     }
-  }
 
-  function setActive(id) {
-    sidebarLinks().forEach(a => a.classList.toggle('active', a.dataset.id === id));
-  }
+    // Hàm lọc và tạo danh sách Mục lục ở Sidebar 2
+    function generateSidebarToc() {
+      const tocList = document.getElementById('sidebarTocList');
+      if (!tocList) return;
+      tocList.innerHTML = '';
 
-  function renderRoute(id) {
-    if (!id || id === '__home') { renderHome(); return; }
-    if (id.startsWith('cover:')) { renderDocCover(id.slice(6)); return; }
-    if (ENTRIES[id]) { renderEntry(id); return; }
-    renderHome();
-  }
+      const headings = document.querySelectorAll('.article-body h2, .article-body h3');
+      headings.forEach(heading => {
+        const text = heading.textContent.trim();
+        
+        // Lọc loại bỏ tiêu đề chung và các mục không thuộc danh sách chính
+        if (text.startsWith('Phụ lục I') ||
+            text.startsWith('Mục đích') || 
+            text.startsWith('Nội dung') || 
+            text.startsWith('Phương pháp') || 
+            text.startsWith('Chỉ tiêu')) {
+          return;
+        }
 
-  function go(id) {
-    if (id === '__home') history.pushState({ id: null }, '', location.pathname);
-    else history.pushState({ id }, '', '#' + encodeURIComponent(id));
-    renderRoute(id);
-    setActive(id === '__home' ? null : id);
-    if (window.innerWidth <= 860) closeMenu();
-  }
+        // Tự tạo ID chuẩn nếu thẻ chưa có id
+        if (!heading.id) {
+          heading.id = text.toLowerCase()
+                           .replace(/[^a-z0-9\u00C0-\u1EF9]+/g, '-')
+                           .replace(/^-|-$/g, '');
+        }
 
-  sidebarLinks().forEach(a => a.addEventListener('click', (e) => { e.preventDefault(); go(a.dataset.id); }));
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = text;
+        
+        // Đột lùi lề cho thẻ h3 (chứng từ)
+        if (heading.tagName.toLowerCase() === 'h3') {
+          a.style.paddingLeft = '20px';
+          a.style.fontSize = '0.88rem';
+        } else if (heading.tagName.toLowerCase() === 'h2') {
+          a.style.fontWeight = 'bold';
+        }
 
-  document.querySelectorAll('.brand-home').forEach(a => {
-    a.addEventListener('click', (e) => { e.preventDefault(); go('__home'); });
-  });
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          heading.scrollIntoView({ behavior: 'smooth' });
+          history.pushState(null, '', '#' + heading.id);
+        });
 
-  window.addEventListener('popstate', (e) => {
-    const id = e.state && e.state.id;
-    renderRoute(id);
-    setActive(id || null);
-  });
-
-  const initial = decodeURIComponent(location.hash.replace('#', ''));
-  renderRoute(initial);
-  if (initial) setActive(initial);
-
-  const menuToggle = document.getElementById('menuToggle');
-  function closeMenu() { document.body.classList.remove('menu-open'); menuToggle.setAttribute('aria-expanded', 'false'); }
-  menuToggle.addEventListener('click', () => {
-    const open = document.body.classList.toggle('menu-open');
-    menuToggle.setAttribute('aria-expanded', String(open));
-  });
-  document.addEventListener('click', (e) => {
-    if (document.body.classList.contains('menu-open') &&
-        !document.getElementById('sidebar').contains(e.target) && e.target !== menuToggle) closeMenu();
-  });
-
-  const searchInput = document.getElementById('siteSearch');
-  const searchResults = document.getElementById('searchResults');
-
-  function esc(s) {
-    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  }
-
-  function getEntryBlocks(e) {
-    const d = document.createElement('div');
-    d.innerHTML = e.bodyHtml || '';
-    return Array.from(d.querySelectorAll('h2, h3, p, li'))
-      .map(el => (el.textContent || '').trim())
-      .filter(t => t.length > 0);
-  }
-
-  function makeSnippet(text, idx, q) {
-    const start = Math.max(0, idx - 70);
-    const end = Math.min(text.length, idx + q.length + 90);
-    const pre = start > 0 ? '…' : '';
-    const s = pre + text.slice(start, end) + (end < text.length ? '…' : '');
-    const local = idx - start + pre.length;
-    return esc(s.slice(0, local))
-      + '<mark class="search-hit">' + esc(s.substr(local, q.length)) + '</mark>'
-      + esc(s.slice(local + q.length));
-  }
-
-  function highlightMatches(text, q) {
-    const tl = text.toLocaleLowerCase('vi');
-    const ql = q.toLocaleLowerCase('vi');
-    let out = '', i = 0;
-    while (true) {
-      const idx = tl.indexOf(ql, i);
-      if (idx === -1) { out += esc(text.slice(i)); break; }
-      out += esc(text.slice(i, idx)) + '<mark class="search-hit">' + esc(text.substr(idx, q.length)) + '</mark>';
-      i = idx + q.length;
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
     }
-    return out;
-  }
 
-  function searchAllPages(q) {
-    const ql = q.toLocaleLowerCase('vi');
-    const out = [];
-    for (const [id, e] of Object.entries(ENTRIES)) {
-      const head = [e.title, e.meta || '', ...(e.crumb || [])].join(' ').toLocaleLowerCase('vi');
-      const snippets = [];
-      for (const t of getEntryBlocks(e)) {
-        const idx = t.toLocaleLowerCase('vi').indexOf(ql);
-        if (idx !== -1) snippets.push(makeSnippet(t, idx, q));
-        if (snippets.length >= 4) break;
-      }
-      if (snippets.length || head.includes(ql)) {
-        out.push({ id: id, title: e.title, crumb: (e.crumb || []).join(' · '), count: snippets.length, snippets: snippets });
-      }
-    }
-    return out;
-  }
-
-  function renderSearchResults(q, hits) {
-    if (!hits.length) {
-      searchResults.hidden = false;
-      searchResults.innerHTML = '<div class="search-results-title">Kết quả tìm kiếm</div>'
-        + '<div style="font-size:12px;color:var(--ink-faint);padding:8px 3px">Không tìm thấy nội dung phù hợp.</div>';
-      return;
-    }
-    searchResults.hidden = false;
-    searchResults.innerHTML = '<div class="search-results-title">' + hits.length + ' trang phù hợp</div>' + hits.map(h => `
-      <div class="search-hit-group">
-        <button class="search-result" data-search-id="${h.id}" data-q="${esc(q)}">${esc(h.title)}<small>${esc(h.crumb || '')}${h.count ? ' · ' + h.count + ' đoạn khớp' : ''}</small></button>
-        ${h.snippets.map(s => `<button class="search-snippet" data-search-id="${h.id}" data-q="${esc(q)}">${s}</button>`).join('')}
-      </div>
-    `).join('');
-    searchResults.querySelectorAll('[data-search-id]').forEach(btn => btn.addEventListener('click', () => {
-      pendingSearch = { q: btn.dataset.q };
-      go(btn.dataset.searchId);
-      searchInput.value = '';
-      searchResults.hidden = true;
-      searchResults.innerHTML = '';
-    }));
-  }
-
-  searchInput.addEventListener('input', () => {
-    const q = searchInput.value.trim();
-    document.querySelectorAll('#sidebar details').forEach(d => { if (q) d.open = d.classList.contains('top-level'); });
-    if (!q) { searchResults.hidden = true; searchResults.innerHTML = ''; return; }
-    renderSearchResults(q, searchAllPages(q));
-  });
-
-  searchInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      const first = searchResults.querySelector('[data-search-id]');
-      if (first) first.click();
-    }
-  });
-})();
-</script>
+    // Khởi tạo ứng dụng
+    document.addEventListener('DOMContentLoaded', () => {
+      renderArticle('tt99-phuluc');
+    });
+  </script>
 </body>
 </html>
+```
+
+### Hướng dẫn cách đưa lên GitHub:
+1. Tạo một file tên là `index.html` trong thư mục trên máy tính của bạn.
+2. Dán toàn bộ nội dung mã trên vào file `index.html`.
+3. Tải (Upload) file `index.html` này lên **Repository** trên GitHub của bạn.
+4. (Tùy chọn) Bật **GitHub Pages** trong phần *Settings > Pages* của Repository để chạy trang web trực tuyến công khai.
