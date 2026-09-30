@@ -656,13 +656,14 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
   .toc-inline { display: block; }
 }
 @media (min-width: 1100px) {
-  .layout { grid-template-columns: clamp(240px, 24.49%, 320px) clamp(190px, 18.37%, 240px) minmax(480px, 1fr); }
+  /* Two sidebars together occupy 2/7 of the viewport; content gets 5/7. */
+  .layout { grid-template-columns: 14.2857vw 14.2857vw minmax(0, 1fr); }
 }
 @media (min-width: 1280px) {
-  .layout { grid-template-columns: clamp(280px, 24.49%, 380px) clamp(220px, 18.37%, 290px) minmax(480px, 1fr); }
+  .layout { grid-template-columns: 14.2857vw 14.2857vw minmax(0, 1fr); }
 }
 @media (min-width: 1600px) {
-  .layout { grid-template-columns: clamp(320px, 24.49%, 420px) clamp(250px, 18.37%, 320px) minmax(480px, 1fr); }
+  .layout { grid-template-columns: 14.2857vw 14.2857vw minmax(0, 1fr); }
 }
 
 .article-body h2, .article-body h3 { scroll-margin-top: 78px; }
@@ -856,7 +857,7 @@ header.site-head .btn-subscribe { padding: 9px 16px; font-size: 13.5px; }
     <p class="foot-line">@2026 TheLeanBasic</p>
     <p class="foot-note">Nội dung phục vụ tham khảo và tự học, không thay thế văn bản gốc hay tư vấn chuyên môn.</p>
   </div>
-  <div class="foot-right"><span class="visit-count" id="visitCount" hidden>Lượt truy cập: <b>0</b></span></div>
+  <div class="foot-right" aria-hidden="true"></div>
 </footer>
 
 <dialog id="subDialog" class="sub-dialog" aria-labelledby="subDialogTitle">
@@ -882,7 +883,7 @@ header.site-head .btn-subscribe { padding: 9px 16px; font-size: 13.5px; }
   /* ===== Cấu hình site — điền 2 giá trị này để bật tính năng =====
      substackName    : tên publication Substack, ví dụ 'theleanbasic' (→ theleanbasic.substack.com)
      goatcounterCode : mã GoatCounter, ví dụ 'theleanbasic' (→ theleanbasic.goatcounter.com)
-     Để trống = tắt: nút Subscribe gửi email tới contactEmail, bộ đếm truy cập ẩn. */
+     Để trống = tắt. Lượt xem được theo dõi trong dashboard riêng, không hiển thị công khai. */
   const SITE_CONFIG = {
     substackName: '',
     goatcounterCode: '',
@@ -1578,12 +1579,31 @@ header.site-head .btn-subscribe { padding: 9px 16px; font-size: 13.5px; }
         setTimeout(() => form.reset(), 400);
         return;
       }
+      // Static HTML cannot send mail directly by itself. FormSubmit forwards the
+      // submission to the configured inbox without requiring a mail app on the visitor's device.
       e.preventDefault();
-      msg.textContent = 'Đã mở ứng dụng email để gửi yêu cầu đăng ký.';
-      msg.classList.add('ok');
-      window.location.href = 'mailto:' + SITE_CONFIG.contactEmail +
-        '?subject=' + encodeURIComponent('Đăng ký nhận bài — TheLeanBasic') +
-        '&body=' + encodeURIComponent('Vui lòng thêm email này vào danh sách nhận bài: ' + email);
+      const payload = new URLSearchParams({
+        email: email,
+        source: 'subscribe_page',
+        _subject: 'Đăng ký nhận bài — TheLeanBasic',
+        _captcha: 'false',
+        _template: 'table'
+      });
+      fetch('https://formsubmit.co/ajax/' + encodeURIComponent(SITE_CONFIG.contactEmail), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
+        body: payload.toString()
+      })
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(() => {
+        msg.textContent = 'Đăng ký thành công. Cảm ơn bạn!';
+        msg.classList.add('ok');
+        form.reset();
+      })
+      .catch(() => {
+        msg.textContent = 'Không gửi được lúc này. Vui lòng thử lại sau.';
+        msg.classList.add('err');
+      });
     });
     return form;
   }
@@ -1610,17 +1630,6 @@ header.site-head .btn-subscribe { padding: 9px 16px; font-size: 13.5px; }
     if (gcReady && window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: path, title: document.title });
     else gcQueue.push(path);
   }
-  function showVisitCount(code) {
-    fetch('https://' + code + '.goatcounter.com/counter/TOTAL.json')
-      .then(r => r.ok ? r.json() : Promise.reject())
-      .then(d => {
-        const box = document.getElementById('visitCount');
-        if (!box || !d || !d.count) return;
-        box.querySelector('b').textContent = d.count;
-        box.hidden = false;
-      })
-      .catch(() => {});
-  }
   function initAnalytics() {
     const code = (SITE_CONFIG.goatcounterCode || '').trim();
     if (!code) return;
@@ -1632,7 +1641,6 @@ header.site-head .btn-subscribe { padding: 9px 16px; font-size: 13.5px; }
     sc.onload = () => {
       gcReady = true;
       gcQueue.splice(0).forEach(p => window.goatcounter.count({ path: p, title: document.title }));
-      showVisitCount(code);
     };
     document.head.appendChild(sc);
   }
