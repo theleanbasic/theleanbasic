@@ -478,6 +478,13 @@ aside.toc-sidebar { background: #fff; border-right: 1px solid var(--line); paddi
 .sidebar-toc-list a:hover { background: var(--taupe-50); color: var(--navy); }
 .sidebar-toc-list a.active { background: var(--petrol-100); color: var(--petrol); border-left-color: var(--petrol); font-weight: 600; }
 
+/* Curated TOC levels (Phụ lục I, III, IV) */
+.sidebar-toc-list li.toc-lvl-h > a { font-weight: 700; color: var(--petrol); margin-top: 8px; }
+.sidebar-toc-list li.toc-lvl-g > a { font-weight: 600; padding-left: 14px; }
+.sidebar-toc-list li.toc-lvl-i > a { padding-left: 24px; font-size: 12px; }
+.toc-inline li.toc-lvl-g { margin-left: 10px; font-weight: 600; }
+.toc-inline li.toc-lvl-i { margin-left: 20px; }
+
 /* ---------- Content shell ---------- */
 main.content { padding-top: 36px; }
 .breadcrumb { font-size: 15px; color: var(--taupe-ink); }
@@ -1279,7 +1286,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
       meta: "Chứng từ kế toán · Sổ kế toán · Biểu mẫu Báo cáo tài chính",
       bodyHtml: `
 <p><em>Phụ lục I, III, IV kèm theo Thông tư số 99/2025/TT-BTC ngày 27/10/2025 của Bộ Tài chính. Khi sử dụng chính thức cần đối chiếu văn bản công bố.</em></p>
-<h2>Phụ lục I — Danh mục và biểu mẫu chứng từ kế toán</h2>
+<h2 id="pl-1282">Phụ lục I — Danh mục và biểu mẫu chứng từ kế toán</h2>
 <p><strong>Phụ lục I</strong></p>
 <h3>DANH MỤC VÀ BIỂU MẪU CHỨNG TỪ KẾ TOÁN</h3>
 <p><em>(Kèm theo Thông tư số 99/2025/TT-BTC ngày 27 tháng 10 năm 2025 của Bộ trưởng</em></p>
@@ -1359,7 +1366,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_05_%E2%80%93_tscd._bien_ban_tong_hop_kiem_ke_tscd_0411094447.docx" target="_blank" rel="noopener">Mẫu số 05 – TSCĐ. Biên bản tổng hợp kiểm kê TSCĐ</a></p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_06_%E2%80%93_tscd._bang_tinh_va_phan_bo_khau_hao_tscd_0411094454.docx" target="_blank" rel="noopener">Mẫu số 06 – TSCĐ. Bảng tính và phân bổ khấu hao TSCĐ</a></p>
 <h3>PHẦN B - GIẢI THÍCH NỘI DUNG VÀ PHƯƠNG PHÁP GHI CHÉP CHỨNG TỪ KẾ TOÁN</h3>
-<h3>I. CHỈ TIÊU LAO ĐỘNG TIỀN LƯƠNG</h3>
+<h3 id="pl-1362">I. CHỈ TIÊU LAO ĐỘNG TIỀN LƯƠNG</h3>
 <h3>1. Mục đích</h3>
 <p>Các chứng từ thuộc chỉ tiêu lao động tiền lương được lập nhằm mục đích theo dõi tình hình sử dụng thời gian lao động; theo dõi các khoản phải thanh toán cho người lao động trong đơn vị như: tiền lương, tiền công các khoản phụ cấp, tiền thưởng, tiền công tác phí, tiền làm thêm ngoài giờ; theo dõi các khoản thanh toán cho bên ngoài, cho các tổ chức khác như: thanh toán tiền thuê ngoài, thanh toán các khoản phải trích nộp theo lương,... và một số nội dung khác có liên quan đến lao động, tiền lương.</p>
 <h3>2. Nội dung</h3>
@@ -1374,7 +1381,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <tr><td style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;">Bảng kê trích nộp các khoản theo lương</td><td style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;">Mẫu số 07- LĐTL</td></tr>
 <tr><td style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;">Bảng phân bổ tiền lương và các khoản trích theo lương</td><td style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;">Mẫu số 08- LĐTL</td></tr>
 </table>
-<h3>BẢNG THANH TOÁN TIỀN LƯƠNG</h3>
+<h3 id="pl-1377">BẢNG THANH TOÁN TIỀN LƯƠNG</h3>
 <p>(Mẫu số 01 - LĐTL)</p>
 <h3>1. Mục đích</h3>
 <p>Bảng thanh toán tiền lương là chứng từ làm căn cứ để thanh toán tiền lương, phụ cấp, các khoản thu nhập tăng thêm ngoài tiền lương cho người lao động, kiểm tra việc thanh toán tiền lương cho người lao động làm việc trong doanh nghiệp đồng thời là căn cứ để thống kê về lao động tiền lương.</p>
@@ -1394,7 +1401,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Cột C: Người lao động ký nhận khi nhận lương kỳ II (nếu chi bằng tiền mặt).</p>
 <p>Cuối mỗi tháng căn cứ vào chứng từ liên quan, người phụ trách tính lương lập Bảng thanh toán tiền lương chuyển cho kế toán trưởng soát xét xong trình cho giám đốc hoặc người được ủy quyền ký duyệt, chuyển cho kế toán làm căn cứ để thanh toán lương. Bảng thanh toán tiền lương được lưu tại phòng (ban) kế toán của đơn vị.</p>
 <p>Mỗi lần lĩnh lương, người lao động phải trực tiếp ký vào cột “Ký nhận” hoặc người nhận hộ phải ký thay.</p>
-<h3>BẢNG THANH TOÁN TIỀN THƯỞNG</h3>
+<h3 id="pl-1397">BẢNG THANH TOÁN TIỀN THƯỞNG</h3>
 <p>(Mẫu số 02 - LĐTL)</p>
 <h3>1. Mục đích</h3>
 <p>Là chứng từ xác nhận số tiền thưởng cho từng người lao động, làm cơ sở để tính thu nhập của mỗi người lao động và ghi sổ kế toán.</p>
@@ -1404,7 +1411,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Cột 1, 2: Ghi rõ loại thưởng được bình xét, số tiền được thưởng theo mỗi loại.</p>
 <p>Cột D: Người được thưởng ký nhận tiền thưởng (nếu nhận bằng tiền mặt).</p>
 <p>Bảng thanh toán tiền thưởng phải có chữ ký (họ tên) của người lập, kế toán trưởng và giám đốc.</p>
-<h3>BẢNG THANH TOÁN TIỀN LÀM THÊM GIỜ</h3>
+<h3 id="pl-1407">BẢNG THANH TOÁN TIỀN LÀM THÊM GIỜ</h3>
 <p>(Mẫu số 03 - LĐTL)</p>
 <h3>1. Mục đích</h3>
 <p>Bảng thanh toán tiền làm thêm giờ nhằm xác định khoản tiền lương, tiền công làm thêm giờ mà người lao động được hưởng sau khi làm việc ngoài giờ theo yêu cầu công việc.</p>
@@ -1430,7 +1437,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Cột 18 = Cột 15 - Cột 17.</p>
 <p>Cột D - Ký nhận: Người làm thêm sau khi nhận tiền phải ký vào cột này (nếu chi bằng tiền mặt).</p>
 <p>Bảng thanh toán tiền làm thêm giờ được lập thành 1 bản để làm căn cứ thanh toán.</p>
-<h3>BẢNG THANH TOÁN TIỀN THUÊ NGOÀI</h3>
+<h3 id="pl-1433">BẢNG THANH TOÁN TIỀN THUÊ NGOÀI</h3>
 <p>(Mẫu số 04 - LĐTL)</p>
 <h3>1. Mục đích</h3>
 <p>Bảng thanh toán tiền thuê ngoài là chứng từ kế toán nhằm xác nhận số tiền đã thanh toán cho người được thuê để thực hiện những công việc không lập được hợp đồng, như: Thuê lao động bốc vác, thuê vận chuyển thiết bị, thuê làm khoán 1 công việc nào đó.... Chứng từ được dùng để thanh toán cho người lao động thuê ngoài.</p>
@@ -1446,7 +1453,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Cột 4: Tiền thuế khấu trừ phải nộp nếu người được thuê có mức thu nhập ở diện phải nộp thuế thu nhập cá nhân theo qui định của pháp luật thuế (nếu có).</p>
 <p>Cột 5: Số tiền còn lại được nhận của người được thuê sau khi đã khấu trừ thuế. (Cột 5 = Cột 3 - Cột 4)</p>
 <p>Cột E: Người được thuê ký nhận khi nhận tiền (nếu nhận bằng tiền mặt).</p>
-<h3>HỢP ĐỒNG GIAO KHOÁN</h3>
+<h3 id="pl-1449">HỢP ĐỒNG GIAO KHOÁN</h3>
 <p>(Mẫu số 05 - LĐTL)</p>
 <h3>1. Mục đích</h3>
 <p>Hợp đồng giao khoán là bản ký kết giữa người giao khoán và người nhận khoán nhằm xác nhận về khối lượng công việc khoán hoặc nội dung công việc khoán, thời gian làm việc, trách nhiệm, quyền lợi của mỗi bên khi thực hiện công việc đó. Đồng thời là cơ sở thanh toán chi phí cho người nhận khoán.</p>
@@ -1464,7 +1471,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- 1 bản lưu ở bộ phận lập hợp đồng;</p>
 <p>- 1 bản chuyển về phòng kế toán cho người có trách nhiệm theo dõi quá trình thực hiện hợp đồng giao khoán và làm căn cứ để thanh toán hợp đồng.</p>
 <p>Hợp đồng giao khoán phải có đầy đủ chữ ký, họ tên của đại diện bên giao khoán và đại diện bên nhận khoán.</p>
-<h3>BIÊN BẢN THANH LÝ (NGHIỆM THU) HỢP ĐỒNG GIAO KHOÁN</h3>
+<h3 id="pl-1467">BIÊN BẢN THANH LÝ (NGHIỆM THU) HỢP ĐỒNG GIAO KHOÁN</h3>
 <p>(Mẫu số 06 - LĐTL)</p>
 <h3>1. Mục đích</h3>
 <p>Biên bản thanh lý hợp đồng giao khoán là chứng từ nhằm xác nhận số lượng, chất lượng công việc và giá trị của hợp đồng đã thực hiện, làm căn cứ để hai bên thanh toán và chấm dứt hợp đồng.</p>
@@ -1479,7 +1486,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Ghi rõ số tiền bằng số và bằng chữ bên giao khoán còn phải thanh toán cho bên nhận khoán (Theo tính toán trong hợp đồng, nghiệm thu công việc và số tiền đã thanh toán trước cho nhau) đến khi thanh lý hợp đồng hoặc ngược lại bên giao khoán đã thanh toán quá cho bên nhận khoán.</p>
 <p>Sau khi kiểm tra thực tế việc thực hiện hợp đồng, kết quả thực hiện hợp đồng hai bên nhất trí đưa ra kết luận về từng nội dung cụ thể về khối lượng thực hiện, đánh giá chất lượng và kiến nghị, các việc cần làm (nếu có).</p>
 <p>Biên bản thanh lý hợp đồng giao khoán được lập thành 4 bản, mỗi bên giữ 2 bản. Biên bản thanh lý hợp đồng giao khoán phải có đầy đủ chữ ký của đại diện bên giao khoán và đại diện bên nhận khoán thực hiện hợp đồng.</p>
-<h3>BẢNG KÊ TRÍCH NỘP CÁC KHOẢN THEO LƯƠNG</h3>
+<h3 id="pl-1482">BẢNG KÊ TRÍCH NỘP CÁC KHOẢN THEO LƯƠNG</h3>
 <p>(Mẫu số 07 - LĐTL)</p>
 <h3>1. Mục đích</h3>
 <p>Bảng kê trích nộp các khoản theo lương dùng để xác định số tiền bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp, kinh phí công đoàn mà đơn vị và người lao động phải nộp trong tháng (hoặc quý) cho cơ quan bảo hiểm xã hội và công đoàn. Chứng từ này là cơ sở để ghi sổ kế toán về các khoản trích nộp theo lương.</p>
@@ -1493,7 +1500,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 6: Ghi số kinh phí công đoàn đơn vị phải nộp cấp trên.</p>
 <p>- Cột 7: Ghi số kinh phí công đoàn đơn vị được để lại chi tại đơn vị.</p>
 <p>Bảng kê được lập thành 2 bản. Bảng kê trích nộp theo lương sau khi lập xong phải có đầy đủ chữ ký và ghi rõ họ tên của người lập, kế toán trưởng, giám đốc.</p>
-<h3>BẢNG PHÂN BỔ TIỀN LƯƠNG VÀ CÁC KHOẢN TRÍCH THEO LƯƠNG</h3>
+<h3 id="pl-1496">BẢNG PHÂN BỔ TIỀN LƯƠNG VÀ CÁC KHOẢN TRÍCH THEO LƯƠNG</h3>
 <p>(Mẫu số 08-LĐTL)</p>
 <h3>1. Mục đích</h3>
 <p>Dùng để tập hợp và phân bổ tiền lương tiền công thực tế phải trả (gồm tiền lương, tiền công và các khoản phụ cấp), bảo hiểm xã hội, bảo hiểm y tế và kinh phí công đoàn phải trích nộp trong tháng cho các đối tượng sử dụng lao động (ghi Có TK 334, TK 335, TK 338 (3382, 3383, 3384, 3386).</p>
@@ -1503,7 +1510,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>+ Căn cứ vào các bảng thanh toán lương, thanh toán làm đêm, làm thêm giờ... kế toán tập hợp, phân loại chứng từ theo từng đối tượng sử dụng tính toán số tiền để ghi vào bảng phân bổ này theo các dòng phù hợp cột ghi Có TK 334 hoặc Có TK 335.</p>
 <p>+ Căn cứ vào tỷ lệ trích bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp, kinh phí công đoàn và tổng số tiền lương phải trả (theo quy định hiện hành) theo từng đối tượng sử dụng tính ra số tiền phải trích BHXH, BHYT, BHTN, KPCĐ để ghi vào các dòng phù hợp cột ghi Có TK 338 (3382, 3383, 3384, 3386).</p>
 <p>Số liệu của bảng phân bổ này được sử dụng để ghi vào các bảng kê, Nhật ký - Chứng từ và các sổ kế toán có liên quan tuỳ theo hình thức kế toán áp dụng ở đơn vị (như Sổ Cái hoặc Nhật ký - sổ cái TK 334, 338...), đồng thời được sử dụng để tính giá thành thực tế sản phẩm, dịch vụ hoàn thành.</p>
-<h3>II. CHỈ TIÊU HÀNG TỒN KHO</h3>
+<h3 id="pl-1506">II. CHỈ TIÊU HÀNG TỒN KHO</h3>
 <h3>1. Mục đích</h3>
 <p>Theo dõi tình hình nhập, xuất, tồn kho vật tư, công cụ, dụng cụ, sản phẩm, hàng hoá, làm căn cứ kiểm tra tình hình sử dụng, dự trữ vật tư, công cụ, dụng cụ, sản phẩm, hàng hoá và cung cấp thông tin cần thiết cho việc quản lý hàng tồn kho.</p>
 <h3>2.  Nội dung</h3>
@@ -1517,7 +1524,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <tr><td style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;">Bảng kê mua hàng</td><td style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;">- Mẫu số 06-VT</td></tr>
 <tr><td style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;">Bảng phân bổ nguyên liệu, vật liệu, công cụ, dụng cụ</td><td style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;">- Mẫu số 07-VT</td></tr>
 </table>
-<h3>PHIẾU NHẬP KHO</h3>
+<h3 id="pl-1520">PHIẾU NHẬP KHO</h3>
 <p><em>(Mẫu số 01 - VT)</em></p>
 <h3>1. Mục đích</h3>
 <p>Nhằm xác nhận số lượng vật tư, công cụ, dụng cụ, sản phẩm, hàng hoá nhập kho làm căn cứ ghi Thẻ kho, thanh toán tiền hàng, xác định trách nhiệm với người có liên quan và ghi sổ kế toán.</p>
@@ -1532,7 +1539,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Dòng số tiền viết bằng chữ: Ghi tổng số tiền trên Phiếu nhập kho bằng chữ.</p>
 <p>Phiếu nhập kho do bộ phận mua hàng hoặc bộ phận sản xuất lập thành 2 liên (đối với vật tư, hàng hoá mua ngoài) hoặc 3 liên (đối với vật tư tự sản xuất) (đặt giấy than viết 1 lần), và người lập phiếu ký (ghi rõ họ tên), người giao hàng mang phiếu đến kho để nhập vật tư, dụng cụ, sản phẩm, hàng hoá.</p>
 <p>Nhập kho xong thủ kho ghi ngày, tháng, năm nhập kho và cùng người giao hàng ký vào phiếu, thủ kho giữ liên 2 để ghi vào thẻ kho và sau đó chuyển cho phòng kế toán để ghi sổ kế toán và liên 1 lưu ở nơi lập phiếu, liên 3 (nếu có) người giao hàng giữ (Đối với trường hợp phiếu nhập kho lập bằng bản cứng).</p>
-<h3>PHIẾU XUẤT KHO</h3>
+<h3 id="pl-1535">PHIẾU XUẤT KHO</h3>
 <p><em>(Mẫu số 02 - VT)</em></p>
 <h3>1. Mục đích</h3>
 <p>Theo dõi chặt chẽ số lượng vật tư, công cụ, dụng cụ, sản phẩm, hàng hoá xuất kho cho các bộ phận sử dụng trong doanh nghiệp, làm căn cứ để hạch toán chi phí sản xuất, tính giá thành sản phẩm, dịch vụ và kiểm tra việc sử dụng, thực hiện định mức tiêu hao vật tư.</p>
@@ -1549,7 +1556,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Liên 1: Lưu ở bộ phận lập phiếu.</p>
 <p>Liên 2: Thủ kho giữ để ghi vào thẻ kho và sau đó chuyển cho kế toán để kế toán ghi vào cột 3,4 và ghi vào sổ kế toán.</p>
 <p>Liên 3: Người nhận vật tư, công cụ, dụng cụ, sản phẩm, hàng hóa giữ để theo dõi ở bộ phận sử dụng.</p>
-<p><strong>BIÊN BẢN KIỂM NGHIỆM (Vật tư, công cụ, sản phẩm, hàng hoá)</strong></p>
+<h3 id="pl-1552">BIÊN BẢN KIỂM NGHIỆM (Vật tư, công cụ, sản phẩm, hàng hoá)</h3>
 <p><em>(Mẫu số 03 - VT)</em></p>
 <h3>1. Mục đích</h3>
 <p>Xác định số lượng, qui cách, chất lượng vật tư, công cụ, sản phẩm, hàng hoá trước khi nhập kho, làm căn cứ để qui trách nhiệm trong thanh toán và bảo quản.</p>
@@ -1570,7 +1577,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- 1 bản giao cho phòng, ban cung tiêu/hoặc người giao hàng.</p>
 <p>- 1 bàn giao cho phòng, ban kế toán.</p>
 <p>Trường hợp vật tư, công cụ, sản phẩm, hàng hóa không đúng số lượng, quy cách, phẩm chất so với chứng từ hóa đơn thì kèm theo chứng từ liên quan gửi cho đơn vị bán vật tư, dụng cụ, công cụ, sản phẩm, hàng hóa để giải quyết.</p>
-<h3>BẢNG KÊ CHI TIẾT VẬT TƯ CÒN LẠI CUỐI KỲ</h3>
+<h3 id="pl-1573">BẢNG KÊ CHI TIẾT VẬT TƯ CÒN LẠI CUỐI KỲ</h3>
 <p><em>(Mẫu số 04 - VT)</em></p>
 <h3>1. Mục đích</h3>
 <p>Theo dõi số lượng vật tư còn lại cuối kỳ hạch toán ở đơn vị sử dụng, làm căn cứ tính giá thành sản phẩm và kiểm tra tình hình thực hiện định mức sử dụng vật tư.</p>
@@ -1582,7 +1589,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Phụ trách bộ phận sử dụng ký tên:</p>
 <p>- 1 bản giao cho phòng vật tư (nếu có);</p>
 <p>- 1 bản giao cho phòng kế toán.</p>
-<p><strong>BIÊN BẢN TỔNG HỢP KIỂM KÊ VẬT TƯ, CÔNG CỤ, SẢN PHẨM, HÀNG HOÁ</strong></p>
+<h3 id="pl-1585">BIÊN BẢN TỔNG HỢP KIỂM KÊ VẬT TƯ, CÔNG CỤ, SẢN PHẨM, HÀNG HOÁ</h3>
 <p>(Mẫu số 05 - VT)</p>
 <h3>1. Mục đích</h3>
 <p>Biên bản tổng hợp kiểm kê vật tư, công cụ, sản phẩm, hàng hoá nhằm xác định số lượng, chất lượng và giá trị vật tư, công cụ, sản phẩm, hàng hoá có ở kho tại thời điểm kiểm kê làm căn cứ xác định trách nhiệm trong việc bảo quản, xử lý vật tư, công cụ, sản phẩm, hàng hoá thừa, thiếu và ghi sổ kế toán.</p>
@@ -1603,7 +1610,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- 1 bản phòng kế toán lưu.</p>
 <p>- 1 bản thủ kho lưu.</p>
 <p>Sau khi lập xong biên bản, giám đốc, trưởng ban/chủ tịch hội đồng kiểm kê và thủ kho, kế toán trưởng cùng ký vào biên bản (ghi rõ họ tên).</p>
-<h3>BẢNG KÊ MUA HÀNG</h3>
+<h3 id="pl-1606">BẢNG KÊ MUA HÀNG</h3>
 <p>(Mẫu số 06 -VT)</p>
 <h3>1. Mục đích</h3>
 <p>Là chứng từ kê khai mua vật tư, công cụ, dụng cụ, hàng hoá, dịch vụ trong trường hợp người bán thuộc diện không phải lập hoá đơn khi bán hàng hoá, cung cấp dịch vụ theo quy định làm căn cứ lập phiếu nhập kho, thanh toán và hạch toán chi phí vật tư, hàng hoá,... lập trong Bảng kê khai này không được khấu trừ thuế GTGT.</p>
@@ -1619,7 +1626,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Bảng kê mua hàng do người mua lập 2 liên (đặt giấy than viết 1 lần).</p>
 <p>Sau khi lập xong, người mua ký và chuyển cho kế toán trưởng soát xét, ký vào Bảng kê mua hàng. Người đi mua phải chuyển “Bảng kê mua hàng” cho giám đốc hoặc người được ủy quyền duyệt và làm thủ tục nhập kho (nếu có) hoặc giao hàng cho người quản lý sử dụng.</p>
 <p>Liên 1 lưu, liên 2 chuyển cho kế toán làm thủ tục thanh toán và ghi sổ (Trường hợp bảng kê mua hàng được lập bằng bản cứng).</p>
-<p><strong>BẢNG PHÂN BỔ NGUYÊN LIỆU, VẬT LIỆU, CÔNG CỤ, DỤNG CỤ</strong></p>
+<h3 id="pl-1622">BẢNG PHÂN BỔ NGUYÊN LIỆU, VẬT LIỆU, CÔNG CỤ, DỤNG CỤ</h3>
 <p>(Mẫu số 07 - VT)</p>
 <h3>1. Mục đích</h3>
 <p>Dùng để phản ánh tổng giá trị nguyên liệu, vật liệu, công cụ, dụng cụ xuất kho trong tháng theo giá thực tế và giá hạch toán và phân bổ giá trị nguyên liệu, vật liệu, công cụ, dụng cụ xuất dùng cho các đối tượng sử dụng hàng tháng (ghi Có TK 152, TK 153, Nợ các tài khoản liên quan), Bảng này còn dùng để phân bổ giá trị công cụ, dụng cụ xuất dùng một lần có giá trị lớn, thời gian sử dụng dưới một năm hoặc trên một năm đang được phản ánh trên TK 242.</p>
@@ -1627,14 +1634,14 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Bảng gồm các cột dọc phản ánh các loại nguyên liệu, vật liệu và công cụ, dụng cụ xuất dùng trong tháng tính theo giá hạch toán và giá thực tế, các dòng ngang phản ánh các đối tượng sử dụng nguyên liệu, vật liệu công cụ, dụng cụ.</p>
 <p>- Căn cứ vào các chứng từ xuất kho vật liệu và hệ số chênh lệch giữa giá hạch toán và giá thực tế của từng loại vật liệu để tính giá thực tế nguyên liệu, vật liệu, công cụ xuất kho.</p>
 <p>Giá trị nguyên liệu, vật liệu, công cụ, dụng cụ xuất kho trong tháng theo giá thực tế phản ánh trong Bảng phân bổ nguyên liệu, vật liệu, công cụ, dụng cụ theo từng đối tượng sử dụng được dùng làm căn cứ để ghi vào bên Có các Tài khoản 152, 153, 242 của các Bảng kê, Nhật ký - Chứng từ và sổ kế toán liên quan tuỳ theo hình thức kế toán đơn vị áp dụng (Sổ Cái hoặc Nhật ký - sổ Cái TK 152, 153,...). Số liệu của Bảng phân bổ này đồng thời được sử dụng để tập hợp chi phí tính giá thành sản phẩm, dịch vụ.</p>
-<h3>III. CHỈ TIÊU BÁN HÀNG</h3>
+<h3 id="pl-1630">III. CHỈ TIÊU BÁN HÀNG</h3>
 <h3>1. Mục đích</h3>
 <p>Theo dõi tình hình nhập, xuất, tồn tại quầy, thanh toán hàng nhằm cung cấp thông tin cần thiết cho kế toán và người quản lý của đơn trong việc quản lý hàng hóa.</p>
 <h3>2. Nội dung</h3>
 <p>Thuộc chỉ tiêu bán hàng gồm các biểu mẫu sau:</p>
 <p>Bảng thanh toán hàng đại lý, ký gửi                                         - Mẫu số 01-BH</p>
 <p>Thẻ quầy hàng                                                                          - Mẫu số 02-BH</p>
-<h3>BẢNG THANH TOÁN HÀNG ĐẠI LÝ, KÝ GỬI</h3>
+<h3 id="pl-1637">BẢNG THANH TOÁN HÀNG ĐẠI LÝ, KÝ GỬI</h3>
 <p><em>(Mẫu số 01 - BH)</em></p>
 <h3>1. Mục đích</h3>
 <p>Phản ánh tình hình thanh toán hàng đại lý, ký gửi giữa đơn vị có hàng và đơn vị nhận bán hàng, là chứng từ để đơn vị có hàng và đơn vị nhận bán hàng đại lý, ký gửi thanh toán tiền và ghi sổ kế toán.</p>
@@ -1656,7 +1663,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Mục V: Ghi số tiền bên bán hàng đại lý thanh toán cho bên có hàng đại lý kỳ này (ghi rõ số tiền mặt và tiền séc).</p>
 <p>Mục VI: Ghi số tiền bên bán hàng đại lý còn nợ bên có hàng đại lý đến thời điểm thanh toán (Mục VI = Mục III - Mục IV - Mục V).</p>
 <p>Bảng thanh toán hàng đại lý, ký gửi do bên nhận bán hàng đại lý, ký gửi lập thành 3 bản. Sau khi lập xong, người lập ký, chuyển cho kế toán trưởng hai bên soát xét và trình giám đốc hai bên ký duyệt đóng dấu, một bản lưu ở nơi lập (phòng kế hoạch hoặc phòng cung tiêu), 1 bản lưu ở phòng kế toán để làm chứng từ thanh toán và ghi sổ kế toán, 1 bản gửi cho bên có hàng đại lý, ký gửi.</p>
-<h3>THẺ QUẦY HÀNG</h3>
+<h3 id="pl-1659">THẺ QUẦY HÀNG</h3>
 <p><em>(Mẫu số 02-BH)</em></p>
 <h3>1. Mục đích</h3>
 <p>Theo dõi số lượng và giá trị hàng hóa trong quá trình nhận và bán tại quầy hàng, giúp cho người bán hàng thường xuyên nắm được tình hình nhập, xuất, tồn tại quầy, làm căn cứ để kiểm tra, quản lý hàng hóa và lập bảng kê bán hàng từng ngày (kỳ).</p>
@@ -1676,7 +1683,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 9: Ghi số lượng hàng tồn lại quầy hàng vào cuối ngày (ca).</p>
 <p>Cuối tháng cộng thẻ quầy hàng để lập báo cáo bán hàng.</p>
 <p>Thẻ này do người bán hàng giữ và ghi hàng ngày (ca), trước khi sử dụng phải đăng ký với kế toán.</p>
-<h3>IV- CHỈ TIÊU TIỀN TỆ</h3>
+<h3 id="pl-1679">IV- CHỈ TIÊU TIỀN TỆ</h3>
 <h3>1. Mục đích</h3>
 <p>Theo dõi tình hình thu, chi, tồn quỹ các loại tiền mặt, ngoại tệ, vàng tiền tệ và các khoản tạm ứng, thanh toán tạm ứng của đơn vị, nhằm cung cấp những thông tin cần thiết cho kế toán và người quản lý của đơn vị trong lĩnh vực tiền tệ.</p>
 <h3>2. Nội dung</h3>
@@ -1688,7 +1695,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <tr><td style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;">- Bảng kiểm kê quỹ (dùng cho VND):</td><td style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;">Mẫu số 08a - TT</td></tr>
 <tr><td style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;">- Bảng kiểm kê quỹ (dùng cho ngoại tệ, vàng tiền tệ):<br><br>- Bảng kê chi tiền:</td><td style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;">Mẫu số 08b - TT<br><br>Mẫu số 09 - TT</td></tr>
 </table>
-<h3>PHIẾU THU</h3>
+<h3 id="pl-1691">PHIẾU THU</h3>
 <p>(Mẫu số 01 -TT)</p>
 <h3>1. Mục đích</h3>
 <p>Nhằm xác định số tiền mặt, ngoại tệ,... thực tế nhập quỹ và làm căn cứ để thủ quỹ thu tiền, ghi sổ quỹ, kế toán ghi sổ các khoản thu có liên quan. Mọi khoản tiền Việt Nam, ngoại tệ nhập quỹ đều phải có Phiếu thu.</p>
@@ -1705,7 +1712,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p><strong>_Chú ý:_</strong></p>
 <p>+ Nếu là thu ngoại tệ phải ghi rõ tỷ giá tại thời điểm nhập quỹ để tính ra tổng số tiền theo đơn vị đồng để ghi sổ.</p>
 <p>+ Liên phiếu thu gửi ra ngoài doanh nghiệp phải đóng dấu.</p>
-<h3>PHIẾU CHI</h3>
+<h3 id="pl-1708">PHIẾU CHI</h3>
 <p>(Mẫu số 02 - TT)</p>
 <h3>1. Mục đích</h3>
 <p>Nhằm xác định các khoản tiền mặt, ngoại tệ thực tế xuất quỹ và làm căn cứ để thủ quỹ xuất quỹ, ghi sổ quỹ và kế toán ghi sổ kế toán.</p>
@@ -1723,7 +1730,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p><strong>_Chú ý:_</strong></p>
 <p>+ Nếu là chi ngoại tệ phải ghi rõ tỷ giá, đơn giá tại thời điểm xuất quỹ để tính ra tổng số tiền theo đơn vị đồng tiền ghi sổ.</p>
 <p>+ Liên phiếu chi gửi ra ngoài doanh nghiệp phải đóng dấu.</p>
-<h3>GIẤY ĐỀ NGHỊ TẠM ỨNG</h3>
+<h3 id="pl-1726">GIẤY ĐỀ NGHỊ TẠM ỨNG</h3>
 <p>(Mẫu số 03 - TT)</p>
 <h3>1. Mục đích</h3>
 <p>Giấy đề nghị tạm ứng là căn cứ để xét duyệt tạm ứng, làm thủ tục lập phiếu chi và xuất quỹ cho tạm ứng.</p>
@@ -1733,7 +1740,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Lý do tạm ứng ghi rõ mục đích sử dụng tiền tạm ứng như: Tiền công tác phí, mua văn phòng phẩm, tiếp khách ...</p>
 <p>- Thời hạn thanh toán: Ghi rõ ngày, tháng hoàn lại số tiền đã tạm ứng.</p>
 <p>Giấy đề nghị tạm ứng được chuyển cho kế toán trưởng xem xét và ghi ý kiến đề nghị giám đốc duyệt chi. Căn cứ quyết định của giám đốc, kế toán lập phiếu chi kèm theo giấy đề nghị tạm ứng và chuyển cho thủ quỹ làm thủ tục xuất quỹ.</p>
-<h3>GIẤY THANH TOÁN TIỀN TẠM ỨNG</h3>
+<h3 id="pl-1736">GIẤY THANH TOÁN TIỀN TẠM ỨNG</h3>
 <p>(Mẫu số 04 - TT)</p>
 <h3>1. Mục đích</h3>
 <p>Giấy thanh toán tiền tạm ứng là bảng liệt kê các khoản tiền đã nhận tạm ứng và các khoản đã chi của người nhận tạm ứng, làm căn cứ thanh toán số tiền tạm ứng và ghi sổ kế toán.</p>
@@ -1749,7 +1756,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Nếu chi quá số tạm ứng ghi vào dòng 2 của Mục III.</p>
 <p>Sau khi lập xong giấy thanh toán tiền tạm ứng, kế toán thanh toán chuyển cho kế toán trưởng soát xét và giám đốc doanh nghiệp duyệt. Giấy thanh toán tiền tạm ứng kèm theo chứng từ gốc được dùng làm căn cứ ghi sổ kế toán.</p>
 <p>Phần chênh lệch tiền tạm ứng chi không hết phải làm thủ tục thu hồi nộp quỹ hoặc trừ vào lương. Phần chi quá số tạm ứng phải làm thủ tục xuất quỹ trả lại cho người tạm ứng. Chứng từ gốc, giấy thanh toán tạm ứng phải đính kèm phiếu thu hoặc phiếu chi có liên quan.</p>
-<h3>GIẤY ĐỀ NGHỊ THANH TOÁN</h3>
+<h3 id="pl-1752">GIẤY ĐỀ NGHỊ THANH TOÁN</h3>
 <p>(Mẫu số 05 - TT)</p>
 <h3>1. Mục đích</h3>
 <p>Giấy đề nghị thanh toán dùng trong trường hợp đã chi nhưng chưa được thanh toán hoặc chưa nhận tạm ứng để tổng hợp các khoản đã chi kèm theo chứng từ (nếu có) để làm thủ tục thanh toán, làm căn cứ thanh toán và ghi sổ kế toán.</p>
@@ -1759,7 +1766,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Nội dung thanh toán: Ghi rõ nội dung đề nghị thanh toán.</p>
 <p>- Giấy đề nghị thanh toán phải ghi rõ số lượng chứng từ gốc đính kèm.</p>
 <p>Sau khi mua hàng hoặc sau khi chi tiêu cho những nhiệm vụ được giao, người mua hàng hoặc chi tiêu lập giấy đề nghị thanh toán. Giấy đề nghị thanh toán được chuyển cho kế toán trưởng soát xét và ghi ý kiến đề nghị giám đốc doanh nghiệp (hoặc người được ủy quyền) duyệt chi. Căn cứ quyết định của giám đốc, kế toán lập phiếu chi kèm theo giấy đề nghị thanh toán và chuyển cho thủ quỹ làm thủ tục xuất quỹ.</p>
-<h3>BIÊN LAI THU TIỀN</h3>
+<h3 id="pl-1762">BIÊN LAI THU TIỀN</h3>
 <p>(Mẫu số 06 - TT)</p>
 <h3>1. Mục đích</h3>
 <p>Biên lai thu tiền là giấy biên nhận của doanh nghiệp hoặc cá nhân đã thu tiền hoặc thu séc của người nộp làm căn cứ để lập phiếu thu, nộp tiền vào quỹ, đồng thời để người nộp thanh toán với cơ quan hoặc lưu quỹ.</p>
@@ -1772,7 +1779,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Biên lai thu tiền được lập thành hai liên (đặt giấy than viết một lần).</p>
 <p>Sau khi thu tiền, người thu tiền và người nộp tiền cùng ký và ghi rõ họ tên để xác nhận số tiền đã thu, đã nộp. Ký xong người thu tiền lưu 1 liên, còn liên 2 giao cho người nộp tiền giữ.</p>
 <p>Cuối ngày, người được đơn vị giao nhiệm vụ thu tiền phải căn cứ vào bản biên lai lưu để lập Bảng kê biên lai thu tiền trong ngày (nếu thu séc phải lập Bảng kê thu séc riêng) và nộp cho kế toán để kế toán lập phiếu thu làm thủ tục nhập quỹ hoặc làm thủ tục nộp ngân hàng. Tiền mặt thu được ngày nào, người thu tiền phải nộp quỹ ngày đó.</p>
-<h3>BẢNG KÊ VÀNG TIỀN TỆ</h3>
+<h3 id="pl-1775">BẢNG KÊ VÀNG TIỀN TỆ</h3>
 <p>(Mẫu số 07 - TT)</p>
 <h3>1. Mục đích</h3>
 <p>Bảng kê vàng tiền tệ dùng để liệt kê số vàng tiền tệ của đơn vị, nhằm quản lý chặt chẽ, chính xác các loại vàng tiền tệ có tại đơn vị và làm căn cứ cùng với chứng từ gốc để lập phiếu thu, chi quỹ.</p>
@@ -1785,7 +1792,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p><strong><em>Ghi chú:</em></strong> Khi cần thiết, tại cột B có thể ghi rõ ký hiệu của loại vàng tiền tệ...</p>
 <p>Bảng kê do người đứng ra kiểm nghiệm lập thành 2 liên, 1 liên đính kèm với phiếu thu (chi) chuyển cho thủ quỹ để làm thủ tục nhập hoặc xuất quỹ và 1 liên giao cho người nộp (hoặc nhận).</p>
 <p>Bảng kê phải có đầy đủ chữ ký và ghi rõ họ tên như qui định.</p>
-<h3>BẢNG KIỂM KÊ QUỸ</h3>
+<h3 id="pl-1788">BẢNG KIỂM KÊ QUỸ</h3>
 <h3>_(Dùng cho VND)_</h3>
 <p>(Mẫu số 08a - TT)</p>
 <h3>1. Mục đích</h3>
@@ -1802,7 +1809,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Bảng kiểm kê quỹ do ban kiểm kê quỹ lập thành 2 bản:</p>
 <p>- 1 bản lưu ở thủ quỹ.</p>
 <p>- 1 bản lưu ở kế toán quỹ tiền mặt hoặc kế toán thanh toán.</p>
-<h3>BẢNG KIỂM KÊ QUỸ</h3>
+<h3 id="pl-1805">BẢNG KIỂM KÊ QUỸ</h3>
 <h3>_(Dùng cho ngoại tệ, vàng tiền tệ)_</h3>
 <p>(Mẫu số 08b - TT)</p>
 <h3>1. Mục đích</h3>
@@ -1819,7 +1826,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- 1 bản lưu ở thủ quỹ</p>
 <p>- 1 bản lưu ở kế toán quỹ.</p>
 <p><strong>Ghi chú:</strong> () Trường hợp kiểm kê vàng tiền tệ thì cột “Diễn giải” phải ghi theo từng loại, từng thứ.</p>
-<h3>BẢNG KÊ CHI TIỀN</h3>
+<h3 id="pl-1822">BẢNG KÊ CHI TIỀN</h3>
 <p>(Mẫu số 09 - TT)</p>
 <h3>1. Mục đích</h3>
 <p>Bảng kê chi tiền là bảng liệt kê các khoản tiền đã chi, làm căn cứ quyết toán các khoản tiền đã chi và ghi sổ kế toán.</p>
@@ -1831,7 +1838,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Bảng kê chi tiền được lập thành 2 bản:</p>
 <p>- 1 bản lưu ở thủ quỹ.</p>
 <p>- 1 bản lưu ở kế toán quỹ.</p>
-<h3>V. CHỈ TIÊU TÀI SẢN CỐ ĐỊNH</h3>
+<h3 id="pl-1834">V. CHỈ TIÊU TÀI SẢN CỐ ĐỊNH</h3>
 <h3>1. Mục đích</h3>
 <p>Theo dõi tình hình biến động về số lượng, chất lượng và giá trị của TSCĐ. Giám đốc chặt chẽ tình hình sử dụng, thanh lý và sửa chữa lớn tài sản cố định.</p>
 <h3>2. Nội dung</h3>
@@ -1839,7 +1846,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <table style="width:100%;border-collapse:collapse;font-size:14px;margin:12px 0;">
 <tr><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">- Biên bản giao nhận TSCĐ<br><br>- Biên bản thanh lý TSCĐ<br><br>- Biên bản bàn giao TSCĐ sửa chữa, bảo dưỡng hoặc nâng cấp, cải tạo hoàn thành<br><br>- Biên bản đánh giá lại TSCĐ<br><br>- Biên bản tổng hợp kiểm kê TSCĐ<br><br>- Bảng tính và phân bổ khấu hao TSCĐ</th><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">- Mẫu số 01 - TSCĐ<br><br>- Mẫu số 02 - TSCĐ<br><br>- Mẫu số 03 - TSCĐ<br><br>- Mẫu số 04 - TSCĐ<br><br>- Mẫu số 05 - TSCĐ<br><br>- Mẫu số 06 - TSCĐ</th></tr>
 </table>
-<h3>BIÊN BẢN GIAO NHẬN TÀI SẢN CỐ ĐỊNH</h3>
+<h3 id="pl-1842">BIÊN BẢN GIAO NHẬN TÀI SẢN CỐ ĐỊNH</h3>
 <p><em>(Mẫu số 01 - TSCĐ)</em></p>
 <h3>1. Mục đích</h3>
 <p>Nhằm xác nhận việc giao nhận TSCĐ sau khi hoàn thành xây dựng, mua sắm, được cấp trên cấp, được tặng, biếu, viện trợ, nhận góp vốn, TSCĐ thuê ngoài...đưa vào sử dụng tại đơn vị hoặc tài sản của đơn vị bàn giao cho đơn vị khác theo lệnh của cấp trên, theo hợp đồng góp vốn,...(không sử dụng biên bản giao nhận TSCĐ trong trường hợp nhượng bán, thanh lý hoặc tài sản cố định phát hiện thừa, thiếu khi kiểm kê). Biên bản giao nhận TSCĐ là căn cứ để giao nhận TSCĐ và kế toán ghi sổ (thẻ) TSCĐ, sổ kế toán có liên quan.</p>
@@ -1857,7 +1864,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Cột E: Ghi những tài liệu kỹ thuật kèm theo TSCĐ khi bàn giao.</p>
 <p>Bảng kê phụ tùng kèm theo: Liệt kê số phụ tùng, dụng cụ đồ nghề kèm theo TSCĐ khi bàn giao. Sau khi bàn giao xong các thành viên bàn giao, nhận TSCĐ cùng ký vào biên bản.</p>
 <p>Biên bản giao nhận TSCĐ được lập thành 2 bản, mỗi bên (giao, nhận) giữ 1 bản chuyển cho phòng kế toán để ghi sổ kế toán và lưu.</p>
-<h3>BIÊN BẢN THANH LÝ TÀI SẢN CỐ ĐỊNH</h3>
+<h3 id="pl-1860">BIÊN BẢN THANH LÝ TÀI SẢN CỐ ĐỊNH</h3>
 <p><em>(Mẫu số 02 - TSCĐ)</em></p>
 <h3>1. Mục đích</h3>
 <p>Xác nhận việc thanh lý TSCĐ và làm căn cứ để ghi giảm TSCĐ trên sổ kế toán.</p>
@@ -1869,7 +1876,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Mục III ghi kết luận của Ban thanh lý, ghi ý kiến nhận xét của Ban về việc thanh lý TSCĐ.</p>
 <p>Mục IV, kết quả thanh lý: Sau khi thanh lý xong căn cứ vào chứng từ tính toán tổng số chi phí thanh lý thực tế và giá trị thu hồi ghi vào dòng chi phí thanh lý và giá trị thu hồi (giá trị phụ tùng, phế liệu thu hồi tính theo giá thực tế đã bán hoặc giá bán ước tính).</p>
 <p>Biên bản thanh lý phải do Ban thanh lý TSCĐ lập và có đầy đủ chữ ký, ghi rõ họ tên của trưởng Ban thanh lý, kế toán trưởng và giám đốc doanh nghiệp.</p>
-<h3>BIÊN BẢN BÀN GIAO TSCĐ</h3>
+<h3 id="pl-1872">BIÊN BẢN BÀN GIAO TSCĐ</h3>
 <h3>SỬA CHỮA, BẢO DƯỠNG HOẶC NÂNG CẤP, CẢI TẠO HOÀN THÀNH</h3>
 <p><em>(Mẫu số 03 - TSCĐ)</em></p>
 <h3>1. Mục đích</h3>
@@ -1888,7 +1895,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Cột 3: Ghi rõ kết quả kiểm tra của từng bộ phận sau khi đã sửa chữa, bảo dưỡng hoặc nâng cấp, cải tạo xong.</p>
 <p>- Kết luận: Ghi ý kiến nhận xét tổng thể về việc sửa chữa, bảo dưỡng hoặc nâng cấp, cải tạo TSCĐ của Hội đồng giao nhận.</p>
 <p>Biên bản giao nhận TSCĐ sửa chữa, bảo dưỡng hoặc nâng cấp, cải tạo hoàn thành lập thành 2 bản, đại diện đơn vị hai bên giao, nhận cùng ký và mỗi bên giữ một bản, lưu tại phòng kế toán.</p>
-<h3>BIÊN BẢN ĐÁNH GIÁ LẠI TÀI SẢN CỐ ĐỊNH</h3>
+<h3 id="pl-1891">BIÊN BẢN ĐÁNH GIÁ LẠI TÀI SẢN CỐ ĐỊNH</h3>
 <p><em>(Mẫu số 04 - TSCĐ)</em></p>
 <h3>1. Mục đích</h3>
 <p>Xác nhận việc đánh giá lại TSCĐ và làm căn cứ để ghi sổ kế toán và các tài liệu liên quan đến số chênh lệch (tăng, giảm) do đánh giá lại TSCĐ.</p>
@@ -1901,7 +1908,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Cột 7, 8, 9: Ghi số chênh lệch giữa giá đánh giá so với giá trị đang ghi trên sổ kế toán.</p>
 <p>Sau khi đánh giá xong, Hội đồng có trách nhiệm lập biên bản ghi đầy đủ các nội dung và các thành viên trong Hội đồng ký, ghi rõ họ tên vào Biên bản đánh giá lại TSCĐ.</p>
 <p>Biên bản đánh giá lại TSCĐ được lập thành 2 bản, 1 bản lưu tại phòng kế toán để ghi sổ kế toán và 1 bản lưu cùng với hồ sơ kỹ thuật của TSCĐ.</p>
-<h3>BIÊN BẢN TỔNG HỢP KIỂM KÊ TÀI SẢN CỐ ĐỊNH</h3>
+<h3 id="pl-1904">BIÊN BẢN TỔNG HỢP KIỂM KÊ TÀI SẢN CỐ ĐỊNH</h3>
 <p>(Mẫu số 05 - TSCĐ)</p>
 <h3>1. Mục đích</h3>
 <p>Biên bản tổng hợp kiểm kê tài sản cố định nhằm xác nhận số lượng, giá trị tài sản cố định hiện có, thừa thiếu so với sổ kế toán trên cơ sở đó tăng cường quản lý tài sản cố định và làm cơ sở quy trách nhiệm vật chất, ghi sổ kế toán số chênh lệch.</p>
@@ -1913,7 +1920,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Dòng “Theo kiểm kê” căn cứ vào kết quả kiểm kê thực tế để ghi theo từng đối tượng TSCĐ, phải ghi cả 3 chỉ tiêu: số lượng, nguyên giá, giá trị còn lại vào cột 4,5,6.</p>
 <p>Dòng “Chênh lệch” ghi số chênh lệch thừa hoặc thiếu theo 3 chỉ tiêu: số lượng, nguyên giá, giá trị còn lại vào cột 7,8,9.</p>
 <p>Trên Biên bản tổng hợp kiểm kê TSCĐ cần phải xác định và ghi rõ nguyên nhân gây ra thừa hoặc thiếu TSCĐ, có ý kiến nhận xét và kiến nghị của Ban kiểm kê. Biên bản tổng hợp kiểm kê TSCĐ phải có chữ ký (ghi rõ họ tên) của Trưởng ban kiểm kê, chữ ký soát xét của kế toán trưởng và giám đốc doanh nghiệp duyệt. Mọi khoản chênh lệch về TSCĐ của đơn vị đều phải báo cáo giám đốc doanh nghiệp xem xét.</p>
-<h3>BẢNG TÍNH VÀ PHÂN BỔ KHẤU HAO TSCĐ</h3>
+<h3 id="pl-1916">BẢNG TÍNH VÀ PHÂN BỔ KHẤU HAO TSCĐ</h3>
 <p>(Mẫu số 06 - TSCĐ)</p>
 <h3>1. Mục đích</h3>
 <p>Dùng để phản ánh số khấu hao TSCĐ phải trích và phân bổ số khấu hao đó cho các đối tượng sử dụng TSCĐ hàng tháng.</p>
@@ -1924,7 +1931,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>+ Các dòng số khấu hao TSCĐ tăng, giảm tháng này được phản ánh chi tiết cho từng TSCĐ có liên quan đến số tăng, giảm khấu hao TSCĐ theo chế độ quy định hiện hành về khấu hao TSCĐ.</p>
 <p>Dòng số khấu hao phải tính tháng này được tính bằng (=) số khấu hao tính tháng trước cộng (+) sổ khấu hao tăng, trừ (-) số khấu hao giảm trong tháng.</p>
 <p>Số khấu hao phải trích tháng này trên Bảng phân bổ khấu hao TSCĐ được sử dụng để ghi vào các Bảng kê, Nhật ký - Chứng từ và sổ kế toán có liên quan (cột ghi Có TK 214), đồng thời được sử dụng để tính giá thành thực tế sản phẩm, dịch vụ hoàn thành.</p>
-<h2>Phụ lục III — Sổ kế toán</h2>
+<h2 id="pl-1927">Phụ lục III — Sổ kế toán</h2>
 <p><strong>Phụ lục III</strong></p>
 <h3>SỔ KẾ TOÁN</h3>
 <p><em>(Kèm theo Thông tư số 99/2025/TT-BTC</em></p>
@@ -2081,7 +2088,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <h3>[Biểu số 05. TRÌNH TỰ GHI SỔ KẾ TOÁN THEO HÌNH THỨC KẾ TOÁN TRÊN MÁY VI TÍNH](https://static3.luatvietnam.vn/uploaded/others/2025/11/05/bieu_so_05._trinh_tu_ghi_so_ke_toan_theo_hinh_thuc_ke_toan_tren_may_vi_tinh_0511081104.docx)</h3>
 <h3>PHẦN C - GIẢI THÍCH NỘI DUNG VÀ PHƯƠNG PHÁP GHI SỔ KẾ TOÁN</h3>
 <h3>I. Giải thích nội dung và phương pháp ghi sổ tổng hợp</h3>
-<h3>1. Nội dung, kết cấu và phương pháp ghi sổ theo hình thức Nhật ký - Sổ Cái</h3>
+<h3 id="pl-2084">1. Nội dung, kết cấu và phương pháp ghi sổ theo hình thức Nhật ký - Sổ Cái</h3>
 <p>Sổ kế toán tổng hợp của hình thức kế toán Nhật ký - Sổ Cái chỉ có một quyển sổ duy nhất là sổ Nhật ký - Sổ Cái (Mẫu số S01-DN)</p>
 <p>a) Nội dung:</p>
 <p>- Nhật ký - Sổ Cái là sổ kế toán tổng hợp duy nhất dùng để phản ánh tất cả các nghiệp vụ kinh tế phát sinh theo trình tự thời gian và hệ thống hóa theo nội dung kinh tế (Theo tài khoản kế toán).</p>
@@ -2099,8 +2106,8 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột H: Ghi số thứ tự dòng của nghiệp vụ trong Nhật ký - sổ Cái;</p>
 <p>- Từ cột 2 trở đi: Ghi số tiền phát sinh của mỗi tài khoản theo quan hệ đối ứng đã được định khoản ở các cột F,G.</p>
 <p>Cuối tháng phải cộng số tiền phát sinh ở phần nhật ký và số phát sinh nợ, số phát sinh có, tính ra số dư và cộng lũy kế số phát sinh từ đầu quý của từng tài khoản để làm căn cứ lập Báo cáo tài chính.</p>
-<h3>2. Nội dung, kết cấu và phương pháp ghi sổ theo hình thức Chứng từ ghi sổ</h3>
-<h3>(1) Sổ Đăng ký chứng từ ghi sổ (Mẫu số S02b-DN)</h3>
+<h3 id="pl-2102">2. Nội dung, kết cấu và phương pháp ghi sổ theo hình thức Chứng từ ghi sổ</h3>
+<h3 id="pl-2103">(1) Sổ Đăng ký chứng từ ghi sổ (Mẫu số S02b-DN)</h3>
 <p><em>a) Nội dung:</em></p>
 <p>Sổ Đăng ký chứng từ ghi sổ là sổ kế toán tổng hợp dùng để ghi chép các nghiệp vụ kinh tế phát sinh theo trình tự thời gian (Nhật ký). Sổ này vừa dùng để đăng ký các nghiệp vụ kinh tế phát sinh, quản lý chứng từ ghi sổ, vừa để kiểm tra, đối chiếu số liệu với Bảng Cân đối số phát sinh.</p>
 <p><em>b) Kết cấu và phương pháp ghi chép:</em></p>
@@ -2110,7 +2117,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Cuối trang sổ phải cộng số lũy kế để chuyển sang trang sau.</p>
 <p>Đầu trang sổ phải ghi số cộng trang trước chuyển sang.</p>
 <p>Cuối tháng, cuối năm, kế toán cộng tổng số tiền phát sinh trên sổ Đăng ký chứng từ ghi sổ, lấy số liệu đối chiếu với Bảng Cân đối số phát sinh.</p>
-<h3>(2) Sổ Cái (Mẫu số S02c1-DN và S02c2-DN)</h3>
+<h3 id="pl-2113">(2) Sổ Cái (Mẫu số S02c1-DN và S02c2-DN)</h3>
 <p>a) <em>Nội dung:</em></p>
 <p>Sổ Cái là sổ kế toán tổng hợp dùng để ghi các nghiệp vụ kinh tế phát sinh theo tài khoản kế toán được quy định trong chế độ tài khoản kế toán áp dụng cho doanh nghiệp.</p>
 <p>Số liệu ghi trên sổ Cái dùng để kiểm tra, đối chiếu với số liệu ghi trên Bảng tổng hợp chi tiết hoặc các sổ (thẻ) kế toán chi tiết và dùng để lập Bảng cân đối số phát sinh và Báo cáo Tài chính.</p>
@@ -2138,7 +2145,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cuối mỗi trang phải cộng tổng số tiền theo từng cột và chuyển sang đầu trang sau.</p>
 <p>- Cuối tháng, (quý, năm) kế toán phải khóa sổ, cộng số phát sinh Nợ, số phát sinh Có, tính ra số dư và cộng lũy kế số phát sinh từ đầu quý, đầu năm của từng tài khoản để làm căn cứ lập Bảng Cân đối số phát sinh và Báo cáo tài chính.</p>
 <h3>3. Nội dung, kết cấu và phương pháp ghi sổ theo hình thức nhật ký chung</h3>
-<h3>(1) Nhật ký chung (Mẫu số 03a-DN)</h3>
+<h3 id="pl-2141">(1) Nhật ký chung (Mẫu số 03a-DN)</h3>
 <p>a) Nội dung:</p>
 <p>Sổ Nhật ký chung là sổ kế toán tổng hợp dùng để ghi chép các nghiệp vụ kinh tế, tài chính phát sinh theo trình tự thời gian đồng thời phản ánh theo quan hệ đối ứng tài khoản (Định khoản kế toán) để phục vụ việc ghi sổ Cái. Số liệu ghi trên sổ Nhật ký chung được dùng làm căn cứ để ghi vào sổ Cái.</p>
 <p>b) Kết cấu và phương pháp ghi sổ:</p>
@@ -2155,7 +2162,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Về nguyên tắc tất cả các nghiệp vụ kinh tế, tài chính phát sinh đều phải ghi vào sổ Nhật ký chung. Tuy nhiên, trong trường hợp một hoặc một số đối tượng kế toán có số lượng phát sinh lớn, để đơn giản và giảm bớt khối lượng ghi sổ Cái, doanh nghiệp có thể mở các sổ Nhật ký đặc biệt để ghi riêng các nghiệp vụ phát sinh liên quan đến các đối tượng kế toán đó.</p>
 <p>Các sổ Nhật ký đặc biệt là một phần của sổ Nhật ký chung nên phương pháp ghi chép tương tự như sổ Nhật ký chung. Song để tránh sự trùng lặp các nghiệp vụ đã ghi vào sổ Nhật ký đặc biệt thì không ghi vào sổ Nhật ký chung. Trường hợp này, căn cứ để ghi sổ Cái là sổ Nhật ký chung và các sổ Nhật ký đặc biệt.</p>
 <p>Dưới đây là hướng dẫn nội dung, kết cấu và cách ghi sổ của một số Nhật ký đặc biệt thông dụng.</p>
-<h3>_(1.1) Sổ Nhật ký thu tiền (Mẫu số 03a1-DN)_</h3>
+<h3 id="pl-2158">_(1.1) Sổ Nhật ký thu tiền (Mẫu số 03a1-DN)_</h3>
 <p>a) Nội dung: Là sổ Nhật ký đặc biệt dùng để ghi chép các nghiệp vụ thu tiền của doanh nghiệp. Mẫu sổ này được mở riêng cho thu tiền mặt, thu qua ngân hàng, cho từng loại tiền (đồng Việt Nam, ngoại tệ) hoặc cho từng nơi thu tiền (Ngân hàng A, Ngân hàng B...).</p>
 <p>b) Kết cấu và phương pháp ghi sổ:</p>
 <p>- Cột A: Ghi ngày, tháng ghi sổ.</p>
@@ -2165,7 +2172,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 2,3,4,5,6: Ghi số tiền phát sinh bên Có của các tài khoản đối ứng.</p>
 <p>Cuối trang sổ, cộng số phát sinh lũy kế để chuyển sang trang sau.</p>
 <p>Đầu trang sổ, ghi số cộng trang trước chuyển sang.</p>
-<h3>_(1.2) Nhật ký chi tiền (Mẫu sổ S03a2-DN)_</h3>
+<h3 id="pl-2168">_(1.2) Nhật ký chi tiền (Mẫu sổ S03a2-DN)_</h3>
 <p>a) Nội dung: Là sổ Nhật ký đặc biệt dùng để ghi chép các nghiệp vụ chi tiền của doanh nghiệp. Mẫu sổ này được mở riêng cho chi tiền mặt, chi tiền qua ngân hàng, cho từng loại tiền (đồng Việt Nam, ngoại tệ) hoặc cho từng nơi chi tiền (Ngân hàng A, Ngân hàng B...).</p>
 <p>b) Kết cấu và phương pháp ghi sổ:</p>
 <p>- Cột A: Ghi ngày, tháng ghi sổ.</p>
@@ -2174,7 +2181,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 1: Ghi số tiền chi ra vào bên Có của tài khoản tiền được theo dõi trên sổ này, như: Tiền mặt, tiền gửi không kỳ hạn...</p>
 <p>- Cột 2,3,4,5,6 : Ghi số tiền phát sinh bên Nợ của các tài khoản đối ứng.</p>
 <p>Cuối trang sổ, cộng số phát sinh lũy kế để chuyển sang trang sau. Đầu trang sổ, ghi số cộng trang trước chuyển sang.</p>
-<h3>_(1.3) Nhật ký mua hàng (Mẫu số S03a3-DN)_</h3>
+<h3 id="pl-2177">_(1.3) Nhật ký mua hàng (Mẫu số S03a3-DN)_</h3>
 <p>a) Nội dung: Là sổ Nhật ký đặc biệt dùng để ghi chép các nghiệp vụ mua hàng theo từng loại hàng tồn kho của đơn vị, như: Nguyên liệu, vật liệu; công cụ, dụng cụ; hàng hóa;...</p>
 <p>Sổ Nhật ký mua hàng dùng để ghi chép các nghiệp vụ mua hàng theo hình thức trả tiền sau (mua chịu). Trường hợp trả tiền trước cho người bán thì khi phát sinh nghiệp vụ mua hàng cũng ghi vào sổ này.</p>
 <p>b) Kết cấu và phương pháp ghi sổ.</p>
@@ -2184,7 +2191,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 1, 2, 3 : Ghi Nợ các tài khoản hàng tồn kho như: Hàng hóa, nguyên liệu vật liệu, công cụ, dụng cụ... Trường hợp đơn vị mở sổ này cho từng loại hàng tồn kho thì các cột này có thể dùng để ghi chi tiết cho loại hàng tồn kho đó như: Hàng hóa A, hàng hóa B...</p>
 <p>- Cột 4: Ghi số tiền phải trả người bán tương ứng với số hàng đã mua.</p>
 <p>Cuối trang sổ, cộng số lũy kế để chuyển sang trang sau. Đầu trang sổ, ghi số cộng trang trước chuyển sang.</p>
-<h3>_(1.4) Nhật ký bán hàng (Mẫu số S03a4-DN)_</h3>
+<h3 id="pl-2187">_(1.4) Nhật ký bán hàng (Mẫu số S03a4-DN)_</h3>
 <p>a) Nội dung: Là sổ Nhật ký đặc biệt dùng để ghi chép các nghiệp vụ bán hàng của doanh nghiệp như: Bán hàng hóa, bán sản phẩm, bán dịch vụ.</p>
 <p>Sổ Nhật ký bán hàng dùng để ghi chép các nghiệp vụ bán hàng theo hình thức thu tiền sau (bán chịu). Trường hợp người mua trả tiền trước thì khi phát sinh nghiệp vụ bán hàng cũng ghi vào sổ này.</p>
 <p>b) Kết cấu và cách ghi sổ:</p>
@@ -2195,7 +2202,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 2, 3, 4: Mở theo yêu cầu của doanh nghiệp để ghi doanh thu theo từng loại nghiệp vụ: Bán hàng hóa, bán sản phẩm, bán bất động sản đầu tư, cung cấp dịch vụ... Trường hợp doanh nghiệp mở sổ này cho từng loại doanh thu: Bán hàng hóa, bán sản phẩm, bán bất động sản đầu tư, cung cấp dịch vụ... thì các cột này có thể dùng để ghi chi tiết cho từng loại hàng hóa, sản phẩm, bất động sản đầu tư, dịch vụ. Trường hợp không cần thiết, doanh nghiệp có thể gộp 3 cột này thành 1 cột để ghi doanh thu bán hàng chung.</p>
 <p>Cuối trang sổ, cộng số lũy kế để chuyển sang trang sau. Đầu trang sổ, ghi số cộng trang trước chuyển sang.</p>
 <p>Doanh nghiệp có thể mở một hoặc một số sổ Nhật ký đặc biệt như đã nêu trên để ghi chép. Trường hợp cần mở thêm các sổ Nhật ký đặc biệt khác phải tuân theo các nguyên tắc mở sổ và ghi sổ đã quy định.</p>
-<h3>(2) Sổ Cái (Mẫu số S03b-DN)</h3>
+<h3 id="pl-2198">(2) Sổ Cái (Mẫu số S03b-DN)</h3>
 <p>a) Nội dung: sổ Cái là sổ kế toán tổng hợp dùng để ghi chép các nghiệp vụ kinh tế, tài chính phát sinh trong niên độ kế toán theo tài khoản kế toán được quy định trong hệ thống tài khoản kế toán áp dụng cho doanh nghiệp. Mỗi tài khoản được mở một hoặc một số trang liên tiếp trên sổ Cái đủ để ghi chép trong một niên độ kế toán.</p>
 <p>b) Kết cấu và phương pháp ghi sổ:</p>
 <p>Sổ Cái được quy định thống nhất theo mẫu ban hành trong chế độ này.</p>
@@ -2209,7 +2216,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 1, 2: Ghi số tiền phát sinh bên Nợ hoặc bên Có của Tài khoản theo từng nghiệp vụ kinh tế.</p>
 <p>Đầu tháng, ghi số dư đầu kỳ của tài khoản vào dòng đầu tiên, cột số dư (Nợ hoặc Có). Cuối tháng, cộng số phát sinh Nợ, số phát sinh Có, tính ra số dư và cộng lũy kế số phát sinh từ đầu quý của từng tài khoản để làm căn cứ lập Bảng Cân đối số phát sinh và báo cáo tài chính.</p>
 <h3>4. Nội dung, kết cấu và phương pháp ghi sổ theo hình thức Nhật ký - Chứng từ</h3>
-<h3>(1) Nhật ký chứng từ</h3>
+<h3 id="pl-2212">(1) Nhật ký chứng từ</h3>
 <p>Trong hình thức Nhật ký - Chứng từ có 10 Nhật ký - Chứng từ, được đánh số từ Nhật ký - Chứng từ số 1 đến Nhật ký - Chứng từ số 10.</p>
 <p>Nhật ký chứng từ là sổ kế toán tổng hợp, dùng để phản ánh toàn bộ các nghiệp vụ kinh tế, tài chính phát sinh theo vế Có của các tài khoản. Một NKCT có thể mở cho một tài khoản hoặc có thể mở cho một số tài khoản có nội dung kinh tế giống nhau hoặc có quan hệ đối ứng mật thiết với nhau. Khi mở NKCT dùng chung cho nhiều tài khoản thì trên NKCT đó số phát sinh của mỗi tài khoản được phản ánh riêng biệt ở một số dòng hoặc một số cột dành cho mỗi tài khoản. Trong mọi trường hợp số phát sinh bên Có của mỗi tài khoản chỉ tập trung phản ánh trên một NKCT và từ NKCT này ghi vào sổ Cái một lần vào cuối tháng. Số phát sinh Nợ của mỗi tài khoản được phản ánh trên các NKCT khác nhau, ghi Có các tài khoản có liên quan đối ứng Nợ với tài khoản này và cuối tháng được tập hợp vào sổ Cái từ các NKCT đó.</p>
 <p>Để phục vụ nhu cầu phân tích và kiểm tra, ngoài phần chính dùng để phản ánh số phát sinh bên Có, một số NKCT có bố trí thêm các cột phản ánh số phát sinh Nợ, số dư đầu kỳ và số dư cuối kỳ của tài khoản, số liệu của các cột phản ánh số phát sinh bên Nợ các tài khoản trong trường hợp này chỉ dùng cho mục đích kiểm tra, phân tích không dùng để ghi sổ Cái.</p>
@@ -2368,9 +2375,9 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>(2.10) Bảng kê số 11 (Mẫu số S04b11-DN): Dùng để phản ánh tình hình thanh toán tiền hàng với người mua và người đặt hàng (TK 131 “Phải thu của khách hàng”). Kết cấu và phương pháp ghi sổ:</p>
 <p>Bảng kê số 11 gồm có các cột số thứ tự, tên người mua, số dư, các cột phản ánh số phát sinh bên Nợ, bên Có của TK 131 đối ứng Có hoặc Nợ với các tài khoản liên quan.</p>
 <p>Cơ sở để ghi Bảng kê số 11 là căn cứ vào số liệu tổng cộng cuối tháng của sổ theo dõi thanh toán (TK 131 “Phải thu của khách hàng”) mở cho từng người mua, và ghi một lần vào một dòng của Bảng kê số 11. Cuối tháng hoặc cuối quý khoá sổ Bảng kê số 11, xác định số phát sinh bên Có TK 131 và lấy số tổng cộng của Bảng kê số 11 để ghi NKCT số 8 (ghi Có TK 131, Nợ các tài khoản liên quan).</p>
-<h3>(3) Sổ Cái (Mẫu số S05-DN)</h3>
+<h3 id="pl-2371">(3) Sổ Cái (Mẫu số S05-DN)</h3>
 <p>Sổ Cái là sổ kế toán tổng hợp mở cho cả năm, mỗi tờ sổ dùng cho một tài khoản trong đó phản ánh số phát sinh Nợ, số phát sinh Có và số dư cuối tháng hoặc cuối quý. Số phát sinh Có của mỗi tài khoản được phản ánh trên sổ Cái theo tổng số lấy từ Nhật ký - Chứng từ ghi Có tài khoản đó, số phát sinh Nợ được phản ánh chi tiết theo từng tài khoản đối ứng Có lấy từ các Nhật ký - Chứng từ liên quan, sổ Cái chỉ ghi một lần vào ngày cuối tháng hoặc cuối quý sau khi đã khoá sổ và kiểm tra, đối chiếu số liệu trên các Nhật ký - Chứng từ.</p>
-<h3>BẢNG CÂN ĐỐI SỐ PHÁT SINH</h3>
+<h3 id="pl-2373">BẢNG CÂN ĐỐI SỐ PHÁT SINH</h3>
 <p><strong>(Mẫu số S06-DN)</strong></p>
 <h3>1. Mục đích</h3>
 <p>Phản ánh tổng quát tình hình tăng giảm và hiện có về tài sản và nguồn vốn của đơn vị trong kỳ báo cáo và từ đầu năm đến cuối kỳ báo cáo. Số liệu trên Bảng cân đối số phát sinh là căn cứ để kiểm tra việc ghi chép trên sổ kế toán tổng hợp, đồng thời đối chiếu và kiểm soát số liệu ghi trên Báo cáo tài chính</p>
@@ -2389,8 +2396,8 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Ngoài việc phản ánh các tài khoản trong Bảng cân đối tài khoản, Bảng cân đối số phát sinh còn phản ánh số dư, số phát sinh của các tài khoản ngoài Bảng Cân đối tài khoản.</p>
 <h3>II. Giải thích nội dung và phương pháp ghi sổ chi tiết</h3>
 <p>Sổ chi tiết dùng chung cho các hình thức kế toán nên hướng dẫn chung như sau:</p>
-<h3>SỔ QUỸ TIỀN MẶT (Mẫu số S07- DN)</h3>
-<h3>{Sổ chi tiết quỹ tiền mặt (mẫu số 07a-DN)}</h3>
+<h3 id="pl-2392">SỔ QUỸ TIỀN MẶT (Mẫu số S07- DN)</h3>
+<h3 id="pl-2393">{Sổ chi tiết quỹ tiền mặt (mẫu số 07a-DN)}</h3>
 <p><strong>1. Mục đích: Sổ</strong> này dùng cho thủ quỹ (hoặc dùng cho kế toán tiền mặt) để phản ánh tình hình thu, chi tồn quỹ tiền mặt bằng tiền Việt Nam của đơn vị.</p>
 <h3>2. Căn cứ và phương pháp ghi sổ</h3>
 <p>Sổ này mở cho thủ quỹ: Mỗi quỹ dùng một sổ hay một số trang sổ. Sổ này cũng dùng cho kế toán chi tiết quỹ tiền mặt và tên sổ sửa lại là “Sổ kế toán chi tiết quỹ tiền mặt”. Tương ứng với 1 sổ của thủ quỹ thì có 1 sổ của kế toán cùng ghi song song.</p>
@@ -2404,7 +2411,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 3: Số dư tồn quỹ cuối ngày, số tồn quỹ cuối ngày phải khớp đúng với số tiền mặt trong két.</p>
 <p>Định kỳ kế toán kiểm tra, đối chiếu giữa “Sổ kế toán chi tiết quỹ tiền mặt” với “Sổ quỹ tiền mặt”, ký xác nhận vào cột G.</p>
 <p>Chú ý: Để theo dõi quỹ tiền mặt, kế toán quỹ tiền mặt phải mở “Sổ kế toán chi tiết quỹ tiền mặt” (Mẫu số S07a-DN). Sổ này có thêm cột F “Tài khoản đối ứng” để phản ánh số hiệu Tài khoản đối ứng với từng nghiệp vụ ghi Nợ, từng nghiệp vụ ghi Có của Tài khoản 111 “Tiền mặt”.</p>
-<h3>SỔ TIỀN GỬI NGÂN HÀNG</h3>
+<h3 id="pl-2407">SỔ TIỀN GỬI NGÂN HÀNG</h3>
 <p>(Mẫu số S08- DN)</p>
 <h3>1. Mục đích</h3>
 <p>Sổ này dùng cho kế toán theo dõi chi tiết tiền Việt Nam của doanh nghiệp gửi tại Ngân hàng. Mỗi ngân hàng có mở tài khoản tiền gửi thì được theo dõi riêng trên một quyển sổ, phải ghi rõ nơi mở tài khoản và số hiệu tài khoản giao dịch.</p>
@@ -2420,7 +2427,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Cột 3: Ghi số tiền hiện còn gửi tại Ngân hàng.</p>
 <p><strong>_Cuối tháng:_</strong></p>
 <p>Cộng số tiền đã gửi vào, hoặc đã rút ra trên cơ sở đó tính số tiền còn gửi tại Ngân hàng chuyển sang tháng sau. Số dư trên sổ tiền gửi được đối chiếu với số dư tại Ngân hàng nơi mở tài khoản.</p>
-<h3>SỔ CHI TIẾT VẬT LIỆU, DỤNG CỤ, SẢN PHẨM, HÀNG HOÁ</h3>
+<h3 id="pl-2423">SỔ CHI TIẾT VẬT LIỆU, DỤNG CỤ, SẢN PHẨM, HÀNG HOÁ</h3>
 <p><strong>(Mẫu số S10-DN)</strong></p>
 <h3>1, Mục đích</h3>
 <p>Dùng để theo dõi chi tiết tình hình nhập, xuất và tồn kho cả về số lượng và giá trị của từng thứ nguyên liệu, vật liệu, dụng cụ, sản phẩm hàng hoá ở từng kho làm căn cứ đối chiếu với việc ghi chép của thủ kho.</p>
@@ -2436,7 +2443,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 5: Ghi giá trị vật liệu, dụng cụ, sản phẩm, hàng hoá xuất kho (Cột 5 = cột 1 x cột 4).</p>
 <p>- Cột 6: Ghi số lượng vật liệu, dụng cụ, sản phẩm, hàng hoá tồn kho.</p>
 <p>- Cột 7: Ghi giá trị vật liệu, dụng cụ, sản phẩm, hàng hoá tồn kho (Cột 7 = cột 1 x cột 6).</p>
-<h3>BẢNG TỔNG HỢP CHI TIẾT VẬT LIỆU,</h3>
+<h3 id="pl-2439">BẢNG TỔNG HỢP CHI TIẾT VẬT LIỆU,</h3>
 <h3>DỤNG CỤ, SẢN PHẨM, HÀNG HOÁ</h3>
 <h3>(Mẫu số S11- DN)</h3>
 <h3>1. Mục đích</h3>
@@ -2454,7 +2461,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>+ Số liệu cột 2: Được đối chiếu với số phát sinh Nợ.</p>
 <p>+ Số liệu cột 3: Đối chiếu với số phát sinh Có.</p>
 <p>+ Số liệu cột 4: Đối chiếu với số dư cuối kỳ.</p>
-<h3>THẺ KHO (SỔ KHO)</h3>
+<h3 id="pl-2457">THẺ KHO (SỔ KHO)</h3>
 <h3>_(Mẫu số S12-DN)_</h3>
 <h3>1. Mục đích</h3>
 <p>Theo dõi số lượng nhập, xuất, tồn, kho từng thứ nguyên liệu, vật liệu, công cụ, dụng cụ, sản phẩm, hàng hoá ở từng kho. Làm căn cứ xác định số lượng tồn kho dự trữ vật liệu, dụng cụ, sản phẩm, hàng hoá và xác định trách nhiệm vật chất của thủ kho</p>
@@ -2471,7 +2478,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 3: Ghi số lượng tồn kho sau mỗi lần nhập, xuất hoặc cuối mỗi ngày.</p>
 <p>Theo định kỳ, nhân viên kế toán vật tư xuống kho nhận chứng từ và kiểm tra việc ghi chép Thẻ kho của Thủ kho, sau đó ký xác nhận vào Thẻ kho (Cột G).</p>
 <p>Sau mỗi lần kiểm kê phải tiến hành điều chỉnh số liệu trên Thẻ kho cho phù hợp với số liệu thực tế kiểm kê theo chế độ quy định.</p>
-<h3>SỔ TÀI SẢN CỐ ĐỊNH</h3>
+<h3 id="pl-2474">SỔ TÀI SẢN CỐ ĐỊNH</h3>
 <p><strong>(Mẫu số S21-DN)</strong></p>
 <p><strong>1. Mục đích: Sổ</strong> tài sản cố định dùng để đăng ký, theo dõi và quản lý chặt chẽ tài sản trong đơn vị từ khi mua sắm, đưa vào sử dụng đến khi ghi giảm tài sản cố định.</p>
 <h3>2. Căn cứ và phương pháp ghi sổ</h3>
@@ -2488,7 +2495,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 4: Ghi số khấu hao TSCĐ tính đến thời điểm ghi giảm TSCĐ</p>
 <p>- Cột I, K: Ghi số hiệu, ngày, tháng, năm của chứng từ ghi giảm TSCĐ</p>
 <p>- Cột L: Ghi lý do giảm TSCĐ (nhượng bán, thanh lý...).</p>
-<h3>SỔ THEO DÕI TÀI SẢN CỐ ĐỊNH VÀ CÔNG CỤ,</h3>
+<h3 id="pl-2491">SỔ THEO DÕI TÀI SẢN CỐ ĐỊNH VÀ CÔNG CỤ,</h3>
 <p><strong>DỤNG CỤ TẠI NƠI SỬ DỤNG (Mẫu số S22-DN)</strong></p>
 <p><strong>1. Mục đích: Sổ</strong> này dùng để ghi chép tình hình tăng, giảm tài sản cố định và công cụ, dụng cụ tại từng nơi sử dụng nhằm quản lý tài sản và dụng cụ đã được cấp cho các phòng, ban làm căn cứ để đối chiếu khi tiến hành kiểm kê định kỳ.</p>
 <h3>2. Căn cứ và phương pháp ghi sổ</h3>
@@ -2503,7 +2510,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột H: Ghi lý do giảm tài sản cố định và công cụ, dụng cụ</p>
 <p>- Cột 4: Ghi số lượng tài sản cố định và công cụ, dụng cụ giảm</p>
 <p>- Cột 5: Ghi nguyên giá tài sản cố định và giá trị công cụ, dụng cụ giảm.</p>
-<h3>THẺ TÀI SẢN CỐ ĐỊNH</h3>
+<h3 id="pl-2506">THẺ TÀI SẢN CỐ ĐỊNH</h3>
 <h3>_(Mẫu số S23 - DN)_</h3>
 <h3>1. Mục đích</h3>
 <p>Theo dõi chi tiết từng TSCĐ của doanh nghiệp, tình hình thay đổi nguyên giá và giá trị hao mòn đã trích hàng năm của từng TSCĐ.</p>
@@ -2526,7 +2533,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Cột 1, 2: Ghi số lượng và giá trị của từng loại dụng cụ, phụ tùng kèm theo TSCĐ.</p>
 <p>Cuối tờ thẻ, ghi giảm TSCĐ: Ghi số ngày, tháng, năm của chứng từ ghi giảm TSCĐ và lý do giảm.</p>
 <p>Thẻ TSCĐ do kế toán TSCĐ lập, kế toán trưởng ký soát xét và giám đốc ký. Thẻ được lưu ở phòng, ban kế toán suốt quá trình sử dụng tài sản.</p>
-<h3>SỔ CHI TIẾT THANH TOÁN VỚI NGƯỜI MUA (NGƯỜI BÁN)</h3>
+<h3 id="pl-2529">SỔ CHI TIẾT THANH TOÁN VỚI NGƯỜI MUA (NGƯỜI BÁN)</h3>
 <p><strong>(Mẫu số S31-DN)</strong></p>
 <p><strong>1. Mục đích: Sổ</strong> này dùng để theo dõi việc thanh toán với người mua (người bán) theo từng đối tượng, từng thời hạn thanh toán.</p>
 <h3>2. Căn cứ và phương pháp ghi sổ</h3>
@@ -2538,7 +2545,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 1: Ghi thời hạn được hưởng chiết khấu thanh toán trên hóa đơn mua (bán) hàng hoặc các chứng từ liên quan đến việc mua (bán) hàng.</p>
 <p>- Cột 2, 3: Ghi số phát sinh bên Nợ (hoặc bên Có) của tài khoản.</p>
 <p>- Cột 4, 5: Ghi số dư bên Nợ (hoặc bên Có) của tài khoản sau từng nghiệp vụ thanh toán.</p>
-<h3>SỔ CHI TIẾT THANH TOÁN VỚI NGƯỜI MUA</h3>
+<h3 id="pl-2541">SỔ CHI TIẾT THANH TOÁN VỚI NGƯỜI MUA</h3>
 <h3>(NGƯỜI BÁN) BẰNG NGOẠI TỆ</h3>
 <p><strong>(Mẫu số S32-DN)</strong></p>
 <h3>1. Mục đích</h3>
@@ -2557,7 +2564,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 6: Ghi số tiền phát sinh bên Có của tài khoản được quy đổi ra đồng Việt Nam (Cột 6 = Cột 1 x Cột 5).</p>
 <p>- Cột 7, 9: Ghi số dư Nợ (hoặc dư Có) bằng ngoại tệ sau từng nghiệp vụ thanh toán.</p>
 <p>- Cột 8, 10: Ghi số dư Nợ (hoặc dư Có) đã được quy đổi ra đồng Việt Nam sau từng nghiệp vụ thanh toán.</p>
-<h3>SỔ THEO DÕI THANH TOÁN BẰNG NGOẠI TỆ</h3>
+<h3 id="pl-2560">SỔ THEO DÕI THANH TOÁN BẰNG NGOẠI TỆ</h3>
 <h3>(Mẫu số S33- DN)</h3>
 <h3>1. Mục đích</h3>
 <p>Sổ này dùng cho một số tài khoản thuộc loại thanh toán (ngoài TK 131, 331) theo từng đối tượng, từng thời hạn thanh toán và theo từng loại ngoại tệ.</p>
@@ -2574,7 +2581,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 5: Ghi số phát sinh bên Có: Số tiền bằng ngoại tệ đã quy đổi ra đồng Việt Nam;</p>
 <p>- Cột 6, 8: Ghi số dư Nợ (hoặc dư Có) bằng ngoại tệ sau mỗi nghiệp vụ thanh toán;</p>
 <p>- Cột 7, 9: Ghi số dư Nợ (hoặc dư Có) bằng ngoại tệ đã được quy đổi ra đồng Việt Nam sau mỗi nghiệp vụ thanh toán.</p>
-<h3>SỔ CHI TIẾT TIỀN VAY</h3>
+<h3 id="pl-2577">SỔ CHI TIẾT TIỀN VAY</h3>
 <p><strong>(Mã số S34-DN)</strong></p>
 <h3>1. Mục đích</h3>
 <p>Sổ này được dùng để theo dõi theo từng tài khoản, theo từng đối tượng vay (Ngân hàng, người cho vay...) và theo từng khế ước vay.</p>
@@ -2586,7 +2593,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột G: Ghi ngày, tháng, năm đến hạn thanh toán.</p>
 <p>- Cột 1: Ghi số tiền trả nợ vay vào bên Nợ.</p>
 <p>- Cột 2: Ghi số tiền vay vào bên Có.</p>
-<h3>SỔ CHI TIẾT BÁN HÀNG</h3>
+<h3 id="pl-2589">SỔ CHI TIẾT BÁN HÀNG</h3>
 <p><strong>(Mã số S35-DN)</strong></p>
 <h3>1. Mục đích</h3>
 <p>Sổ này mở theo từng sản phẩm, hàng hoá, bất động sản đầu tư, dịch vụ đã bán hoặc đã cung cấp được khách hàng thanh toán tiền ngay hay chấp nhận thanh toán.</p>
@@ -2600,7 +2607,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 5: Ghi số phải giảm trừ vào doanh thu (nếu có) như: Chiết khấu thương mại, hàng bán bị trả lại, giảm giá hàng bán,...</p>
 <p>Sau khi cộng “Số phát sinh”, tính Chỉ tiêu “Doanh thu thuần” ghi vào cột 3. Cột 3 = Cột 3 trừ (-) Cột 4 và Cột 5. Chỉ tiêu “Giá vốn hàng bán”: Ghi số giá vốn của hàng hoá (sản phẩm, bất động sản đầu tư, dịch vụ) đã bán.</p>
 <p>Chỉ tiêu “Lãi gộp” bằng (=) chỉ tiêu “Doanh thu thuần” trừ (-) chỉ tiêu “Giá vốn hàng bán”.</p>
-<h3>SỔ CHI PHÍ SẢN XUẤT, KINH DOANH</h3>
+<h3 id="pl-2603">SỔ CHI PHÍ SẢN XUẤT, KINH DOANH</h3>
 <p><strong>(Mã số S36-DN)</strong></p>
 <h3>1. Mục đích</h3>
 <p>Sổ này mở theo từng đối tượng tập hợp chi phí (Theo phân xưởng, bộ phận sản xuất, theo sản phẩm, nhóm sản phẩm,... dịch vụ hoặc theo từng nội dung chi phí).</p>
@@ -2617,7 +2624,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <table style="width:100%;border-collapse:collapse;font-size:14px;margin:12px 0;">
 <tr><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">Số dư cuối kỳ</th><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">=</th><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">Số dư đầu kỳ</th><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">+</th><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">Phát sinh Nợ</th><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">-</th><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">Phát sinh Có</th></tr>
 </table>
-<h3>THẺ TÍNH GIÁ THÀNH SẢN PHẨM, DỊCH VỤ</h3>
+<h3 id="pl-2620">THẺ TÍNH GIÁ THÀNH SẢN PHẨM, DỊCH VỤ</h3>
 <p><strong>(Mẫu số S37-DN)</strong></p>
 <h3>1. Mục đích</h3>
 <p>Dùng để theo dõi và tính giá thành sản xuất từng loại sản phẩm, dịch vụ trong từng kỳ hạch toán.</p>
@@ -2633,7 +2640,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <tr><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">Giá thành sản phẩm</th><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">=</th><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">Chi phí SXKD dở dang đầu kỳ</th><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">+</th><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">Chi phí SXKD phát sinh</th><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">-</th><th style="border:1px solid #E2DAD6;padding:6px 8px;text-align:left;background:#E0ECF4;color:#03396c;font-weight:600;">Chi phí SXKD dở dang cuối kỳ</th></tr>
 </table>
 <p>- Chỉ tiêu (dòng) “Chi phí SXKD dở dang cuối kỳ”: Căn cứ vào biên bản kiểm kê và đánh giá sản phẩm dở dang để ghi vào chỉ tiêu “Chi phí SXKD dở dang cuối kỳ”.</p>
-<h3>SỔ CHI TIẾT CÁC TÀI KHOẢN</h3>
+<h3 id="pl-2636">SỔ CHI TIẾT CÁC TÀI KHOẢN</h3>
 <p><strong>(Mã số S38-DN)</strong></p>
 <p><strong><em>(Dùng cho các TK: 136, 138, 141, 157, 171, 221, 222, 242, 244, 333, 334, 335, 336, 338, 344, 352, 353, 356, 411, 421,…)</em></strong></p>
 <h3>1. Mục đích</h3>
@@ -2647,7 +2654,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 1, 2: Ghi số tiền phát sinh bên Nợ hoặc bên Có.</p>
 <p>- Cột 3, 4: Ghi số dư bên Nợ hoặc bên Có sau mỗi nghiệp vụ phát sinh.</p>
 <p>- Dòng Số dư đầu kỳ: Được lấy số liệu từ sổ chi tiết theo dõi thanh toán của kỳ trước (dòng “Số dư cuối kỳ”) để ghi vào Cột 3 hoặc Cột 4 phù hợp.</p>
-<p><strong>SỔ KẾ TOÁN CHI TIẾT THEO DÕI CÁC KHOẢN ĐẦU TƯ VÀO CÔNG TY LIÊN DOANH</strong> (Mẫu số S41a- DN)</p>
+<p id="pl-2650"><strong>SỔ KẾ TOÁN CHI TIẾT THEO DÕI CÁC KHOẢN ĐẦU TƯ VÀO CÔNG TY LIÊN DOANH</strong> (Mẫu số S41a- DN)</p>
 <h3>1. Mục đích</h3>
 <p>Sổ kế toán chi tiết theo dõi các khoản đầu tư vào công ty liên doanh: là một phần của hệ thống sổ kế toán chi tiết phục vụ cho việc lập và trình bày báo cáo tài chính hợp nhất theo quy định của Chuẩn mực kế toán số 25 “Báo cáo tài chính hợp nhất và kế toán khoản đầu tư vào công ty con”.</p>
 <p>Sổ kế toán chi tiết các khoản đầu tư vào công ty liên doanh phải theo dõi những chỉ tiêu sau: Giá trị ghi sổ khoản đầu tư vào công ty liên doanh; Khoản điều chỉnh vào cuối mỗi năm tài chính tương ứng với phần sở hữu của nhà đầu tư trong lợi nhuận hoặc lỗ của công ty liên doanh; Phần điều chỉnh tăng (giảm) khoản đầu tư theo giá trị thay đổi của vốn chủ sở hữu của công ty liên doanh nhưng không được phản ánh vào Báo cáo kết quả kinh doanh của công ty liên doanh; Khoản điều chỉnh do báo cáo tài chính của nhà đầu tư và công ty liên doanh được lập khác ngày; Khoản điều chỉnh do nhà đầu tư và công ty liên doanh không áp dụng thống nhất chính sách kế toán.</p>
@@ -2659,7 +2666,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 1: Ghi giá trị ghi sổ khoản đầu tư vào công ty liên doanh đầu kỳ.</p>
 <p>- Từ Cột 2 đến Cột 5: Ghi các khoản được điều chỉnh tăng (giảm) giá trị ghi sổ của khoản đầu tư.</p>
 <p>- Cột 6: Ghi giá trị ghi sổ khoản đầu tư vào công ty liên doanh cuối kỳ.</p>
-<h3>SỔ THEO DÕI PHÂN BỔ CÁC KHOẢN CHÊNH LỆCH</h3>
+<h3 id="pl-2662">SỔ THEO DÕI PHÂN BỔ CÁC KHOẢN CHÊNH LỆCH</h3>
 <h3>PHÁT SINH KHI MUA KHOẢN ĐẦU TƯ VÀO CÔNG TY LIÊN DOANH</h3>
 <p>(Mẫu số S42a- DN)</p>
 <h3>1. Mục đích</h3>
@@ -2672,7 +2679,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 1: Ghi tổng số tiền chênh lệch cần phải khấu hao (phân bổ).</p>
 <p>- Cột 2: Ghi thời gian khấu hao (phân bổ).</p>
 <p>- Từ Cột 3 đến Cột 6: Ghi số tiền chênh lệch phải khấu hao (phân bổ) hàng năm.</p>
-<h3>SỔ KẾ TOÁN CHI TIẾT THEO DÕI</h3>
+<h3 id="pl-2675">SỔ KẾ TOÁN CHI TIẾT THEO DÕI</h3>
 <h3>CÁC KHOẢN ĐẦU TƯ VÀO CÔNG TY LIÊN KẾT</h3>
 <p>(Mẫu số S41b- DN)</p>
 <h3>1. Mục đích</h3>
@@ -2685,7 +2692,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 1: Ghi giá trị ghi sổ khoản đầu tư vào công ty liên kết đầu kỳ.</p>
 <p>- Từ Cột 2 đến Cột 5: Ghi các khoản được điều chỉnh tăng (giảm) giá trị ghi sổ của khoản đầu tư.</p>
 <p>- Cột 6: Ghi giá trị ghi sổ khoản đầu tư vào công ty liên kết cuối kỳ.</p>
-<h3>SỔ THEO DÕI PHÂN BỔ CÁC KHOẢN CHÊNH LỆCH</h3>
+<h3 id="pl-2688">SỔ THEO DÕI PHÂN BỔ CÁC KHOẢN CHÊNH LỆCH</h3>
 <h3>PHÁT SINH KHI MUA KHOẢN ĐẦU TƯ VÀO CÔNG TY LIÊN KẾT</h3>
 <p>(Mẫu số S42b- DN)</p>
 <h3>1. Mục đích</h3>
@@ -2698,7 +2705,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 1: Ghi tổng số tiền chênh lệch cần phải khấu hao (phân bổ).</p>
 <p>- Cột 2: Ghi thời gian khấu hao (phân bổ).</p>
 <p>- Từ Cột 3 đến Cột 6: Ghi số tiền chênh lệch phải khấu hao (phân bổ) hàng năm.</p>
-<h3>SỔ CHI TIẾT CỔ PHIẾU MUA LẠI CỦA CHÍNH MÌNH</h3>
+<h3 id="pl-2701">SỔ CHI TIẾT CỔ PHIẾU MUA LẠI CỦA CHÍNH MÌNH</h3>
 <p><strong>(Mẫu số S43-DN)</strong></p>
 <h3>1- Mục đích</h3>
 <p>: Sổ này dùng để theo dõi chi tiết số cổ phiếu doanh nghiệp mua lại của chính doanh nghiệp (cổ phiếu quỹ, cổ phiếu mua lại của chính mình) đã phát hành ra công chúng theo từng loại cổ phiếu.</p>
@@ -2719,7 +2726,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Cột 9: Ghi giá trị cổ phiếu mua lại doanh nghiệp đang nắm giữ cuối kỳ theo mệnh giá.</p>
 <p>Cột 10: Ghi giá trị của cổ phiếu mua lại doanh nghiệp đang nắm giữ cuối kỳ theo giá mua thực tế.</p>
 <p>Cuối tháng, cuối kỳ cộng sổ để tính ra số cổ phiếu hiện đang mua lại cuối kỳ.</p>
-<h3>SỔ CHI TIẾT ĐẦU TƯ CHỨNG KHOÁN</h3>
+<h3 id="pl-2722">SỔ CHI TIẾT ĐẦU TƯ CHỨNG KHOÁN</h3>
 <p><strong>(Mẫu số S45-DN)</strong></p>
 <h3>1. Mục đích</h3>
 <p>Sổ này được mở theo từng tài khoản (Đầu tư chứng khoán ngắn hạn: TK 121; Đầu tư dài hạn khác: TK 228) và theo từng loại chứng khoán có cùng mệnh giá, tỷ lệ lãi suất được hưởng và phương thức thanh toán lãi suất.</p>
@@ -2734,7 +2741,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 4: Ghi giá vốn của chứng khoán xuất bán hoặc thanh toán.</p>
 <p>- Cột 5: Ghi số lượng chứng khoán còn lại cuối kỳ.</p>
 <p>- Cột 6: Ghi giá trị chứng khoán còn lại cuối kỳ.</p>
-<h3>SỔ THEO DÕI CHI TIẾT VỐN ĐẦU TƯ CỦA CHỦ SỞ HỮU</h3>
+<h3 id="pl-2737">SỔ THEO DÕI CHI TIẾT VỐN ĐẦU TƯ CỦA CHỦ SỞ HỮU</h3>
 <p><strong>(Mẫu số S51-DN)</strong></p>
 <h3>1. Mục đích</h3>
 <p>Sổ theo dõi chi tiết nguồn vốn kinh doanh dùng để ghi chép số hiện có và tình hình tăng, giảm nguồn vốn kinh doanh của doanh nghiệp theo từng nội dung: vốn góp ban đầu, thặng dư vốn trong quá trình hoạt động, quyền chọn chuyển đổi trái phiếu và vốn được bổ sung từ nguồn khác (Tài trợ, viện trợ (nếu có)...).</p>
@@ -2753,7 +2760,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 7: Ghi giá trị quyền chọn chuyển đổi trái phiếu tăng</p>
 <p>Cột 8: Ghi số vốn kinh doanh tăng do bổ sung từ kết quả hoạt động kinh doanh hoặc do được tài trợ, hỗ trợ, biếu, tặng (nếu cơ quan có thẩm quyền cho phép ghi tăng vốn đầu tư của chủ sở hữu); quà biếu, tặng, tài trợ cho doanh nghiệp từ các bên dưới sự kiểm soát chung; chênh lệch do đánh giá lại tài sản được phép ghi tăng, giảm vốn đầu tư của chủ sở hữu,...</p>
 <p>Cuối tháng cộng sổ tính ra tổng số phát sinh tăng, phát sinh giảm và số dư cuối tháng để ghi vào cột phù hợp với từng loại nguồn vốn.</p>
-<h3>SỔ CHI PHÍ ĐẦU TƯ XÂY DỰNG</h3>
+<h3 id="pl-2756">SỔ CHI PHÍ ĐẦU TƯ XÂY DỰNG</h3>
 <h3>_(Mẫu số S52-DN)_</h3>
 <h3>1. Mục đích</h3>
 <p>Sổ này dùng để theo dõi chi phí đầu tư xây dựng tập hợp cho từng dự án, công trình, hạng mục công trình kể từ khi khởi công cho đến khi kết thúc xây dựng đưa dự án vào khai thác, sử dụng.</p>
@@ -2775,7 +2782,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>Số liệu ghi vào cột 1 phải bằng tổng số liệu ghi vào cột 2 + cột 3 + cột 7</p>
 <p>- Cột G: Ghi những chú thích cần thiết khác.</p>
 <p>Những trường hợp ghi giảm chi phí đầu tư xây dựng, kế toán ghi số âm để tính tổng số phát sinh giảm trong kỳ. Cuối tháng cộng số phát sinh tăng, giảm thực tế trong tháng, trong quý, cộng lũy kế từ đầu năm đến cuối quý báo cáo, cộng lũy kế từ khi khởi công đến cuối quý báo cáo.</p>
-<h3>SỔ THEO DÕI THUẾ GTGT</h3>
+<h3 id="pl-2778">SỔ THEO DÕI THUẾ GTGT</h3>
 <h3>(Mẫu số S61 - DN)</h3>
 <h3>1. Mục đích</h3>
 <p>Sổ này chỉ áp dụng cho các cơ sở sản xuất, kinh doanh thuộc đối tượng tính thuế GTGT phải nộp theo phương pháp trực tiếp và ghi sổ kế toán “Đơn”. Sổ này dùng để phản ánh số thuế GTGT phải nộp, đã nộp và còn phải nộp.</p>
@@ -2786,7 +2793,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 1: Ghi số tiền thuế GTGT đã nộp trong kỳ theo từng chứng từ.</p>
 <p>- Cột 2: Ghi số tiền thuế GTGT còn phải nộp đầu kỳ, số tiền thuế GTGT phải nộp phát sinh trong kỳ theo từng chứng từ, số tiền thuế GTGT còn phải nộp cuối kỳ.</p>
 <p>Cuối kỳ, kế toán tiến hành khóa sổ, cộng số phát sinh thuế GTGT phải nộp, đã nộp trong kỳ và tính ra số thuế GTGT còn phải nộp cuối kỳ. Sau khi khóa sổ kế toán, người ghi sổ và kế toán trưởng phải ký và ghi họ tên.</p>
-<h3>SỔ CHI TIẾT THUẾ GTGT ĐƯỢC HOÀN LẠI</h3>
+<h3 id="pl-2789">SỔ CHI TIẾT THUẾ GTGT ĐƯỢC HOÀN LẠI</h3>
 <h3>(Mẫu số S62 - DN)</h3>
 <h3>1. Mục đích</h3>
 <p>Sổ này áp dụng cho các cơ sở sản xuất, kinh doanh thuộc đối tượng tính thuế theo phương pháp khấu trừ thuế. Sổ này dùng để ghi chép phản ánh số thuế GTGT được hoàn lại, đã hoàn lại và còn được hoàn lại cuối kỳ báo cáo.</p>
@@ -2797,7 +2804,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 1: Ghi số tiền thuế GTGT còn được hoàn lại đầu kỳ, số thuế GTGT được hoàn lại trong kỳ và số thuế GTGT còn được hoàn lại cuối kỳ báo cáo.</p>
 <p>- Cột 2: Ghi số tiền thuế GTGT đã hoàn lại trong kỳ báo cáo.</p>
 <p>Cuối kỳ, kế toán tiến hành khóa sổ, cộng số phát sinh thuế GTGT được hoàn lại, đã hoàn lại và tính ra số thuế GTGT còn được hoàn lại cuối kỳ báo cáo. Sau khi khóa sổ kế toán, người ghi sổ và kế toán trưởng phải ký và ghi rõ họ tên.</p>
-<h3>SỔ CHI TIẾT THUẾ GTGT ĐƯỢC MIỄN GIẢM</h3>
+<h3 id="pl-2800">SỔ CHI TIẾT THUẾ GTGT ĐƯỢC MIỄN GIẢM</h3>
 <h3>(Mẫu số S63 - DN)</h3>
 <h3>1. Mục đích</h3>
 <p>Sổ này áp dụng cho các cơ sở kinh doanh thuộc các ngành và các thành phần kinh tế được miễn, giảm thuế GTGT. Sổ này dùng để ghi chép phản ánh số thuế GTGT được miễn giảm, đã miễn giảm và còn được miễn giảm cuối kỳ báo cáo.</p>
@@ -2808,41 +2815,41 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <p>- Cột 1: Ghi số tiền thuế GTGT còn được miễn giảm đầu kỳ, số thuế GTGT được miễn giảm trong kỳ và số thuế GTGT còn được miễn giảm cuối kỳ báo cáo.</p>
 <p>- Cột 2: Ghi số tiền thuế GTGT đã miễn giảm trong kỳ báo cáo.</p>
 <p>Cuối kỳ, kế toán tiến hành khóa sổ, cộng số phát sinh thuế GTGT được miễn giảm, đã miễn giảm và tính ra số thuế GTGT còn được miễn giảm cuối kỳ báo cáo. Sau khi khóa sổ kế toán, người ghi sổ và kế toán trưởng phải ký và ghi rõ họ và tên.</p>
-<h2>Phụ lục IV — Biểu mẫu Báo cáo tài chính</h2>
+<h2 id="pl-2811">Phụ lục IV — Biểu mẫu Báo cáo tài chính</h2>
 <p><strong>Phụ lục IV</strong></p>
 <p><strong>MỤC 1</strong></p>
 <h3>BIỂU MẪU BÁO CÁO TÀI CHÍNH</h3>
 <p><em>(Kèm theo Thông tư số 99/2025/TT-BTC ngày 27 tháng 10 năm 2025</em></p>
 <p><em>của Bộ trưởng Bộ Tài chính)</em></p>
-<p>1. Báo cáo tình hình tài chính năm của doanh nghiệp đáp ứng giả định hoạt động liên tục</p>
+<p id="pl-2817">1. Báo cáo tình hình tài chính năm của doanh nghiệp đáp ứng giả định hoạt động liên tục</p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_b_01_-_dn._bao_cao_tinh_hinh_tai_chinh_nam_cua_doanh_nghiep_dap_ung_gia_dinh_hoat_dong_lien_tuc_0411160022.docx" target="_blank" rel="noopener">Mẫu số B 01 – DN</a></p>
-<p>2. Báo cáo tình hình tài chính của doanh nghiệp không đáp ứng giả định hoạt động liên tục</p>
+<p id="pl-2819">2. Báo cáo tình hình tài chính của doanh nghiệp không đáp ứng giả định hoạt động liên tục</p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_b_01_-_dnklt._bao_cao_tinh_hinh_tai_chinh_cua_doanh_nghiep_khong_dap_ung_gia_dinh_hoat_dong_lien_tuc_0411160022.docx" target="_blank" rel="noopener">Mẫu số B 01 – DNKLT</a></p>
-<p>3. Báo cáo kết quả hoạt động kinh doanh năm</p>
+<p id="pl-2821">3. Báo cáo kết quả hoạt động kinh doanh năm</p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_b_02_-_dn._bao_cao_ket_qua_hoat_dong_kinh_doanh_nam_0411160022.docx" target="_blank" rel="noopener">Mẫu số B 02 - DN</a></p>
-<p>4. Báo cáo lưu chuyển tiền tệ năm</p>
+<p id="pl-2823">4. Báo cáo lưu chuyển tiền tệ năm</p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_b_03_-_dn._bao_cao_luu_chuyen_tien_te_nam_theo_phuong_phap_truc_tiep_0411160022.docx" target="_blank" rel="noopener">Mẫu số B 03 - DN _(Theo phương pháp trực tiếp)_</a></p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_b_03_-_dn._bao_cao_luu_chuyen_tien_te_nam_theo_phuong_phap_gian_tiep_0411160022.docx" target="_blank" rel="noopener">Mẫu số B 03 - DN _(Theo phương pháp gián tiếp)_</a></p>
-<p>5. Bản thuyết minh Báo cáo tài chính năm của doanh nghiệp đáp ứng giả định hoạt động liên tục</p>
+<p id="pl-2826">5. Bản thuyết minh Báo cáo tài chính năm của doanh nghiệp đáp ứng giả định hoạt động liên tục</p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_b_09_-_dn._ban_thuyet_minh_bao_cao_tai_chinh_nam_cua_doanh_nghiep_dap_ung_gia_dinh_hoat_dong_lien_tuc_0411160022.docx" target="_blank" rel="noopener">Mẫu số B 09 - DN</a></p>
-<p>6. Bản thuyết minh Báo cáo tài chính năm của doanh nghiệp không đáp ứng giả định hoạt động liên tục</p>
+<p id="pl-2828">6. Bản thuyết minh Báo cáo tài chính năm của doanh nghiệp không đáp ứng giả định hoạt động liên tục</p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_b_09_-_dnklt._ban_thuyet_minh_bao_cao_tai_chinh_nam_cua_doanh_nghiep_khong_dap_ung_gia_dinh_hoat_dong_lien_tuc_0411160022.docx" target="_blank" rel="noopener">Mẫu số B 09 - DNKLT</a></p>
-<p>7. Báo cáo tình hình tài chính giữa niên độ (dạng đầy đủ)</p>
+<p id="pl-2830">7. Báo cáo tình hình tài chính giữa niên độ (dạng đầy đủ)</p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_b_01a_-_dn._bao_cao_tinh_hinh_tai_chinh_giua_nien_do_dang_day_du_0411160238.docx" target="_blank" rel="noopener">Mẫu số B 01a - DN</a></p>
-<p>8. Báo cáo kết quả hoạt động kinh doanh giữa niên độ (dạng đầy đủ)</p>
+<p id="pl-2832">8. Báo cáo kết quả hoạt động kinh doanh giữa niên độ (dạng đầy đủ)</p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_b_02a_-_dn._bao_cao_ket_qua_hoat_dong_kinh_doanh_giua_nien_do_dang_day_du_0411160238.docx" target="_blank" rel="noopener">Mẫu số B 02a - DN</a></p>
-<p>9. Báo cáo lưu chuyển tiền tệ giữa niên độ (dạng đầy đủ)</p>
+<p id="pl-2834">9. Báo cáo lưu chuyển tiền tệ giữa niên độ (dạng đầy đủ)</p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_b_03a_-_dn._bao_cao_luu_chuyen_tien_te_giua_nien_do_dang_day_du_theo_phuong_phap_truc_tiep_0411160237.docx" target="_blank" rel="noopener">Mẫu số B 03a - DN _(Theo phương pháp trực tiếp)_</a></p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_b_03a_-_dn._bao_cao_luu_chuyen_tien_te_giua_nien_do_dang_day_du_theo_phuong_phap_gian_tiep_0411160237.docx" target="_blank" rel="noopener">Mẫu số B 03a - DN _(Theo phương pháp gián tiếp)_</a></p>
-<p>10. Bản thuyết minh Báo cáo tài chính chọn lọc</p>
+<p id="pl-2837">10. Bản thuyết minh Báo cáo tài chính chọn lọc</p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_b_09a_-_dn._ban_thuyet_minh_bao_cao_tai_chinh_chon_loc_0411160237.docx" target="_blank" rel="noopener">Mẫu số B 09a - DN</a></p>
-<p>11. Báo cáo tình hình tài chính giữa niên độ (dạng tóm lược)</p>
+<p id="pl-2839">11. Báo cáo tình hình tài chính giữa niên độ (dạng tóm lược)</p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_b_01b_-_dn._bao_cao_tinh_hinh_tai_chinh_giua_nien_do_dang_tom_luoc_0411160237.docx" target="_blank" rel="noopener">Mẫu số B 01b - DN</a></p>
-<p>12. Báo cáo kết quả hoạt động kinh doanh giữa niên độ (dạng tóm lược)</p>
+<p id="pl-2841">12. Báo cáo kết quả hoạt động kinh doanh giữa niên độ (dạng tóm lược)</p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_b_02b_-_dn._bao_cao_ket_qua_hoat_dong_kinh_doanh_giua_nien_do_dang_tom_luoc_0411160237.docx" target="_blank" rel="noopener">Mẫu số B 02b - DN</a></p>
-<p>13. Báo cáo lưu chuyển tiền tệ giữa niên độ (dạng tóm lược)</p>
+<p id="pl-2843">13. Báo cáo lưu chuyển tiền tệ giữa niên độ (dạng tóm lược)</p>
 <p><a href="https://static3.luatvietnam.vn/uploaded/others/2025/11/04/mau_so_b_03b_-_dn._bao_cao_luu_chuyen_tien_te_giua_nien_do_dang_tom_luoc_0411160237.docx" target="_blank" rel="noopener">Mẫu số B 03b - DN</a></p>
-<p>14. Bản thuyết minh Báo cáo tài chính chọn lọc (Thực hiện theo Mẫu số B09a- DN)</p>
+<p id="pl-2845">14. Bản thuyết minh Báo cáo tài chính chọn lọc (Thực hiện theo Mẫu số B09a- DN)</p>
 <p><strong>MỤC 2</strong></p>
 <h3>NỘI DUNG VÀ PHƯƠNG PHÁP LẬP BÁO CÁO TÀI CHÍNH</h3>
 <h3>A. Những thông tin chung về doanh nghiệp</h3>
@@ -11641,7 +11648,69 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
     return false;
   }
 
-  function buildSidebarToc() {
+  const CUSTOM_TOC = {
+    "tt99-phuluc": [{"l": "h", "t": "Phụ lục I — Danh mục và biểu mẫu chứng từ kế toán", "id": "pl-1282"}, {"l": "g", "t": "I. Lao động tiền lương", "id": "pl-1362"}, {"l": "i", "t": "1. Bảng thanh toán tiền lương", "id": "pl-1377"}, {"l": "i", "t": "2. Bảng thanh toán tiền thưởng", "id": "pl-1397"}, {"l": "i", "t": "3. Bảng thanh toán tiền làm thêm giờ", "id": "pl-1407"}, {"l": "i", "t": "4. Bảng thanh toán tiền thuê ngoài", "id": "pl-1433"}, {"l": "i", "t": "5. Hợp đồng giao khoán", "id": "pl-1449"}, {"l": "i", "t": "6. Biên bản thanh lý (nghiệm thu) hợp đồng giao khoán", "id": "pl-1467"}, {"l": "i", "t": "7. Bảng kê trích nộp các khoản theo lương", "id": "pl-1482"}, {"l": "i", "t": "8. Bảng phân bổ tiền lương và các khoản trích theo lương", "id": "pl-1496"}, {"l": "g", "t": "II. Hàng tồn kho", "id": "pl-1506"}, {"l": "i", "t": "1. Phiếu nhập kho", "id": "pl-1520"}, {"l": "i", "t": "2. Phiếu xuất kho", "id": "pl-1535"}, {"l": "i", "t": "3. Biên bản kiểm nghiệm vật tư, công cụ, sản phẩm, hàng hoá", "id": "pl-1552"}, {"l": "i", "t": "4. Bảng kê chi tiết vật tư còn lại cuối kỳ", "id": "pl-1573"}, {"l": "i", "t": "5. Biên bản tổng hợp kiểm kê vật tư, công cụ, sản phẩm, hàng hoá", "id": "pl-1585"}, {"l": "i", "t": "6. Bảng kê mua hàng", "id": "pl-1606"}, {"l": "i", "t": "7. Bảng phân bổ nguyên liệu, vật liệu, công cụ, dụng cụ", "id": "pl-1622"}, {"l": "g", "t": "III. Bán hàng", "id": "pl-1630"}, {"l": "i", "t": "1. Bảng thanh toán hàng đại lý, ký gửi", "id": "pl-1637"}, {"l": "i", "t": "2. Thẻ quầy hàng", "id": "pl-1659"}, {"l": "g", "t": "IV. Tiền tệ", "id": "pl-1679"}, {"l": "i", "t": "1. Phiếu thu", "id": "pl-1691"}, {"l": "i", "t": "2. Phiếu chi", "id": "pl-1708"}, {"l": "i", "t": "3. Giấy đề nghị tạm ứng", "id": "pl-1726"}, {"l": "i", "t": "4. Giấy thanh toán tiền tạm ứng", "id": "pl-1736"}, {"l": "i", "t": "5. Giấy đề nghị thanh toán", "id": "pl-1752"}, {"l": "i", "t": "6. Biên lai thu tiền", "id": "pl-1762"}, {"l": "i", "t": "7. Bảng kê vàng tiền tệ", "id": "pl-1775"}, {"l": "i", "t": "8. Bảng kiểm kê quỹ (dùng cho VND)", "id": "pl-1788"}, {"l": "i", "t": "9. Bảng kiểm kê quỹ (dùng cho ngoại tệ, vàng tiền tệ)", "id": "pl-1805"}, {"l": "i", "t": "10. Bảng kê chi tiền", "id": "pl-1822"}, {"l": "g", "t": "V. Tài sản cố định", "id": "pl-1834"}, {"l": "i", "t": "1. Biên bản giao nhận TSCĐ", "id": "pl-1842"}, {"l": "i", "t": "2. Biên bản thanh lý TSCĐ", "id": "pl-1860"}, {"l": "i", "t": "3. Biên bản bàn giao TSCĐ sửa chữa, bảo dưỡng hoặc nâng cấp, cải tạo hoàn thành", "id": "pl-1872"}, {"l": "i", "t": "4. Biên bản đánh giá lại TSCĐ", "id": "pl-1891"}, {"l": "i", "t": "5. Biên bản tổng hợp kiểm kê TSCĐ", "id": "pl-1904"}, {"l": "i", "t": "6. Bảng tính và phân bổ khấu hao TSCĐ", "id": "pl-1916"}, {"l": "h", "t": "Phụ lục III — Sổ kế toán", "id": "pl-1927"}, {"l": "i", "t": "1. Nhật ký - Sổ Cái", "id": "pl-2084"}, {"l": "i", "t": "2. Chứng từ ghi sổ", "id": "pl-2102"}, {"l": "i", "t": "3. Sổ Đăng ký Chứng từ ghi sổ", "id": "pl-2103"}, {"l": "i", "t": "4. Sổ Cái (dùng cho hình thức Chứng từ ghi sổ)", "id": "pl-2113"}, {"l": "i", "t": "5. Sổ Nhật ký chung", "id": "pl-2141"}, {"l": "i", "t": "6. Sổ Nhật ký thu tiền", "id": "pl-2158"}, {"l": "i", "t": "7. Sổ Nhật ký chi tiền", "id": "pl-2168"}, {"l": "i", "t": "8. Sổ Nhật ký mua hàng", "id": "pl-2177"}, {"l": "i", "t": "9. Sổ Nhật ký bán hàng", "id": "pl-2187"}, {"l": "i", "t": "10. Sổ Cái (dùng cho hình thức Nhật ký chung)", "id": "pl-2198"}, {"l": "i", "t": "11. Nhật ký - Chứng từ, các loại Nhật ký - Chứng từ, Bảng kê", "id": "pl-2212"}, {"l": "i", "t": "12. Sổ Cái (dùng cho hình thức Nhật ký-Chứng từ)", "id": "pl-2371"}, {"l": "i", "t": "13. Bảng cân đối số phát sinh", "id": "pl-2373"}, {"l": "i", "t": "14. Sổ quỹ tiền mặt", "id": "pl-2392"}, {"l": "i", "t": "15. Sổ kế toán chi tiết quỹ tiền mặt", "id": "pl-2393"}, {"l": "i", "t": "16. Sổ tiền gửi không kỳ hạn", "id": "pl-2407"}, {"l": "i", "t": "17. Sổ chi tiết vật liệu, dụng cụ (sản phẩm, hàng hóa)", "id": "pl-2423"}, {"l": "i", "t": "18. Bảng tổng hợp chi tiết vật liệu, dụng cụ, sản phẩm, hàng hóa", "id": "pl-2439"}, {"l": "i", "t": "19. Thẻ kho (Sổ kho)", "id": "pl-2457"}, {"l": "i", "t": "20. Sổ tài sản cố định", "id": "pl-2474"}, {"l": "i", "t": "21. Sổ theo dõi TSCĐ và công cụ, dụng cụ tại nơi sử dụng", "id": "pl-2491"}, {"l": "i", "t": "22. Thẻ Tài sản cố định", "id": "pl-2506"}, {"l": "i", "t": "23. Sổ chi tiết thanh toán với người mua (người bán)", "id": "pl-2529"}, {"l": "i", "t": "24. Sổ chi tiết thanh toán với người mua (người bán) bằng ngoại tệ", "id": "pl-2541"}, {"l": "i", "t": "25. Sổ theo dõi thanh toán bằng ngoại tệ", "id": "pl-2560"}, {"l": "i", "t": "26. Sổ chi tiết tiền vay", "id": "pl-2577"}, {"l": "i", "t": "27. Sổ chi tiết bán hàng", "id": "pl-2589"}, {"l": "i", "t": "28. Sổ chi phí sản xuất, kinh doanh", "id": "pl-2603"}, {"l": "i", "t": "29. Thẻ tính giá thành sản phẩm, dịch vụ", "id": "pl-2620"}, {"l": "i", "t": "30. Sổ chi tiết các tài khoản", "id": "pl-2636"}, {"l": "i", "t": "31. Sổ kế toán chi tiết theo dõi các khoản đầu tư vào công ty liên doanh", "id": "pl-2650"}, {"l": "i", "t": "32. Sổ theo dõi phân bổ các khoản chênh lệch phát sinh khi mua khoản đầu tư vào công ty liên doanh", "id": "pl-2662"}, {"l": "i", "t": "33. Sổ kế toán chi tiết theo dõi các khoản đầu tư vào công ty liên kết", "id": "pl-2675"}, {"l": "i", "t": "34. Sổ theo dõi phân bổ các khoản chênh lệch phát sinh khi mua khoản đầu tư vào công ty liên kết", "id": "pl-2688"}, {"l": "i", "t": "35. Sổ chi tiết phát hành cổ phiếu", "id": "pl-2701"}, {"l": "i", "t": "36. Sổ chi tiết cổ phiếu mua lại của chính mình", "id": "pl-2701"}, {"l": "i", "t": "37. Sổ chi tiết đầu tư chứng khoán", "id": "pl-2722"}, {"l": "i", "t": "38. Sổ theo dõi chi tiết vốn đầu tư của chủ sở hữu", "id": "pl-2737"}, {"l": "i", "t": "39. Sổ chi phí đầu tư xây dựng", "id": "pl-2756"}, {"l": "i", "t": "40. Sổ theo dõi thuế GTGT", "id": "pl-2778"}, {"l": "i", "t": "41. Sổ chi tiết thuế GTGT được hoàn lại", "id": "pl-2789"}, {"l": "i", "t": "42. Sổ chi tiết thuế GTGT được miễn giảm", "id": "pl-2800"}, {"l": "h", "t": "Phụ lục IV — Biểu mẫu Báo cáo tài chính", "id": "pl-2811"}, {"l": "i", "t": "1. Báo cáo tình hình tài chính năm của doanh nghiệp đáp ứng giả định hoạt động liên tục", "id": "pl-2817"}, {"l": "i", "t": "2. Báo cáo tình hình tài chính của doanh nghiệp không đáp ứng giả định hoạt động liên tục", "id": "pl-2819"}, {"l": "i", "t": "3. Báo cáo kết quả hoạt động kinh doanh năm", "id": "pl-2821"}, {"l": "i", "t": "4. Báo cáo lưu chuyển tiền tệ năm", "id": "pl-2823"}, {"l": "i", "t": "5. Bản thuyết minh Báo cáo tài chính năm của doanh nghiệp đáp ứng giả định hoạt động liên tục", "id": "pl-2826"}, {"l": "i", "t": "6. Bản thuyết minh Báo cáo tài chính năm của doanh nghiệp không đáp ứng giả định hoạt động liên tục", "id": "pl-2828"}, {"l": "i", "t": "7. Báo cáo tình hình tài chính giữa niên độ (dạng đầy đủ)", "id": "pl-2830"}, {"l": "i", "t": "8. Báo cáo kết quả hoạt động kinh doanh giữa niên độ (dạng đầy đủ)", "id": "pl-2832"}, {"l": "i", "t": "9. Báo cáo lưu chuyển tiền tệ giữa niên độ (dạng đầy đủ)", "id": "pl-2834"}, {"l": "i", "t": "10. Bản thuyết minh Báo cáo tài chính chọn lọc", "id": "pl-2837"}, {"l": "i", "t": "11. Báo cáo tình hình tài chính giữa niên độ (dạng tóm lược)", "id": "pl-2839"}, {"l": "i", "t": "12. Báo cáo kết quả hoạt động kinh doanh giữa niên độ (dạng tóm lược)", "id": "pl-2841"}, {"l": "i", "t": "13. Báo cáo lưu chuyển tiền tệ giữa niên độ (dạng tóm lược)", "id": "pl-2843"}, {"l": "i", "t": "14. Bản thuyết minh Báo cáo tài chính chọn lọc (Thực hiện theo Mẫu số B09a- DN)", "id": "pl-2845"}]
+  };
+
+  function buildCustomToc(cfg) {
+    const items = cfg.map(c => ({ c, el: document.getElementById(c.id) })).filter(x => x.el && inner.contains(x.el));
+    sidebarTocList.innerHTML = '';
+    if (!items.length) { clearSidebarToc(); return; }
+    items.forEach(({ c, el }) => {
+      const li = document.createElement('li');
+      li.className = 'toc-lvl-' + c.l;
+      const a = document.createElement('a');
+      a.href = '#' + c.id;
+      a.textContent = c.t;
+      a.dataset.target = c.id;
+      a.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => setActiveToc(c.id), 50);
+      });
+      li.appendChild(a);
+      sidebarTocList.appendChild(li);
+    });
+    sidebarToc.classList.add('visible');
+
+    // Below 1100px the sidebar is hidden, so the same list goes inside the article.
+    const body = inner.querySelector('.article-body');
+    if (body) {
+      const det = document.createElement('details');
+      det.className = 'toc-inline';
+      const sum = document.createElement('summary');
+      sum.textContent = 'Mục lục';
+      det.appendChild(sum);
+      const ul = document.createElement('ul');
+      items.forEach(({ c, el }) => {
+        const li = document.createElement('li');
+        li.className = 'toc-lvl-' + c.l;
+        const a = document.createElement('a');
+        a.href = '#' + c.id;
+        a.textContent = c.t;
+        a.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          det.open = false;
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+      det.appendChild(ul);
+      body.before(det);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter(x => x.isIntersecting).sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      if (visible[0]) setActiveToc(visible[0].target.id);
+    }, { root: null, rootMargin: '-90px 0px -65% 0px', threshold: 0 });
+    items.forEach(x => observer.observe(x.el));
+  }
+
+  function buildSidebarToc(entryId) {
+    // Curated TOC: only items that appear in the lists at the start of each appendix
+    const custom = entryId && CUSTOM_TOC[entryId];
+    if (custom) { buildCustomToc(custom); return; }
     const allHeadings = Array.from(inner.querySelectorAll('.article-body h2, .article-body h3'))
       .filter(h => h.textContent.trim() !== 'HỆ THỐNG CHUẨN MỰC KẾ TOÁN VIỆT NAM');
     // Always include every h2; h3 only if structural / numbered / account title
@@ -11873,7 +11942,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
     `;
     attachClicks(inner);
     attachPreviews(inner);
-    buildSidebarToc();
+    buildSidebarToc(id);
     resetScroll();
 
     if (pendingSearch) {
