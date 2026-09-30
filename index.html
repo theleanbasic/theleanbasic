@@ -431,6 +431,9 @@ header.site-head { background: var(--navy); border-bottom: 1px solid var(--navy-
 .brand { align-items: center; gap: 14px; flex-wrap: nowrap; }
 .brand .mark { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: #fff; }
 .brand .tagline { color: var(--petrol-300); font-size: 14px; line-height: 1.2; padding-left: 14px; border-left: 1px solid rgba(255,255,255,.25); }
+.brand-home { cursor: pointer; }
+.brand-home:hover .mark { opacity: 0.9; }
+.brand-home:hover .tagline { color: #fff; }
 header.site-head .icon-btn { background: transparent; border-color: rgba(255,255,255,.4); color: #fff; }
 header.site-head .icon-btn:hover { background: rgba(255,255,255,.1); border-color: #fff; color: #fff; }
 header.site-head .icon-btn:focus-visible { outline-color: #fff; }
@@ -527,10 +530,10 @@ h2.section-title { font-weight: 600; font-size: 26px; letter-spacing: -0.02em; l
 .link-preview .lp-title { color: var(--petrol); }
 
 /* ---------- Footer ---------- */
-footer.site-foot { background: var(--navy-deep); color: var(--petrol-200); text-align: center; border-top: 3px solid var(--coral); padding: 30px 28px calc(30px + env(safe-area-inset-bottom, 0px)); }
+footer.site-foot { background: var(--navy-deep); color: var(--petrol-200); text-align: center; border-top: 2px solid var(--coral); padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px)); }
 footer.site-foot p { margin: 0 auto; }
-footer.site-foot .foot-line { max-width: 72ch; font-size: 15px; line-height: 1.65; color: #fff; text-wrap: balance; }
-footer.site-foot .foot-note { max-width: 72ch; font-size: 13px; line-height: 1.5; color: var(--taupe-light); margin-top: 10px; }
+footer.site-foot .foot-line { max-width: 72ch; font-size: 13px; line-height: 1.4; color: #fff; text-wrap: balance; }
+footer.site-foot .foot-note { max-width: 72ch; font-size: 12px; line-height: 1.4; color: var(--taupe-light); margin-top: 4px; }
 
 /* ---------- Mobile ---------- */
 @media (max-width: 860px) {
@@ -627,8 +630,10 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 <header class="site-head">
   <div class="brand">
     <button id="menuToggle" class="icon-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
-    <span class="mark">TheLeanBasic</span>
-    <span class="tagline">Learning Hub · CPA Vietnam · ACCA · CMA</span>
+    <a href="#" class="brand-home" data-id="__home" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;min-width:0;">
+      <span class="mark">TheLeanBasic</span>
+      <span class="tagline">Learning Hub · CPA Vietnam · ACCA · CMA</span>
+    </a>
   </div>
   <div class="head-controls">
   </div>
@@ -1222,12 +1227,8 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
       <section class="hero-band">
       <p class="eyebrow">LEARNING HUB</p>
       <h1 class="hero-title">CPA Vietnam · ACCA · CMA</h1>
-      <p class="hero-sub">Self-study library for accounting standards, professional certifications, and exam pathways. Currently includes VAS 14 and the full ACCA, CPA Vietnam, and CMA syllabi.</p>
+      <p class="hero-sub">Self-study library for accounting standards, professional certifications, and exam pathways.</p>
       </section>
-      <div class="disclaimer"><b>Lưu ý:</b> Nội dung trên trang được trình bày để tra cứu và tự học. Khi áp dụng cho công việc thực tế, cần đối chiếu với văn bản gốc và các quy định hiện hành có liên quan.</div>
-      <hr class="rule">
-      <p class="section-label">Nội dung</p>
-      <h2 class="section-title">Chuẩn mực đang có trong thư viện</h2>
       <div class="program-grid">
         <a class="program-card" href="#" data-id="vas-14">
           <div class="pc-kicker">CHUẨN MỰC KẾ TOÁN VIỆT NAM</div>
@@ -1345,6 +1346,10 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
   }
 
   sidebarLinks().forEach(a => a.addEventListener('click', (e) => { e.preventDefault(); go(a.dataset.id); }));
+
+  document.querySelectorAll('.brand-home').forEach(a => {
+    a.addEventListener('click', (e) => { e.preventDefault(); go('__home'); });
+  });
 
   window.addEventListener('popstate', (e) => {
     const id = e.state && e.state.id;
