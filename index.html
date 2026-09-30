@@ -440,7 +440,8 @@ header.site-head .icon-btn:focus-visible { outline-color: #fff; }
 
 /* ---------- Layout: wide sidebar 1 & 2 ---------- */
 @media (min-width: 861px) {
-  .layout { grid-template-columns: clamp(300px, 26vw, 400px) clamp(250px, 20vw, 320px) minmax(0, 1fr); }
+  /* Sidebar 1 + sidebar 2 = 3/7 of the screen (split 4:3), content gets the other 4/7 */
+  .layout { grid-template-columns: calc(100% * 12 / 49) calc(100% * 9 / 49) minmax(0, 1fr); }
   aside.sidebar, aside.toc-sidebar { top: var(--head-h); max-height: calc(100vh - var(--head-h)); }
 }
 aside.sidebar, aside.toc-sidebar { scrollbar-width: thin; scrollbar-color: var(--taupe-light) transparent; }
