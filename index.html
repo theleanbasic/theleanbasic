@@ -673,7 +673,9 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
   .layout { grid-template-columns: 14.2857vw 14.2857vw minmax(0, 1fr); }
 }
 
-.article-body h2, .article-body h3 { scroll-margin-top: 78px; }
+.article-body h2, .article-body h3, .article-body h4 { scroll-margin-top: 78px; }
+.article-body h3.heading-muc { font-size: 22px; margin: 30px 0 10px; }
+.article-body h4 { color: #03396c; font-size: 18px; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; margin: 22px 0 8px; }
 
 /* In-article table of contents (only below 1100px) */
 .toc-inline { margin: 0 0 22px; border: 1px solid var(--taupe-line); border-left: 4px solid var(--petrol); border-radius: 3px; background: var(--petrol-50); }
@@ -733,6 +735,12 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
           <li><a href="#" data-id="tt99">TT 99 — Nội dung chính (Điều 1–31)</a></li>
           <li><a href="#" data-id="tt99-phuluc">TT 99 — Phụ lục I, III, IV</a></li>
           <li><a href="#" data-id="tt99-tk">TT 99 — Phụ lục II (Hệ thống tài khoản)</a></li>
+        </ul>
+      </details>
+      <details class="group" open>
+        <summary><span class="chev">▸</span><span class="group-label">Quản lý thuế Thông tư 89</span></summary>
+        <ul class="article-list">
+          <li><a href="#" data-id="tt89">TT 89 — Nội dung chính (Điều 1–101)</a></li>
         </ul>
       </details>
     </details>
@@ -813,15 +821,14 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
 </div>
 
 <footer class="site-foot">
-  <div class="foot-left"><span class="foot-contact">Liên hệ: <a href="/cdn-cgi/l/email-protection#ff8b979a939a9e919d9e8c969cbf98929e9693d19c9092"><span class="__cf_email__" data-cfemail="aedac6cbc2cbcfc0cccfddc7cdeec9c3cfc7c280cdc1c3">theleanbasic@gmail.com#160</span></a></span></div>
+  <div class="foot-left"><p class="foot-line">@2026 TheLeanBasic</p></div>
   <div class="foot-center">
-    <p class="foot-line">@2026 TheLeanBasic</p>
     <p class="foot-note">Nội dung phục vụ tham khảo và tự học, không thay thế văn bản gốc hay tư vấn chuyên môn.</p>
   </div>
-  <div class="foot-right" aria-hidden="true"></div>
+  <div class="foot-right"><span class="foot-contact">Contact: <a href="mailto:theleanbasic@gmail.com">theleanbasic@gmail.com</a></span></div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function () {
   /* ===== Cấu hình site =====
      goatcounterCode : mã GoatCounter, ví dụ 'theleanbasic' (→ theleanbasic.goatcounter.com)
@@ -833,6 +840,16 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
   /* Các bài dài được lưu thành file riêng trong thư mục articles/<id>.html và chỉ tải khi mở.
      Ở đây chỉ giữ thông tin ngắn (tiêu đề, breadcrumb, đoạn trích) để làm mục lục / xem trước. */
   const ENTRIES = {
+    "tt89": {
+      "kind": "law",
+      "doc": "tt89",
+      "crumb": [
+        "Quản lý thuế Thông tư 89"
+      ],
+      "title": "TT 89/2026/TT-BTC — Hướng dẫn Luật Quản lý thuế và Nghị định 252/2026/NĐ-CP",
+      "meta": "Bộ Tài chính · Ban hành 30/06/2026 · Hiệu lực 01/07/2026",
+      "excerpt": "Thông tư số 89/2026/TT-BTC ngày 30 tháng 6 năm 2026 của Bộ trưởng Bộ Tài chính quy định chi tiết một số điều của Luật Quản lý thuế và Nghị định số 252/2026/NĐ-CP. Hiệu lực từ 01/7/2026. Bản này gồm ph"
+    },
     "vas-14": {
       "kind": "law",
       "doc": "vas",
@@ -895,6 +912,15 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
         { chapter: "Phụ lục II — Hệ thống tài khoản", articles: ["tt99-tk"] }
       ],
       note: "Gồm 3 phần: (1) Điều 1–31; (2) Phụ lục I, III, IV — chứng từ, sổ kế toán, mẫu BCTC; (3) Phụ lục II — hệ thống tài khoản chi tiết. Khi áp dụng chính thức cần đối chiếu văn bản công bố."
+    },
+    "tt89": {
+      kind: "law",
+      title: "Quản lý thuế — Thông tư 89/2026/TT-BTC",
+      meta: "Hướng dẫn Luật Quản lý thuế và Nghị định 252/2026/NĐ-CP · Hiệu lực 01/07/2026",
+      toc: [
+        { chapter: "Nội dung chính (Chương I–X · Điều 1–101)", articles: ["tt89"] }
+      ],
+      note: "Bản này gồm phần nội dung chính (10 Chương, 101 Điều); các Phụ lục mẫu biểu kèm theo Thông tư chưa được đưa vào. Khi áp dụng chính thức cần đối chiếu văn bản công bố."
     }
   };
 
@@ -1182,6 +1208,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
       const a = document.createElement('a');
       a.href = '#' + c.id;
       a.textContent = c.t;
+      if (c.full && c.full !== c.t) a.title = c.full;
       a.dataset.target = c.id;
       a.addEventListener('click', (ev) => {
         ev.preventDefault();
@@ -1231,6 +1258,17 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
     // Curated TOC: only items that appear in the lists at the start of each appendix
     const custom = entryId && CUSTOM_TOC[entryId];
     if (custom) { buildCustomToc(custom); return; }
+    // Bài đánh dấu sẵn heading bằng data-toc="1|2|3" (Chương / Mục / Điều) → dùng đúng các heading đó
+    const marked = Array.from(inner.querySelectorAll('.article-body [data-toc]'));
+    if (marked.length) {
+      const LV = { '1': 'h', '2': 'g', '3': 'i' };
+      const cfg = marked.map((h, k) => {
+        if (!h.id) h.id = slugify(h.textContent, k);
+        const full = h.textContent.trim();
+        return { l: LV[h.dataset.toc] || 'i', t: full.length > 110 ? full.slice(0, 107).trim() + '…' : full, full: full, id: h.id };
+      });
+      buildCustomToc(cfg); return;
+    }
     const allHeadings = Array.from(inner.querySelectorAll('.article-body h2, .article-body h3'))
       .filter(h => h.textContent.trim() !== 'HỆ THỐNG CHUẨN MỰC KẾ TOÁN VIỆT NAM');
     // Always include every h2; h3 only if structural / numbered / account title
@@ -1510,7 +1548,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
       const q = pendingSearch.q;
       pendingSearch = null;
       const ql = q.toLocaleLowerCase('vi');
-      const blocks = Array.from(inner.querySelectorAll('.article-title, .article-meta, .article-body h2, .article-body h3, .article-body p, .article-body li'));
+      const blocks = Array.from(inner.querySelectorAll('.article-title, .article-meta, .article-body h2, .article-body h3, .article-body h4, .article-body p, .article-body li'));
       const target = blocks.find(b => (b.textContent || '').toLocaleLowerCase('vi').includes(ql));
       if (target) {
         target.innerHTML = highlightMatches(target.textContent, q);
