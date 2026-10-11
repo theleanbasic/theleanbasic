@@ -1688,15 +1688,15 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
   buildSearchIndex();
 
   // Lần tìm kiếm đầu tiên: tải nốt các bài còn lại để tìm toàn văn (chỉ làm một lần).
-  let searchReady = false, searchReadyPromise = null;
+  let searchReady = false, searchReadyPromise = null, searchFailed = [];
   function ensureSearchReady() {
     if (searchReady) return Promise.resolve();
     if (!searchReadyPromise) {
       const pending = Object.keys(ENTRIES).filter(id => ENTRIES[id].bodyHtml === undefined);
       searchReadyPromise = Promise.all(pending.map(id =>
-        loadEntry(id).then(() => indexEntry(id)).then(() => true).catch(() => false)
+        loadEntry(id).then(() => indexEntry(id)).then(() => true).catch(() => { searchFailed.push(id); return false; })
       )).then(results => {
-        if (results.every(Boolean)) searchReady = true;
+        if (results.every(Boolean)) { searchReady = true; searchFailed = []; }
         else searchReadyPromise = null;   // có bài tải lỗi → lần sau thử lại
       });
     }
@@ -1756,11 +1756,18 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
     return out;
   }
 
+  function failedNote() {
+    if (!searchFailed.length) return '';
+    const names = searchFailed.map(id => 'articles/' + id + '.html').join(', ');
+    return '<div style="font-size:12px;color:#B3261E;padding:8px 3px;border-top:1px solid var(--line);margin-top:6px">'
+      + 'Chưa tải được nội dung: ' + esc(names) + '. Kết quả có thể thiếu các bài này — hãy kiểm tra file đã được tải lên cùng thư mục với index.html chưa.</div>';
+  }
+
   function renderSearchResults(q, hits) {
     if (!hits.length) {
       searchResults.hidden = false;
       searchResults.innerHTML = '<div class="search-results-title">Kết quả tìm kiếm</div>'
-        + '<div style="font-size:12px;color:var(--ink-faint);padding:8px 3px">Không tìm thấy nội dung phù hợp.</div>';
+        + '<div style="font-size:12px;color:var(--ink-faint);padding:8px 3px">Không tìm thấy nội dung phù hợp.</div>' + failedNote();
       return;
     }
     searchResults.hidden = false;
@@ -1769,7 +1776,7 @@ ul.article-list a.active { color: #03396c; border-left-color: #03396c; }
         <button class="search-result" data-search-id="${h.id}" data-q="${esc(q)}">${esc(h.title)}<small>${esc(h.crumb || '')}${h.count ? ' · ' + h.count + ' đoạn khớp' : ''}</small></button>
         ${h.snippets.map(s => `<button class="search-snippet" data-search-id="${h.id}" data-q="${esc(q)}">${s}</button>`).join('')}
       </div>
-    `).join('');
+    `).join('') + failedNote();
     searchResults.querySelectorAll('[data-search-id]').forEach(btn => btn.addEventListener('click', () => {
       pendingSearch = { q: btn.dataset.q };
       go(btn.dataset.searchId);
